@@ -1,5 +1,5 @@
 # mashaan14 YouTube channel
-I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). I used these notebooks to produce the figures for my videos.
+I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). Here are the notebooks I used to produce the figures for my videos.
 
 | Title |&nbsp;|&nbsp;|
 | :--- | :---: | :---: |
