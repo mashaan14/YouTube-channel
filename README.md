@@ -13,4 +13,4 @@ I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). 
 ## Videos
 |&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: | :---: |
-| seaborn plots | [video](https://youtu.be/uI6w_lEVZCs) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_13_seaborn_plots.ipynb) | &nbsp; |
+| seaborn plots | [video](https://youtu.be/uI6w_lEVZCs) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_13_seaborn_plots.ipynb) | [<img height=300 src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs?feature=shared) |
