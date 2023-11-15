@@ -1,7 +1,7 @@
 # mashaan14 YouTube channel
 I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). Here are the notebooks I used to produce the figures for my videos.
 
-## shorts
+## Shorts
 |&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: | :---: |
 | [<img height=300 src="imgs/2023_11_02_covariance_in_diffusion.png" />](https://youtube.com/shorts/4jYY0b52NIQ?feature=share) | [<img height=300 src="imgs/2023_11_07_graph_construction.png" />](https://youtube.com/shorts/Sl93IlD_1VU?feature=share) | [<img height=300 src="imgs/2023_11_10_positional_encoding.png" />](https://youtube.com/shorts/T6N1v7NyeS4?feature=share) | [<img height=300 src="imgs/2023_11_12_graph_Laplacian.png" />](https://youtube.com/shorts/jr93FHW1krg?feature=share) |
