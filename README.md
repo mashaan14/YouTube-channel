@@ -8,6 +8,11 @@ I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). 
 | Covariance matrix in diffusion models | Connecting points for KwikBucks clustering | positional encoding in transformers | Graph Laplacian and adjacency matrix |
 | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_02_covariance_in_diffusion.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_07_graph_construction.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_10_positional_encoding.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_12_graph_Laplacian.ipynb) |
 
+| [<img height=300 src="imgs/2023_11_17_SGD_line.png" />](https://youtube.com/shorts/4jYY0b52NIQ?feature=share) |&nbsp;|&nbsp;|&nbsp;|
+| Stochastic gradient descent - fitting a straight line |&nbsp;|&nbsp;|&nbsp;|
+| [code](https://github.com/mashaan14/YouTube-channel/blob/main/2023_11_17_SGD_line.ipynb) |&nbsp;|&nbsp;|&nbsp;|
+
+
 ---
 
 ## Videos
