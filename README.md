@@ -17,5 +17,5 @@ I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). 
 ## Videos
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
-| Attention maps in vision transformers (ViT) | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img height=200 src="imgs/2023-11-29-VisionTransformer-MNIST.png" />]() |
-| seaborn plots | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_13_seaborn_plots.ipynb) | [<img height=200 src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs?feature=shared) |
+| Attention maps in vision transformers (ViT) | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
+| seaborn plots | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_13_seaborn_plots.ipynb) | [<img src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs?feature=shared) |
