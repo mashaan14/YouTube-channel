@@ -1,6 +1,18 @@
 # @mashaan14 YouTube channel
 I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). Here are the notebooks I used in my videos.
 
+## Videos
+|&nbsp;|&nbsp;|&nbsp;|
+| :---: | :---: | :---: |
+| Perceptron Algorithm: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
+| GCN vs SGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_13_GCN_and_SGC.ipynb) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
+| Graph Convolutional Networks (GCNs) in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
+| Attention maps in vision transformers (ViT) | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
+| seaborn plots | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_13_seaborn_plots.ipynb) | [<img src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs?feature=shared) |
+
+
+---
+
 ## Shorts
 |&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: | :---: |
@@ -10,14 +22,3 @@ I casually post videos to [my YouTube channel](https://youtube.com/@mashaan14). 
 | [<img src="imgs/2023_11_17_SGD_line.png" />](https://youtube.com/shorts/mo8zvjTr5fU?feature=share) |[<img src="imgs/2023_11_21_SGD_Perceptron.png" />](https://youtube.com/shorts/mo8zvjTr5fU?feature=share)|[<img src="imgs/2023_11_26_SGD_Zero.png" />](https://youtube.com/shorts/qi7nmesPyhs?feature=share)|[<img src="imgs/2023_12_07_GCN_introduction.png" />](https://youtube.com/shorts/tdvEbcr7h-c?feature=share)|
 | Stochastic gradient descent - fitting a straight line |Stochastic gradient descent - perceptron algorithm|Stochastic gradient descent - why zero_grad in pytorch?|Graph Convolutional Networks (GCNs)|
 | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_17_SGD_line.ipynb) |[code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb)|[code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_17_SGD_line.ipynb)|[code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb)|
-
-
----
-
-## Videos
-|&nbsp;|&nbsp;|&nbsp;|
-| :---: | :---: | :---: |
-| Perceptron Algorithm: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
-| Graph Convolutional Networks (GCNs) in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
-| Attention maps in vision transformers (ViT) | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
-| seaborn plots | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_13_seaborn_plots.ipynb) | [<img src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs?feature=shared) |
