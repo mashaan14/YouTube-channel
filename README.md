@@ -23,7 +23,8 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 | Graph Laplacian and adjacency matrix | Stochastic gradient descent - fitting a straight line |Stochastic gradient descent - perceptron algorithm | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_12_graph_Laplacian.ipynb) |
 | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_17_SGD_line.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) |
 | [<img src="imgs/2023_11_26_SGD_Zero.png" />](https://youtube.com/shorts/qi7nmesPyhs?feature=share) | [<img src="imgs/2023_12_07_GCN_introduction.png" />](https://youtube.com/shorts/tdvEbcr7h-c?feature=share) |&nbsp;|
-| Stochastic gradient descent - why zero_grad in pytorch?|Graph Convolutional Networks (GCNs)|&nbsp;|| [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_17_SGD_line.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb) |&nbsp;|
+| Stochastic gradient descent - why zero_grad in pytorch?|Graph Convolutional Networks (GCNs)|&nbsp;|
+| [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_17_SGD_line.ipynb) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb) |&nbsp;|
 
 ---
 
