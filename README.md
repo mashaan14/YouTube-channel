@@ -3,6 +3,7 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| CNN vs ViT: PyTorch Training | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_08_CNN_and_ViT.ipynb) | [<img src="imgs/2024_01_08_CNN_and_ViT.png" />](https://youtu.be/uggBVJebdcY) |
 | Multilayer Neural Networks: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
 | GCN vs SGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_13_GCN_and_SGC.ipynb) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
 | Perceptron Algorithm: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
