@@ -3,6 +3,7 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| PyTorch Conv2d: Course Notes + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
 | DETR Object Detection: Paper Read + Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_22_DETR_demo.ipynb) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
 | Spectral Clustering: Paper Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
 | CNN vs ViT: PyTorch Training | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_08_CNN_and_ViT.ipynb) | [<img src="imgs/2024_01_08_CNN_and_ViT.png" />](https://youtu.be/uggBVJebdcY) |
