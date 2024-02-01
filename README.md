@@ -4,13 +4,13 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
 | GCN Variants: SGC and ASGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_31_SGC_and_ASGC.ipynb) | [<img src="imgs/2024_01_31_SGC_and_ASGC.png" />](https://youtu.be/ZNMV5i84fmM) |
-| PyTorch Conv2d: Course Notes + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
-| DETR Object Detection: Paper Read + Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_22_DETR_demo.ipynb) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
-| Spectral Clustering: Paper Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
+| PyTorch Conv2d Under The Hood | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
+| DETR Object Detection | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_22_DETR_demo.ipynb) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
+| Spectral Clustering Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
 | CNN vs ViT: PyTorch Training | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_08_CNN_and_ViT.ipynb) | [<img src="imgs/2024_01_08_CNN_and_ViT.png" />](https://youtu.be/uggBVJebdcY) |
-| Multilayer Neural Networks: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
-| GCN vs SGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_13_GCN_and_SGC.ipynb) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
-| Perceptron Algorithm: Book Read + Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
+| Multilayer Neural Networks Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
+| PyTorch code for GCN and SGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_13_GCN_and_SGC.ipynb) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
+| Perceptron Algorithm Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
 | Graph Convolutional Networks (GCNs) in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_04_GCN_introduction.ipynb) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
 | Attention maps in vision transformers (ViT) | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
 | Seaborn Plots | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_11_13_seaborn_plots.ipynb) | [<img src="imgs/2023_11_13_seaborn_plots.png" />](https://youtu.be/uI6w_lEVZCs) |
