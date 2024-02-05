@@ -3,6 +3,7 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| Graph Attention in PyTorch Geometric | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_05_GAT.ipynb) | [<img src="imgs/2024_02_05_GAT.png" />](https://youtu.be/AWkPjrZshug) |
 | GCN Variants: SGC and ASGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_31_SGC_and_ASGC.ipynb) | [<img src="imgs/2024_01_31_SGC_and_ASGC.png" />](https://youtu.be/ZNMV5i84fmM) |
 | PyTorch Conv2d Under The Hood | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
 | DETR Object Detection | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_22_DETR_demo.ipynb) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
