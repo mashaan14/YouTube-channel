@@ -1,4 +1,4 @@
-# [mashaan14](https://youtube.com/@mashaan14) YouTube channel
+# [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
 I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). Here are the notebooks I used in my videos.
 
 |&nbsp;|&nbsp;|&nbsp;|
