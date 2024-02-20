@@ -3,6 +3,7 @@ I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). 
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| GCN code for PyTorch Geometric and Jraph | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_20_jraph.ipynb) | [<img src="imgs/2024_02_20_jraph.png" />](https://youtu.be/W-JDqd5AFio) |
 | Sparse Subspace Clustering (SSC) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
 | Graph Attention in PyTorch Geometric | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_05_GAT.ipynb) | [<img src="imgs/2024_02_05_GAT.png" />](https://youtu.be/AWkPjrZshug) |
 | PyTorch Conv2d Under The Hood | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
