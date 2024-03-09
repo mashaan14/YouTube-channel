@@ -1,5 +1,5 @@
 # [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
-I casually post videos to my [YouTube channel](https://youtube.com/@mashaan14). Here are the notebooks I used in my videos.
+Here are the notebooks I used in my [YouTube channel](https://youtube.com/@mashaan14) videos.
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
