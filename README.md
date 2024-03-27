@@ -3,7 +3,7 @@ Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) vi
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
-| Vision Transformer (ViT) in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_03_28_jax_ViT.ipynb) | [<img src="imgs/2024_03_18_jraph_GAT.png" />](https://youtu.be/LDwA31hARrA) |
+| Vision Transformer (ViT) in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_03_28_jax_ViT.ipynb) | [<img src="imgs/2024_03_28_jax_ViT.png" />](https://youtu.be/LDwA31hARrA) |
 | Graph Attention Networks in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_03_18_jraph_GAT.ipynb) | [<img src="imgs/2024_03_18_jraph_GAT.png" />](https://youtu.be/O1zGWMEgW7A) |
 | Convolutional Layers in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_03_07_jax_conv.ipynb) | [<img src="imgs/2024_03_07_jax_conv.png" />](https://youtu.be/rn-RsD7IpIg) |
 | Simple Neural Net in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_28_jax_three_layer_NN.ipynb) | [<img src="imgs/2024_02_28_jax_three_layer_NN.png" />](https://youtu.be/GNLOa4riys8) |
