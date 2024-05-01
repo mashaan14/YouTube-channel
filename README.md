@@ -1,8 +1,6 @@
 # [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
 Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) videos.
 
-<iframe src="https://github.com/sponsors/mashaan14/card" title="Sponsor mashaan14" height="225" width="600" style="border: 0;"></iframe>
-
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
 | Mini Batches in Graph Neural Network | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_29_GNN_mini_batch.ipynb) | [<img src="imgs/2024_04_29_GNN_mini_batch.png" />](https://youtu.be/ZfCtFLS_os0) |
