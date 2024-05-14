@@ -3,6 +3,7 @@ Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) vi
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| Graph Attention in DGL | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_05_13_DGL_GAT.ipynb) | [<img src="imgs/2024_05_13_DGL_GAT.png" />](https://youtu.be/-V-T7koEWig) |
 | Mini Batches in Graph Neural Network | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_29_GNN_mini_batch.ipynb) | [<img src="imgs/2024_04_29_GNN_mini_batch.png" />](https://youtu.be/ZfCtFLS_os0) |
 | JAX Speed Test: IT'S FAST!! | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_14_jax_speed_test.ipynb) | [<img src="imgs/2024_04_14_jax_speed_test.png" />](https://youtu.be/1SQFVYVSuyE) |
 | Convolutional Neural Net (CNN) in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_02_jax_CNN.ipynb) | [<img src="imgs/2024_04_02_jax_CNN.png" />](https://youtu.be/Q0vvh95wes8) |
