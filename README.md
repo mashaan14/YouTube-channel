@@ -3,6 +3,7 @@ Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) vi
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| Cluster GCN in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_07_15_ClusterGCN_jax.ipynb) | [<img src="imgs/2024_07_15_Cluster_GCN_sampler.png" />](https://youtu.be/8mknbxIIf94) |
 | GNN Node Sampler in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_06_24_neighbor_sampler.ipynb) | [<img src="imgs/2024_06_24_neighbor_sampler.png" />](https://youtu.be/YQwUlmUkJuI) |
 | Sampling for Graph Neural Networks | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_05_27_GNN_sampling.ipynb) | [<img src="imgs/2024_05_27_GNN_sampling.png" />](https://youtu.be/y0poBC8xN1k) |
 | Graph Attention in DGL | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_05_13_DGL_GAT.ipynb) | [<img src="imgs/2024_05_13_DGL_GAT.png" />](https://youtu.be/-V-T7koEWig) |
