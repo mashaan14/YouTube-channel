@@ -1,3 +1,15 @@
+<style>
+table th:first-of-type {
+    width: 40%;
+}
+table th:nth-of-type(2) {
+    width: 40%;
+}
+table th:nth-of-type(3) {
+    width: 20%;
+}
+</style>
+
 # [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
 Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) videos.
 
