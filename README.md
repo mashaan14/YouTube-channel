@@ -1,6 +1,6 @@
 
 # [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
-Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) videos.
+Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) videos
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
