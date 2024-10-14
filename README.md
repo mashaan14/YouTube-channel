@@ -4,6 +4,7 @@ Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) vi
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
+| Gaussian Splatting: it's not really a neural net | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 | Swin Transformer Attention | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_09_16_swin_transformer_attention.ipynb) | [<img src="imgs/2024_09_16_Swin_Transformer_Attention.png" />](https://youtu.be/mtCTIGgzfbc) |
 | Swin Transformer Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_08_19_swin_transformer_annotated.ipynb) | [<img src="imgs/2024_08_19_Swin_Transformer.png" />](https://youtu.be/LspWysWparE) |
 | Cluster GCN in JAX | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_07_15_ClusterGCN_jax.ipynb) | [<img src="imgs/2024_07_15_Cluster_GCN_sampler.png" />](https://youtu.be/8mknbxIIf94) |
