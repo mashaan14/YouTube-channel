@@ -1,7 +1,7 @@
 # Running Machine Learning Projects on Google's TPU Research Cloud (TRC)
 
 ## Acknowledgement
-Thanks to Google's TPU Research Cloud (TRC) for making cloud TPUs available for my use. I borrowed some code from these articles:
+Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/about/) for making cloud TPUs available for my use. I borrowed some code from these articles:
 - [Run a calculation on a Cloud TPU VM using JAX](https://cloud.google.com/tpu/docs/run-calculation-jax)
 - [Run a calculation on a Cloud TPU VM using PyTorch](https://cloud.google.com/tpu/docs/run-calculation-pytorch)
 
