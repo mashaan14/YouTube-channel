@@ -9,7 +9,7 @@ Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/
 When I applied for TPU Research Cloud (TRC), they sent me a list of TPU instances that qualify for TRC waiver. Here's a list of instances alongside the console commands to create them.
 - preemptible Cloud TPU v2-8 device(s) in zone us-central1-f
 ```console
-$ gcloud compute tpus tpu-vm create node-01 \
+gcloud compute tpus tpu-vm create node-01 \
   --zone=us-central1-f \
   --accelerator-type=v2-8 \
   --version=tpu-ubuntu2204-base \
@@ -17,7 +17,7 @@ $ gcloud compute tpus tpu-vm create node-01 \
 ```
 - preemptible Cloud TPU v4 chips in zone us-central2-b
 ```console
-$ gcloud compute tpus tpu-vm create node-02 \
+gcloud compute tpus tpu-vm create node-02 \
   --zone=us-central2-b \
   --accelerator-type=v4-8 \
   --version=tpu-ubuntu2204-base \
@@ -25,14 +25,14 @@ $ gcloud compute tpus tpu-vm create node-02 \
 ```
 - on-demand Cloud TPU v4 chips in zone us-central2-b
 ```console
-$ gcloud compute tpus tpu-vm create node-03 \
+gcloud compute tpus tpu-vm create node-03 \
   --zone=us-central2-b \
   --accelerator-type=v4-8 \
   --version=tpu-ubuntu2204-base
 ```
 - preemptible Cloud TPU v3-8 device(s) in zone europe-west4-a
 ```console
-$ gcloud compute tpus tpu-vm create node-04 \
+gcloud compute tpus tpu-vm create node-04 \
   --zone=europe-west4-a \
   --accelerator-type=v3-8 \
   --version=tpu-ubuntu2204-base \
@@ -43,7 +43,7 @@ $ gcloud compute tpus tpu-vm create node-04 \
 If you can't create a TPU instance, try queued-resources command. Your request will be queued. When the requested resource becomes available, it's assigned to your Google Cloud project.
 - create queued-resources
 ```console
-$ gcloud compute tpus queued-resources create queued-resource-1 \
+gcloud compute tpus queued-resources create queued-resource-1 \
   --node-id node-02 \
   --project applied-algebra-426622-k2 \
   --zone us-central2-b \
@@ -52,7 +52,7 @@ $ gcloud compute tpus queued-resources create queued-resource-1 \
 ```
 - delete queued-resources
 ```console
-$ gcloud compute tpus queued-resources delete queued-resource-1 \
+gcloud compute tpus queued-resources delete queued-resource-1 \
   --project applied-algebra-426622-k2 \
   --zone us-central2-b \
   --force \
@@ -60,28 +60,28 @@ $ gcloud compute tpus queued-resources delete queued-resource-1 \
 ```
 
 ## Install JAX on your Cloud TPU VM
-You can install jax by typing in this command:
+You can install jax by typing in this command in your VM terminal:
 ```console
-(vm)$ pip install jax[tpu] -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
+pip install jax[tpu] -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
 ```
 
 Verify that JAX can access the TPU and can run basic operations:
 ```console
-(vm)$ python3
+python3
 ```
 ```python
->>> import jax
+import jax
 ```
 
 Display the number of TPU cores available:
 ```python
->>> jax.device_count()
+jax.device_count()
 ```
 The number of TPU cores is displayed. If you are using a v4 TPU, this should be `4`. If you are using a v2 or v3 TPU, this should be `8`.
 
 Now let's perform a simple calculation:
 ```python
->>> jax.numpy.add(1, 1)
+jax.numpy.add(1, 1)
 ```
 the result should look like this:
 ```python
@@ -90,7 +90,7 @@ Array(2, dtype=int32, weak_type=True)
 
 exit the Python interpreter:
 ```python
->>> exit()
+exit()
 ```
 
 ## Install Flax dependencies
@@ -98,25 +98,25 @@ exit the Python interpreter:
 
 Install Flax examples dependencies:
 ```console
-(vm)$ pip install --upgrade clu
-(vm)$ pip install tensorflow
-(vm)$ pip install tensorflow_datasets
+pip install --upgrade clu
+pip install tensorflow
+pip install tensorflow_datasets
 ```
 
 Install Flax:
 ```console
-(vm)$ git clone https://github.com/google/flax.git
-(vm)$ pip install --user flax
+git clone https://github.com/google/flax.git
+pip install --user flax
 ```
 
 Enter MNIST directory under Flax examples:
 ```console
-(vm)$ cd flax/examples/mnist
+cd flax/examples/mnist
 ```
 
 Now, run MNIST training script. We're going to change the `learning_rate` and `num_epochs` values. For all other parameters, we're going to keep the default values.
 ```console
-(vm)$ python3 main.py --workdir=/tmp/mnist \
+python3 main.py --workdir=/tmp/mnist \
 --config=configs/default.py \
 --config.learning_rate=0.05 \
 --config.num_epochs=5
@@ -141,12 +141,12 @@ The training accuracy started at `92.98` and reached `99.23` at the $5^{th}$ epo
 ## Install PyTorch/XLA on your TPU VM
 Install PyTorch/XLA using the following command:
 ```console
-(vm)$ pip install torch~=2.4.0 torch_xla[tpu]~=2.4.0 torchvision -f https://storage.googleapis.com/libtpu-releases/index.html
+pip install torch~=2.4.0 torch_xla[tpu]~=2.4.0 torchvision -f https://storage.googleapis.com/libtpu-releases/index.html
 ```
 
 Ensure that the PyTorch/XLA runtime uses the TPU.
 ```console
-(vm)$ export PJRT_DEVICE=TPU
+export PJRT_DEVICE=TPU
 ```
 
 Create a file named `tpu-test.py` on your local machine, and paste the following script into it.
@@ -164,7 +164,7 @@ print(t1 + t2)
 
 Upload `tpu-test.py` to your TPU VM using (upload file) button on the top right corner in your terminal. Then run it using this command:
 ```console
-(vm)$ python3 tpu-test.py
+python3 tpu-test.py
 ```
 
 I got the following output:
@@ -179,12 +179,12 @@ tensor([[-2.1709,  0.8687, -0.4139],
 ## General Console Commands
 - connect to your Cloud TPU VM
 ```console
-$ gcloud compute tpus tpu-vm ssh node-02 --zone=us-central2-b
+gcloud compute tpus tpu-vm ssh node-02 --zone=us-central2-b
 ```
 
 - listing all computing instances
 ```console
-$ gcloud compute instances list
+gcloud compute instances list
 ```
 
 ## References
