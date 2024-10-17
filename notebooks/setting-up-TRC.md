@@ -8,7 +8,7 @@ Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/
 ## Creating instances 
 When I applied for TPU Research Cloud (TRC), they sent me a list of TPU instances that qualify for TRC waiver. Here's a list of instances alongside the console commands to create them.
 - preemptible Cloud TPU v2-8 device(s) in zone us-central1-f
-```console
+```bash
 gcloud compute tpus tpu-vm create node-01 \
   --zone=us-central1-f \
   --accelerator-type=v2-8 \
