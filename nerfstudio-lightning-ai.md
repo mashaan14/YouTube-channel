@@ -1,5 +1,5 @@
 ```bash
-!nvidia-smi
+nvidia-smi
 ```
 
 ```bash
