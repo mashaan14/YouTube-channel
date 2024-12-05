@@ -106,8 +106,8 @@ conda env list
 ```
 
 ```console
-conda create --name ViT     # create a new conda environment
-conda activate ViT
+conda create --name vit     # create a new conda environment
+conda activate vit
 ```
 
 Clone the vision transformer repository and change the directory to get inside the folder.
