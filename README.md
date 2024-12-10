@@ -4,7 +4,7 @@ Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) vi
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
-| The Most Liked Formula in Machine Learning | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_12_09_squared_exponential.ipynb) | [<img src="imgs/2024_12_09_squared_exponential.png" />](https://youtu.be/H4S3QAoMEEo) |
+| RBF: The Most Liked Formula in Machine Learning | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_12_09_squared_exponential.ipynb) | [<img src="imgs/2024_12_09_squared_exponential.png" />](https://youtu.be/H4S3QAoMEEo) |
 | NeRF: Neural Radiance Fields | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
 | TPU VM on Google Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
 | 3D Gaussian Splatting | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
