@@ -1,6 +1,6 @@
 
 # [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
-Here are the notebooks I used in my [YouTube](https://youtube.com/@mashaan14) videos.
+For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository.
 
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
