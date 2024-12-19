@@ -149,9 +149,10 @@ python -m render \
 ```
 
 ```bash
-~/multinerf/nerf_results/360/stump/render/bike_360_path_renders_step_250000_color.mp4
-~/multinerf/nerf_results/360/stump/render/bike_360_path_renders_step_250000_acc.mp4
-~/multinerf/nerf_results/360/stump/render/bike_360_path_renders_step_250000_distance_mean.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_color.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_acc.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_mean.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_median.mp4
 ```
 
 ```bash
