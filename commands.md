@@ -1,4 +1,4 @@
-# Your own NeRF
+# Your own data with NeRF
 
 ## Acknowledgement
 I used the [notebook](https://lightning.ai/lightning-ai/studios/structure-from-motion-with-meta-s-vgg-sfm?view=public&section=featured) by Andy McSherry for VGGSfM. I also used Google's [MultiNeRF](https://github.com/google-research/multinerf/tree/main) repository for NeRF training. Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/about/) for making cloud TPUs available for my use.
