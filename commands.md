@@ -109,6 +109,7 @@ mv bike.zip ~/multinerf/nerf_data/
 unzip bike.zip
 ```
 
+### Training
 Prepare terminal variables to run the training script:
 ```bash
 SCENE=bike \
@@ -127,34 +128,7 @@ python -m train \
   --logtostderr
 ```
 
-Render:
-
-```bash
-SCENE=bike \
-EXPERIMENT=360 \
-DATA_DIR=/home/mashaan14/multinerf/nerf_data/ \
-CHECKPOINT_DIR=/home/mashaan14/multinerf/nerf_results/"$EXPERIMENT"/"$SCENE"
-```
-
-```bash
-python -m render \
-  --gin_configs=configs/360.gin \
-  --gin_bindings="Config.data_dir = '${DATA_DIR}/${SCENE}'" \
-  --gin_bindings="Config.checkpoint_dir = '${CHECKPOINT_DIR}'" \
-  --gin_bindings="Config.render_path = True" \
-  --gin_bindings="Config.render_path_frames = 50" \
-  --gin_bindings="Config.render_dir = '${CHECKPOINT_DIR}/render/'" \
-  --gin_bindings="Config.render_video_fps = 5" \
-  --logtostderr
-```
-
-```bash
-/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_color.mp4
-/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_acc.mp4
-/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_mean.mp4
-/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_median.mp4
-```
-
+Here's a snippet from the training output:
 ```bash
  249100/250000: loss=0.00407, psnr=45.627, lr=2.03e-05 | data=0.00386, dist=3.0e-05, inte=0.00017, 112785 r/s
  249200/250000: loss=0.00407, psnr=45.620, lr=2.03e-05 | data=0.00387, dist=3.0e-05, inte=0.00017, 112759 r/s
@@ -168,3 +142,33 @@ python -m render \
  250000/250000: loss=0.00406, psnr=45.654, lr=2.00e-05 | data=0.00386, dist=3.0e-05, inte=0.00017, 109458 r/s
 ```
 
+### Rendering
+
+prepare the variables:
+```bash
+SCENE=bike \
+EXPERIMENT=360 \
+DATA_DIR=/home/mashaan14/multinerf/nerf_data/ \
+CHECKPOINT_DIR=/home/mashaan14/multinerf/nerf_results/"$EXPERIMENT"/"$SCENE"
+```
+
+and run the rendering script:
+```bash
+python -m render \
+  --gin_configs=configs/360.gin \
+  --gin_bindings="Config.data_dir = '${DATA_DIR}/${SCENE}'" \
+  --gin_bindings="Config.checkpoint_dir = '${CHECKPOINT_DIR}'" \
+  --gin_bindings="Config.render_path = True" \
+  --gin_bindings="Config.render_path_frames = 50" \
+  --gin_bindings="Config.render_dir = '${CHECKPOINT_DIR}/render/'" \
+  --gin_bindings="Config.render_video_fps = 5" \
+  --logtostderr
+```
+
+type these links into the downloading window to download them: 
+```bash
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_color.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_acc.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_mean.mp4
+/home/mashaan14/multinerf/nerf_results/360/bike/render/bike_360_path_renders_step_250000_distance_median.mp4
+```
