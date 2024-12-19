@@ -75,21 +75,21 @@ bike
 │       │   cameras.bin
 │   
 └───images # images with the original resolution
-│    │   image01.jpg
-│    │   image02.jpg
-│    │   ...
+│   │   image01.jpg
+│   │   image02.jpg
+│   │   ...
 │
 │
 └───images_2 # images with 50% of the original resolution
-│    │   image01.jpg
-│    │   image02.jpg
-│    │   ...
+│   │   image01.jpg
+│   │   image02.jpg
+│   │   ...
 │
 │
 └───images_4 # images with 25% of the original resolution
-│    │   image01.jpg
-│    │   image02.jpg
-│    │   ...
+│   │   image01.jpg
+│   │   image02.jpg
+│   │   ...
 │
 │
 └───images_8 # images with 12.5% of the original resolution
