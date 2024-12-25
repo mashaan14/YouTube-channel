@@ -4,7 +4,7 @@ For each YouTube video I post, I create a corresponding Jupyter notebook or Mark
 
 * [Vision Transformers](#vision-transformers)
 * [Swin Transformer](#swin-transformer)
-* [Neural Radiance Field (NeRF)](#neural-radiance-field-nerf)
+* [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
 * [Graph Neural Networks](#graph-neural-networks)
 * [JAX Performance](#jax-performance)
 * [Convolutional Neural Nets](#convolutional-neural-nets)
@@ -27,8 +27,8 @@ Swin transformer code analysis and attention visualization.
 | Analyzing Swin Transformer: A Code Walkthrough | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_08_19_swin_transformer_annotated.ipynb) | [<img src="imgs/2024_08_19_Swin_Transformer.png" />](https://youtu.be/LspWysWparE) |
 | A Deep Dive into Swin Transformer Attention Maps | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_09_16_swin_transformer_attention.ipynb) | [<img src="imgs/2024_09_16_Swin_Transformer_Attention.png" />](https://youtu.be/mtCTIGgzfbc) |
 
-## Neural Radiance Field (NeRF)
-Videos about Neural Radiance Field (NeRF) and Gaussian splatting.
+## Neural Radiance Fields (NeRF)
+Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
 | How NeRF Works: Exploring a Tiny NeRF Implementation | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
