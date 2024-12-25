@@ -1,6 +1,6 @@
 
-# [Mashaan's](https://youtube.com/@mashaan14) YouTube channel
-For each YouTube video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository, organized into the following sections:
+# Mashaan's YouTube channel
+For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository, organized into the following sections:
 
 * [Vision Transformers](#vision-transformers)
 * [Swin Transformer](#swin-transformer)
