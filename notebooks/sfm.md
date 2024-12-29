@@ -1,6 +1,11 @@
-# SfM
+# Structure-from-Motion (SfM): A Tutorial
 
-Vkmfiovfkjmv
+## SfM initialization in colmap
+Colmap implements an incremental SfM in a [cpp file](https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/sfm/incremental_mapper_impl.cc) under `colmap/src/colmap/sfm/incremental_mapper_impl.cc`. It finds a first image by sorting all images in a way that priortize images with a large number of correspondences and have camera calibration priors. Large number of correspondences would make it easy to pair it with a second image, and having camera calibration priors would allow colmap to use the essential matrix $E$ to estimate the camera poses.
+
+Here's 
+
+inside `colmap/src/colmap/sfm/incremental_mapper_impl.cc` there is a `FindInitialImagePair`. It finds first image using `FindInitialImagePair`, then a second image using `FindSecondInitialImage`
 
 ```cpp
 if (geometry->config == TwoViewGeometry::ConfigurationType::CALIBRATED ||
