@@ -32,7 +32,7 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
 | How NeRF Works: Exploring a Tiny NeRF Implementation | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
-| 3D Gaussian Splatting Optimization Explained | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
+| 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
@@ -54,7 +54,7 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
 |&nbsp;|&nbsp;|&nbsp;|
 | :---: | :---: | :---: |
-| How to Get Free TPU Access with Google's TPU Research Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
+| Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
 | JAX JIT Compilation Explained: From Python to JAXPR | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_14_jax_speed_test.ipynb) | [<img src="imgs/2024_04_14_jax_speed_test.png" />](https://youtu.be/1SQFVYVSuyE) |
 
 ## Convolutional Neural Nets
