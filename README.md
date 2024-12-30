@@ -11,6 +11,23 @@ For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corr
 * [Spectral Clustering](#spectral-clustering)
 * [Intro to Neural Nets](#intro-to-neural-nets)
 
+```mermaid
+mindmap
+  root((my videos))
+    (Images)
+        (Vision Transformers)
+        (Swin Transformer)
+        (Convolutional Neural Nets)        
+    (Graphs)
+        (Graph Neural Networks)
+        (Spectral Clustering)
+    (3D)
+        (Neural Radiance Fields NeRF)
+    (Introduction)
+        (JAX Performance)
+        (Intro to Neural Nets)
+```
+
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
 |**Title**|**Code**|**Video**|
