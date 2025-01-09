@@ -265,29 +265,29 @@ flowchart LR
 
 ### The tracking process:
 1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) in `predict_tracks` or `predict_tracks_in_chunks` avoid memory issues.
-  > runner.py line 1315
-  ```python
-     fine_pred_track, _, pred_vis, pred_score = track_predictor(
-         images_feed,
-         split_points,
-         fmaps=fmaps_feed,
-         fine_tracking=fine_tracking,
-     )
-  ```
+   > runner.py line 1315
+   ```python
+      fine_pred_track, _, pred_vis, pred_score = track_predictor(
+          images_feed,
+          split_points,
+          fmaps=fmaps_feed,
+          fine_tracking=fine_tracking,
+      )
+   ```
 2. [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) calls [`base_track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) twice, one for `coarse_predictor` and another for `fine_predictor`.
-  > track_predictor.py line 91
-  ```python
-     # Coarse prediction
-     coarse_pred_track_lists, pred_vis = self.coarse_predictor(
-         query_points=query_points,
-         fmaps=fmaps,
-         iters=coarse_iters,
-         down_ratio=self.coarse_down_ratio,
-     )
-     coarse_pred_track = coarse_pred_track_lists[-1]
-  ```
-3. [base_track_predictor.py](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) takes query points and their feature maps as inputs and returns 2D positions and visibility:
-   * input
+   > track_predictor.py line 91
+   ```python
+      # Coarse prediction
+      coarse_pred_track_lists, pred_vis = self.coarse_predictor(
+          query_points=query_points,
+          fmaps=fmaps,
+          iters=coarse_iters,
+          down_ratio=self.coarse_down_ratio,
+      )
+      coarse_pred_track = coarse_pred_track_lists[-1]
+   ```
+3. [`base_track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) takes query points and their feature maps as inputs and returns 2D positions and visibility:
+   1. input
        ```python
         """
         query_points: B x N x 2, the number of batches, tracks, and xy
@@ -295,7 +295,23 @@ flowchart LR
                 note HH and WW is the size of feature maps instead of original images
         """
       ```
-   * output
+   1. Inside an iterative refinement loop, it samples discriptors from all frames $N_I$ starting from the position of query points at the reference frame $I_i$. It does that by calling `CorrBlock` from [`blocks.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/blocks.py)
+      ```python
+      # Compute the correlation (check the implementation of CorrBlock)
+      if self.efficient_corr:
+          fcorrs = fcorr_fn.sample(coords, track_feats)
+      else:
+          fcorr_fn.corr(track_feats)
+          fcorrs = fcorr_fn.sample(coords)  # B, S, N, corrdim
+      ```
+   2. It passes `query_points`, `correlations`, and `track_feats` to a transformer
+       ```python
+        if return_feat:
+            return coord_preds, vis_e, track_feats, query_track_feat
+        else:
+            return coord_preds, vis_e
+       ```      
+   2. output
        ```python
         if return_feat:
             return coord_preds, vis_e, track_feats, query_track_feat
