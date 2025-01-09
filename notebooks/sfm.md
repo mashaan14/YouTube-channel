@@ -158,7 +158,7 @@ classDiagram
 // @param points3D        Points that lie in front of both cameras.
 ```
 ### Image Registration
-> New images can be registered to the current model by solving the Perspective-n-Point (PnP) problem using feature correspondences to triangulated points in already registered images (2D-3D correspondences). The PnP problem involves estimating the pose $P_c$ and, for uncalibrated cameras, its intrinsic parameters. The set $\mathcal{P}$ is thus extended by the pose $P_c$ of the newly registered image (Schönberger and Frahm, 2016). 
+> New images can be registered to the current model by solving the Perspective-n-Point (PnP) problem using feature correspondences to triangulated points in already registered images (2D-3D correspondences). The PnP problem involves estimating the pose $P_c$ and, for uncalibrated cameras, its intrinsic parameters. The set $𝒫$ is thus extended by the pose $P_c$ of the newly registered image (Schönberger and Frahm, 2016). 
 
 ```mermaid
 classDiagram
@@ -177,7 +177,7 @@ classDiagram
   * extend tracks to the newly registered image
 
 ### Triangulation
-> A newly registered image must observe existing scene points. In addition, it may also increase scene coverage by extending the set of points $\mathcal{X}$ through triangulation. A new scene point $X_k$ can be triangulated and added to $\mathcal{X}$ as soon as at least one more image, also covering the new scene part but from a different viewpoint, is registered (Schönberger and Frahm, 2016).
+> A newly registered image must observe existing scene points. In addition, it may also increase scene coverage by extending the set of points $𝒳$ through triangulation. A new scene point $X_k$ can be triangulated and added to $𝒳$ as soon as at least one more image, also covering the new scene part but from a different viewpoint, is registered (Schönberger and Frahm, 2016).
 
 ```mermaid
 classDiagram
@@ -252,21 +252,62 @@ flowchart LR
 ![Screenshot 2025-01-08 at 12 26 51 PM](https://github.com/user-attachments/assets/472e76b0-0b04-4bec-accc-713b2296680d)
 > source: (Wang et al., 2024)
 ---
-### Tracker $\mathcal{T}$
+### Tracker $𝒯$
 
-![IMG_2332](https://github.com/user-attachments/assets/8df19e8f-ed33-44f8-999d-65a2b0751f3e)
+![IMG_2332](https://github.com/user-attachments/assets/8df19e8f-ed33-44f8-999d-65a2b0751f3e) 
 
-
+---
+### cost volume pyramid
 ![cost volume](https://github.com/user-attachments/assets/09e3c424-c56d-4fc2-bac2-7c63535a84f9)
 > source: (Yang et al., 2020)
+
 ---
 
+### The tracking process:
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) in `predict_tracks` or `predict_tracks_in_chunks` avoid memory issues.
+  > runner.py line 1315
+  ```python
+     fine_pred_track, _, pred_vis, pred_score = track_predictor(
+         images_feed,
+         split_points,
+         fmaps=fmaps_feed,
+         fine_tracking=fine_tracking,
+     )
+  ```
+2. [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) calls [`base_track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) twice, one for `coarse_predictor` and another for `fine_predictor`.
+  > track_predictor.py line 91
+  ```python
+     # Coarse prediction
+     coarse_pred_track_lists, pred_vis = self.coarse_predictor(
+         query_points=query_points,
+         fmaps=fmaps,
+         iters=coarse_iters,
+         down_ratio=self.coarse_down_ratio,
+     )
+     coarse_pred_track = coarse_pred_track_lists[-1]
+  ```
+3. [base_track_predictor.py](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) takes query points and their feature maps as inputs and returns 2D positions and visibility:
+   * input
+       ```python
+        """
+        query_points: B x N x 2, the number of batches, tracks, and xy
+        fmaps: B x S x C x HH x WW, the number of batches, frames, and feature dimension.
+                note HH and WW is the size of feature maps instead of original images
+        """
+      ```
+   * output
+       ```python
+        if return_feat:
+            return coord_preds, vis_e, track_feats, query_track_feat
+        else:
+            return coord_preds, vis_e
+       ```
 
 
 
 |stage|input|output|
 | :--- | :--- | :--- |
-|Tracker $\mathcal{T}$  |2D query points|A track for each query point. The length of a track is $N_I$, which is number of frames. The track contains 2D locations $y_i^j$ and visibility $v_i^j$|
+|Tracker $𝒯$  |2D query points|A track for each query point. The length of a track is $N_I$, which is number of frames. The track contains 2D locations $y_i^j$ and visibility $v_i^j$|
 |1000 |0.3115|0.9848|
 |2000 |0.3293|0.9877|
 |5000 |0.3831|0.9891|
