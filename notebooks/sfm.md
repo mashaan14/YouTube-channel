@@ -304,12 +304,12 @@ flowchart LR
           fcorr_fn.corr(track_feats)
           fcorrs = fcorr_fn.sample(coords)  # B, S, N, corrdim
       ```
-   2. It passes `query_points`, `correlations`, and `track_feats` to a transformer
+   2. It passes `query_points` $`\{ \hat{y}_1^i, \cdots, \hat{y}_1^{N_T} \}`$, `correlations` $`V \in ℝ^{N_T \times N_I \times C}`$ , and `track_feats` $`\{ m_1^i, \cdots, m_1^{N_T} \}`$ to a transformer named `EfficientUpdateFormer` in [`blocks.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/blocks.py).
        ```python
-        if return_feat:
-            return coord_preds, vis_e, track_feats, query_track_feat
-        else:
-            return coord_preds, vis_e
+       # Concatenate them as the input for the transformers
+       transformer_input = torch.cat(
+           [flows_emb, fcorrs_, track_feats_], dim=2
+       )
        ```      
    2. output
        ```python
