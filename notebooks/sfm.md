@@ -252,18 +252,18 @@ flowchart LR
 ![Screenshot 2025-01-08 at 12 26 51 PM](https://github.com/user-attachments/assets/472e76b0-0b04-4bec-accc-713b2296680d)
 > source: (Wang et al., 2024)
 ---
-### Tracker $𝒯$
+### Tracker 𝒯
 
 ![IMG_2332](https://github.com/user-attachments/assets/8df19e8f-ed33-44f8-999d-65a2b0751f3e) 
 
 ---
-### cost volume pyramid
+#### cost volume pyramid
 ![cost volume](https://github.com/user-attachments/assets/09e3c424-c56d-4fc2-bac2-7c63535a84f9)
 > source: (Yang et al., 2020)
 
 ---
 
-### The tracking process:
+#### The tracking process:
 1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) in `predict_tracks` or `predict_tracks_in_chunks` avoid memory issues.
    > runner.py line 1315
    ```python
