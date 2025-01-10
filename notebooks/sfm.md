@@ -252,7 +252,7 @@ flowchart LR
 ![Screenshot 2025-01-08 at 12 26 51 PM](https://github.com/user-attachments/assets/472e76b0-0b04-4bec-accc-713b2296680d)
 > source: (Wang et al., 2024)
 ---
-### Tracker 𝒯
+### Tracker
 
 ![IMG_2332](https://github.com/user-attachments/assets/8df19e8f-ed33-44f8-999d-65a2b0751f3e) 
 
@@ -318,7 +318,66 @@ flowchart LR
         else:
             return coord_preds, vis_e
        ```
+---       
+### Camera Initializer
+In (Wang et al., 2024) paper they mentioned that the camera initializer was designed as follows:
 
+![Screenshot 2025-01-10 at 3 40 35 PM](https://github.com/user-attachments/assets/09490f31-b3d8-424b-a253-1e62721191bd)
+> source: (Wang et al., 2024)
+---
+but later in the issues the author mentioned that the camera initializer does not use track features in the code to make it faster:
+
+![Screenshot 2025-01-10 at 3 42 48 PM](https://github.com/user-attachments/assets/2969873c-6c91-481f-a9ac-e7071c351cc1)
+> source: https://github.com/facebookresearch/vggsfm/issues/48
+---
+So here's how the camera initializer is implemented in the code:
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`camera_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/camera_predictor.py) using `self.camera_predictor`, which passes image features to a transformer and refine the camera poses iteratively:
+      > camera_predictor.py line 187
+      ```python
+        for iter_num in range(iters):
+            pred_pose_enc = pred_pose_enc.detach()
+
+            # Embed the camera parameters and add to rgb_feat
+            pose_embed = self.embed_pose(pred_pose_enc)
+            rgb_feat = rgb_feat + pose_embed
+
+            # Run trunk transformers on rgb_feat
+            rgb_feat = self.trunk(rgb_feat)
+
+            # Predict the delta feat and pose encoding at each iteration
+            delta = self.pose_branch(rgb_feat)
+            delta_pred_pose_enc = delta[..., : self.target_dim]
+            delta_feat = delta[..., self.target_dim :]
+
+            rgb_feat = self.ffeat_updater(self.norm(delta_feat)) + rgb_feat
+
+            pred_pose_enc = pred_pose_enc + delta_pred_pose_enc
+
+            # Residual connection
+            rgb_feat = (rgb_feat + rgb_feat_init) / 2
+      ```
+   
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`estimate_preliminary.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/estimate_preliminary.py) using `estimate_preliminary_cameras_poselib` or `estimate_preliminary_cameras`. The difference was mentioned in the comments:
+      > runner.py line 474
+      ```python
+        # Estimate preliminary_cameras by recovering fundamental/essential/homography matrix from 2D matches
+        # By default, we use fundamental matrix estimation with 7p/8p+LORANSAC
+        # All the operations are batched and differentiable (if necessary)
+        # except when you enable use_poselib to save GPU memory
+        _, preliminary_dict = estimate_preliminary_cameras_fn(
+            pred_track,
+            pred_vis,
+            width,
+            height,
+            tracks_score=pred_score,
+            max_error=self.cfg.fmat_thres,
+            loopresidual=True,
+        )
+      ```
+      [`estimate_preliminary.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/estimate_preliminary.py) performs three main tasks
+      1. Estimate Fundamental Matrix by Batch `fmat: (B*(S-1))x3x3`, where `S` is the number of frames. [`fundamental.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/fundamental.py) estimates the fundamental matrix by 7pt/8pt algo + LORANSAC and returns the one with the highest inlier number.
+      2. Estimate `kmat1, kmat2: (B*(S-1))x3x3`, where focal length is set as max(width, height), and the principal point is set as (width//2, height//2).
+      3. Get Essential matrix from Fundamental and Camera matrices.
 
 
 |stage|input|output|
