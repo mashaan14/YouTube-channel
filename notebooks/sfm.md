@@ -1,7 +1,76 @@
+> [!WARNING]
+> incomplete document
+
 # Structure-from-Motion (SfM): A Tutorial
 
-## SfM initialization in colmap
-### Choosing the initial pair of images
+## Resources
+For this tutorial, I collected information from multiple resources:
+* Github repositories
+  * [colmap](https://github.com/colmap/colmap)
+  * [VGGSfM](https://github.com/facebookresearch/vggsfm)
+* Books
+  * [Multiple View Geometry in Computer Vision](https://www.robots.ox.ac.uk/~vgg/hzbook/)
+  * [Computer Vision: Algorithms and Applications](https://szeliski.org/Book/) 
+* Courses
+  * [16-385 Computer Vision, CMU](https://www.cs.cmu.edu/~16385/s18/lectures/lecture12.pdf)
+  * [CMSC426: Computer Vision, University of Maryland](https://cmsc426.github.io/sfm/)
+  * [UNIK4690, University of Oslo](https://www.uio.no/studier/emner/matnat/its/nedlagte-emner/UNIK4690/v16/forelesninger/)
+
+## References
+```bibtex
+@inproceedings{schoenberger2016sfm,
+ author     = {Sch\"{o}nberger, Johannes Lutz and Frahm, Jan-Michael},
+ title      = {Structure-from-Motion Revisited},
+ booktitle  = {Conference on Computer Vision and Pattern Recognition (CVPR)},
+ year       = {2016},
+}
+```
+
+```bibtex
+@inproceedings{wang2024vggsfm,
+ title      = {VGGSfM: Visual Geometry Grounded Deep Structure From Motion},
+ author     = {Wang, Jianyuan and Karaev, Nikita and Rupprecht, Christian and Novotny, David},
+ booktitle  = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+ pages      = {21686--21697},
+ year       = {2024}
+}
+```
+
+## Why SfM has anything to do with NeRF?
+```mermaid
+flowchart LR
+    A[2D images] --> B[SfM]
+    B --> C[sparse 3D points]
+    B --> D[cameras positions]
+```
+---
+```mermaid
+flowchart LR
+    A[cameras positions] --> B[NeRF]
+    B --> C[3D reconstruction]
+```
+
+NeRF needs cameras positions to cast rays into the scene and render 3D to compute the training loss. Without SfM, NeRF would be shooting rays into the wild.
+A nice thing to have if we can do end to end training from 2D images all the way to 3D reconstruction.
+
+## Epipolar geometry
+> [!WARNING]
+> $X$ ---> structure
+> $x, x'$ 
+> $P, P'$ ---> motion
+
+> [!WARNING]
+> formullas for fundamnetal and essentila matrices
+
+> [!WARNING]
+> images for epipolar lines
+
+## colmap
+
+**replace with the image from the paper**
+
+### Initialization
+#### Choosing the initial pair of images
 
 these notes were taken from:
 https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/sfm/incremental_mapper_impl.h
@@ -29,7 +98,7 @@ classDiagram
 
 Large number of correspondences would make it easy to pair it with a second image, and having camera calibration priors would allow colmap to use the essential matrix $E$ to estimate the camera poses.
 
-### Estimating two view geometry between the initial pair
+#### Estimating two view geometry between the initial pair
 In addition to [incremental_pipeline.cc](https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/controllers/incremental_pipeline.cc), [incremental_mapper.cc](https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/sfm/incremental_mapper.cc), and [incremental_mapper_impl.cc](https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/sfm/incremental_mapper_impl.cc) we have two more files to estimate two view geometry between the initial pair of images:
 
 * [two_view_geometry.cc](https://github.com/colmap/colmap/blob/cb02ca13a57e565c6bfb56f5f88d65dab222cd7b/src/colmap/estimators/two_view_geometry.cc) under `colmap/src/colmap/estimators/two_view_geometry.cc`.
@@ -88,3 +157,234 @@ classDiagram
 // @param points2         Second set of corresponding points.
 // @param points3D        Points that lie in front of both cameras.
 ```
+### Image Registration
+> New images can be registered to the current model by solving the Perspective-n-Point (PnP) problem using feature correspondences to triangulated points in already registered images (2D-3D correspondences). The PnP problem involves estimating the pose $P_c$ and, for uncalibrated cameras, its intrinsic parameters. The set $𝒫$ is thus extended by the pose $P_c$ of the newly registered image (Schönberger and Frahm, 2016). 
+
+```mermaid
+classDiagram
+    incremental_pipeline.cc --|> incremental_mapper.cc
+
+    incremental_pipeline.cc: CheckRunGlobalRefinement
+    incremental_mapper.cc: FindNextImages
+    incremental_mapper.cc: RegisterNextImage
+```
+
+* `FindNextImages`: sort images in a way that prioritize images with a sufficient number of visible points.
+* `RegisterNextImage`
+  * search for 2D-3D correspondences
+  * estimate camera parameters
+  * pose refinement
+  * extend tracks to the newly registered image
+
+### Triangulation
+> A newly registered image must observe existing scene points. In addition, it may also increase scene coverage by extending the set of points $𝒳$ through triangulation. A new scene point $X_k$ can be triangulated and added to $𝒳$ as soon as at least one more image, also covering the new scene part but from a different viewpoint, is registered (Schönberger and Frahm, 2016).
+
+```mermaid
+classDiagram
+    incremental_pipeline.cc --|> incremental_mapper.cc
+
+    incremental_pipeline.cc: CheckRunGlobalRefinement
+    incremental_mapper.cc: TriangulateImage
+```
+
+### Bundle Adjustment
+> Without further refinement, SfM usually drifts quickly to a non-recoverable state. Bundle adjustment is the joint non-linear refinement of camera parameters $P_c$ and point parameters $X_k$ that minimizes the reprojection error:
+>
+> $E = \sum_j \rho_j \Big( \left\lVert \pi (P_c, X_k) - x_j \right\rVert^{2}_{2} \Big)$
+>
+> * $\pi$: a function that projects scene points to image space
+> * $\rho_j$: the Cauchy function as the robust loss function to potentially down-weight outliers
+
+```mermaid
+classDiagram
+    incremental_pipeline.cc --|> incremental_mapper.cc
+
+    incremental_pipeline.cc: CheckRunGlobalRefinement
+    incremental_pipeline.cc: IterativeGlobalRefinement
+    incremental_mapper.cc: IterativeLocalRefinement
+    incremental_mapper.cc: IterativeGlobalRefinement
+    incremental_mapper.cc: AdjustLocalBundle  
+    incremental_mapper.cc: AdjustGlobalBundle
+```
+
+* `IterativeLocalRefinement`: iteratively calls `AdjustLocalBundle`
+* `AdjustLocalBundle`
+```cc
+  // Adjust locally connected images and points of a reference image. In
+  // addition, refine the provided 3D points. Only images connected to the
+  // reference image are optimized. If the provided 3D points are not locally
+  // connected to the reference image, their observing images are set as
+  // constant in the adjustment.
+```
+* `IterativeGlobalRefinement`: iteratively calls `AdjustGlobalBundle`
+* `AdjustGlobalBundle`: Global bundle adjustment using Ceres Solver, which is usually used to solve Non-linear Least Squares problems.
+
+## VGGSfM
+From (Wang et al., 2024) appendix A, the training process involves multiple stages:
+
+```mermaid
+---
+title: Training the tracker on a synthetic Kubric dataset
+---
+flowchart LR
+    A[synthetic Kubric dataset] --> B[tracker]
+    B --> C[predict 2D tracks]
+```
+
+---
+
+```mermaid
+---
+title: separately train the tracker, camera initializer, and triangulator on Co3D or MegaDepth
+---
+flowchart LR
+    A[Co3D or MegaDepth] --> B[tracker]
+    B --> C[predict 2D tracks]
+
+    D[Co3D or MegaDepth] --> E[camera initializer]
+    E --> F[predict camera parameters]
+
+    G[Co3D or MegaDepth] --> H[triangulator]
+    H --> I[predict point cloud]    
+```
+---
+
+![Screenshot 2025-01-08 at 12 26 51 PM](https://github.com/user-attachments/assets/472e76b0-0b04-4bec-accc-713b2296680d)
+> source: (Wang et al., 2024)
+---
+### Tracker
+
+![IMG_2332](https://github.com/user-attachments/assets/8df19e8f-ed33-44f8-999d-65a2b0751f3e) 
+
+---
+#### cost volume pyramid
+![cost volume](https://github.com/user-attachments/assets/09e3c424-c56d-4fc2-bac2-7c63535a84f9)
+> source: (Yang et al., 2020)
+
+---
+
+#### The tracking process:
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) in `predict_tracks` or `predict_tracks_in_chunks` avoid memory issues.
+   > runner.py line 1315
+   ```python
+      fine_pred_track, _, pred_vis, pred_score = track_predictor(
+          images_feed,
+          split_points,
+          fmaps=fmaps_feed,
+          fine_tracking=fine_tracking,
+      )
+   ```
+2. [`track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_predictor.py) calls [`base_track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) twice, one for `coarse_predictor` and another for `fine_predictor`.
+   > track_predictor.py line 91
+   ```python
+      # Coarse prediction
+      coarse_pred_track_lists, pred_vis = self.coarse_predictor(
+          query_points=query_points,
+          fmaps=fmaps,
+          iters=coarse_iters,
+          down_ratio=self.coarse_down_ratio,
+      )
+      coarse_pred_track = coarse_pred_track_lists[-1]
+   ```
+3. [`base_track_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/base_track_predictor.py) takes query points and their feature maps as inputs and returns 2D positions and visibility:
+   1. input
+       ```python
+        """
+        query_points: B x N x 2, the number of batches, tracks, and xy
+        fmaps: B x S x C x HH x WW, the number of batches, frames, and feature dimension.
+                note HH and WW is the size of feature maps instead of original images
+        """
+      ```
+   1. Inside an iterative refinement loop, it samples discriptors from all frames $N_I$ starting from the position of query points at the reference frame $I_i$. It does that by calling `CorrBlock` from [`blocks.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/blocks.py)
+      ```python
+      # Compute the correlation (check the implementation of CorrBlock)
+      if self.efficient_corr:
+          fcorrs = fcorr_fn.sample(coords, track_feats)
+      else:
+          fcorr_fn.corr(track_feats)
+          fcorrs = fcorr_fn.sample(coords)  # B, S, N, corrdim
+      ```
+   2. It passes `query_points` $`\{ \hat{y}_1^i, \cdots, \hat{y}_1^{N_T} \}`$, `correlations` $`V \in ℝ^{N_T \times N_I \times C}`$ , and `track_feats` $`\{ m_1^i, \cdots, m_1^{N_T} \}`$ to a transformer named `EfficientUpdateFormer` in [`blocks.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/track_modules/blocks.py).
+       ```python
+       # Concatenate them as the input for the transformers
+       transformer_input = torch.cat(
+           [flows_emb, fcorrs_, track_feats_], dim=2
+       )
+       ```      
+   2. output
+       ```python
+        if return_feat:
+            return coord_preds, vis_e, track_feats, query_track_feat
+        else:
+            return coord_preds, vis_e
+       ```
+---       
+### Camera Initializer
+In (Wang et al., 2024) paper they mentioned that the camera initializer was designed as follows:
+
+![Screenshot 2025-01-10 at 3 40 35 PM](https://github.com/user-attachments/assets/09490f31-b3d8-424b-a253-1e62721191bd)
+> source: (Wang et al., 2024)
+---
+but later in the issues the author mentioned that the camera initializer does not use track features in the code to make it faster:
+
+![Screenshot 2025-01-10 at 3 42 48 PM](https://github.com/user-attachments/assets/2969873c-6c91-481f-a9ac-e7071c351cc1)
+> source: https://github.com/facebookresearch/vggsfm/issues/48
+---
+So here's how the camera initializer is implemented in the code:
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`camera_predictor.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/camera_predictor.py) using `self.camera_predictor`, which passes image features to a transformer and refine the camera poses iteratively:
+      > camera_predictor.py line 187
+      ```python
+        for iter_num in range(iters):
+            pred_pose_enc = pred_pose_enc.detach()
+
+            # Embed the camera parameters and add to rgb_feat
+            pose_embed = self.embed_pose(pred_pose_enc)
+            rgb_feat = rgb_feat + pose_embed
+
+            # Run trunk transformers on rgb_feat
+            rgb_feat = self.trunk(rgb_feat)
+
+            # Predict the delta feat and pose encoding at each iteration
+            delta = self.pose_branch(rgb_feat)
+            delta_pred_pose_enc = delta[..., : self.target_dim]
+            delta_feat = delta[..., self.target_dim :]
+
+            rgb_feat = self.ffeat_updater(self.norm(delta_feat)) + rgb_feat
+
+            pred_pose_enc = pred_pose_enc + delta_pred_pose_enc
+
+            # Residual connection
+            rgb_feat = (rgb_feat + rgb_feat_init) / 2
+      ```
+   
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`estimate_preliminary.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/estimate_preliminary.py) using `estimate_preliminary_cameras_poselib` or `estimate_preliminary_cameras`. The difference was mentioned in the comments:
+      > runner.py line 474
+      ```python
+        # Estimate preliminary_cameras by recovering fundamental/essential/homography matrix from 2D matches
+        # By default, we use fundamental matrix estimation with 7p/8p+LORANSAC
+        # All the operations are batched and differentiable (if necessary)
+        # except when you enable use_poselib to save GPU memory
+        _, preliminary_dict = estimate_preliminary_cameras_fn(
+            pred_track,
+            pred_vis,
+            width,
+            height,
+            tracks_score=pred_score,
+            max_error=self.cfg.fmat_thres,
+            loopresidual=True,
+        )
+      ```
+      [`estimate_preliminary.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/estimate_preliminary.py) performs three main tasks
+      1. Estimate Fundamental Matrix by Batch `fmat: (B*(S-1))x3x3`, where `S` is the number of frames. [`fundamental.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/fundamental.py) estimates the fundamental matrix by 7pt/8pt algo + LORANSAC and returns the one with the highest inlier number.
+      2. Estimate `kmat1, kmat2: (B*(S-1))x3x3`, where focal length is set as max(width, height), and the principal point is set as (width//2, height//2).
+      3. Get Essential matrix from Fundamental and Camera matrices.
+
+
+|stage|input|output|
+| :--- | :--- | :--- |
+|Tracker $𝒯$  |2D query points|A track for each query point. The length of a track is $N_I$, which is number of frames. The track contains 2D locations $y_i^j$ and visibility $v_i^j$|
+|1000 |0.3115|0.9848|
+|2000 |0.3293|0.9877|
+|5000 |0.3831|0.9891|
+|7000 |0.2774|0.9893|
+|10000|0.3059|0.9896|

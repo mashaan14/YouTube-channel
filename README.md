@@ -1,4 +1,3 @@
-
 # Mashaan's YouTube channel
 For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository, organized into the following sections:
 
@@ -31,7 +30,7 @@ Swin transformer code analysis and attention visualization.
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| How NeRF Works: Exploring a Tiny NeRF Implementation | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
+| How NeRF Works: Exploring a Tiny NeRF Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
 | 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 
 ## Graph Neural Networks
