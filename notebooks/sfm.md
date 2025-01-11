@@ -53,17 +53,33 @@ flowchart LR
 NeRF needs cameras positions to cast rays into the scene and render 3D to compute the training loss. Without SfM, NeRF would be shooting rays into the wild.
 A nice thing to have if we can do end to end training from 2D images all the way to 3D reconstruction.
 
-## Epipolar geometry
-> [!WARNING]
-> $X$ ---> structure
-> $x, x'$ 
-> $P, P'$ ---> motion
+## Two-View Geometry
 
-> [!WARNING]
-> formullas for fundamnetal and essentila matrices
+![Screenshot 2025-01-11 at 2 49 47 PM](https://github.com/user-attachments/assets/6e746d27-7728-4c4a-9e90-5a86a977e37c)
+> source: (Hartley and Zisserman, 2004)
+---
+### Epipolar Geometry
 
-> [!WARNING]
-> images for epipolar lines
+![Screenshot 2025-01-11 at 3 02 25 PM](https://github.com/user-attachments/assets/6caa6dfb-2813-4004-8026-c4b36d6caf1e)
+> source: (Hartley and Zisserman, 2004)
+---
+![Screenshot 2025-01-11 at 3 02 42 PM](https://github.com/user-attachments/assets/38d3530b-5fdb-4d77-89f7-ee96b65b50de)
+> source: (Hartley and Zisserman, 2004)
+---
+### The Fundamental Matrix $F$
+
+![Screenshot 2025-01-11 at 3 05 53 PM](https://github.com/user-attachments/assets/0e95876e-45f4-40f8-9a61-49aae74b7ade)
+> source: (Hartley and Zisserman, 2004)
+
+> Epipolar geometry describes the relation for a moving camera through the essential matrix $E$ (calibrated) or the fundamental matrix $F$ (uncalibrated).
+> source: (Schonberger and Frahm, 2016)
+
+---
+
+### The Essential Matrix $E$
+
+![Screenshot 2025-01-11 at 3 07 39 PM](https://github.com/user-attachments/assets/208a785f-0e41-46e9-8a87-d79d7b4f67cd)
+> source: (Hartley and Zisserman, 2004)
 
 ## colmap
 
@@ -378,13 +394,61 @@ So here's how the camera initializer is implemented in the code:
       1. Estimate Fundamental Matrix by Batch `fmat: (B*(S-1))x3x3`, where `S` is the number of frames. [`fundamental.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/two_view_geo/fundamental.py) estimates the fundamental matrix by 7pt/8pt algo + LORANSAC and returns the one with the highest inlier number.
       2. Estimate `kmat1, kmat2: (B*(S-1))x3x3`, where focal length is set as max(width, height), and the principal point is set as (width//2, height//2).
       3. Get Essential matrix from Fundamental and Camera matrices.
+---
+### Triangulator
+In (Wang et al., 2024) paper they mentioned that they used a transformer for the triangulator:
 
+![Screenshot 2025-01-11 at 2 21 57 PM](https://github.com/user-attachments/assets/b234fccf-4dfb-4719-a004-635e65c7fe7b)
+> source: (Wang et al., 2024)
+---
+but later in the issues the author mentioned that the learnable parameters were removed from the triangulator in the released code:
 
-|stage|input|output|
-| :--- | :--- | :--- |
-|Tracker $𝒯$  |2D query points|A track for each query point. The length of a track is $N_I$, which is number of frames. The track contains 2D locations $y_i^j$ and visibility $v_i^j$|
-|1000 |0.3115|0.9848|
-|2000 |0.3293|0.9877|
-|5000 |0.3831|0.9891|
-|7000 |0.2774|0.9893|
-|10000|0.3059|0.9896|
+![Screenshot 2025-01-11 at 2 22 31 PM](https://github.com/user-attachments/assets/e4ce5d64-0e1e-41fa-9e1f-581dc5e5f5be)
+> source: https://github.com/facebookresearch/vggsfm/issues/47
+---
+So here's how the triangulator is implemented in the code:
+1. [`runner.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/runners/runner.py) calls [`triangulator.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/triangulator.py) using `self.triangulator`, which uses RANSAC Direct Linear Transforms (DLT) to triangulate and bundle adjust.
+      > triangulator.py line 122
+      ```python
+         # For initialization
+         # we first triangulate a point cloud for each pair of query-reference images,
+         # i.e., we have S-1 3D point clouds
+         # points_3d_pair: S-1 x N x 3
+         (points_3d_pair, cheirality_mask_pair, triangle_value_pair) = (
+             triangulate_by_pair(extrinsics[None], tracks_normalized[None])
+         )
+
+         # Check which point cloud can provide sufficient inliers
+         # that pass the triangulation angle and cheirality check
+         # Pick the highest inlier_geo_vis one as the initial point cloud
+         inlier_total, valid_tri_angle_thres = find_best_initial_pair(
+             inlier_geo_vis,
+             cheirality_mask_pair,
+             triangle_value_pair,
+             init_tri_angle_thres,
+         )
+      ```
+2. [`triangulator.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/models/triangulator.py) calls [`utils/triangulator.py`](https://github.com/facebookresearch/vggsfm/blob/main/vggsfm/utils/triangulation.py) using `init_BA` function. It uses pycolmap for BA:
+      > utils/triangulator.py line 122
+      ```python
+         # Convert PyTorch tensors to the format of Pycolmap
+         # Prepare for the Bundle Adjustment Optimization
+         # NOTE although we use pycolmap for BA here, but any BA library should be able to achieve the same result
+         reconstruction = batch_matrix_to_pycolmap(
+             toBA_points3D,
+             toBA_extrinsics,
+             toBA_intrinsics,
+             toBA_tracks,
+             toBA_masks,
+             image_size,
+             extra_params=toBA_extra_params,
+             shared_camera=shared_camera,
+             camera_type=camera_type,
+         )
+     
+         # Prepare BA options
+         ba_options = prepare_ba_options()
+     
+         # Conduct BA
+         pycolmap.bundle_adjustment(reconstruction, ba_options)
+      ```
