@@ -62,6 +62,9 @@ A nice thing to have if we can do end to end training from 2D images all the way
 
 ![Screenshot 2025-01-11 at 3 02 25 PM](https://github.com/user-attachments/assets/6caa6dfb-2813-4004-8026-c4b36d6caf1e)
 > source: (Hartley and Zisserman, 2004)
+
+In simple words: the ray that passes through $x$ is projected onto the second view as $l \prime$. This is very important as it limits the search of $X$ in the second view to $l \prime$.
+
 ---
 ![Screenshot 2025-01-11 at 3 02 42 PM](https://github.com/user-attachments/assets/38d3530b-5fdb-4d77-89f7-ee96b65b50de)
 > source: (Hartley and Zisserman, 2004)
@@ -70,7 +73,7 @@ A nice thing to have if we can do end to end training from 2D images all the way
 
 ![Screenshot 2025-01-11 at 3 05 53 PM](https://github.com/user-attachments/assets/0e95876e-45f4-40f8-9a61-49aae74b7ade)
 > source: (Hartley and Zisserman, 2004)
-
+---
 > Epipolar geometry describes the relation for a moving camera through the essential matrix $E$ (calibrated) or the fundamental matrix $F$ (uncalibrated).
 > source: (Schonberger and Frahm, 2016)
 
