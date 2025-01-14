@@ -1,6 +1,3 @@
-> [!WARNING]
-> incomplete document
-
 # Structure-from-Motion (SfM): A Tutorial
 
 ## Resources
