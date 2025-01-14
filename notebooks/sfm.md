@@ -88,7 +88,9 @@ In simple words: the ray that passes through $x$ is projected onto the second vi
 
 ## colmap
 
-**replace with the image from the paper**
+![image](https://github.com/user-attachments/assets/35285f8e-982b-4ad8-96f7-1c4c5d09b5c7)
+> source: (Schonberger and Frahm, 2016)
+
 
 ### Initialization
 #### Choosing the initial pair of images
@@ -178,6 +180,15 @@ classDiagram
 // @param points2         Second set of corresponding points.
 // @param points3D        Points that lie in front of both cameras.
 ```
+
+![Screenshot 2025-01-14 at 10 09 06 AM](https://github.com/user-attachments/assets/8560298d-cd83-49f0-98db-76a22b97f6e8)
+> source: (Hartley and Zisserman, 2004)
+
+![Screenshot 2025-01-14 at 10 07 56 AM](https://github.com/user-attachments/assets/5e70a11f-b5d7-4bb3-9b38-e827da343647)
+> source: (Hartley and Zisserman, 2004)
+
+
+
 ### Image Registration
 > New images can be registered to the current model by solving the Perspective-n-Point (PnP) problem using feature correspondences to triangulated points in already registered images (2D-3D correspondences). The PnP problem involves estimating the pose $P_c$ and, for uncalibrated cameras, its intrinsic parameters. The set $𝒫$ is thus extended by the pose $P_c$ of the newly registered image (Schönberger and Frahm, 2016). 
 
