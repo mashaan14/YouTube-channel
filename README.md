@@ -32,6 +32,7 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 | :---: | :---: | :---: |
 | How NeRF Works: Exploring a Tiny NeRF Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_25_nerf_notes.ipynb) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
 | 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_10_14_3DGS.ipynb) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
+| Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2025_01_14_nerfstudio_lightning_ai.md) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.png" />](https://youtu.be/cgTYkjKL1b0) |
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
