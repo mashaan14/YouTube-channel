@@ -69,14 +69,14 @@ Convolutional Neural Nets implemented in PyTorch and JAX.
 Code walkthroughs for spectral clustering and sparse subspace clustering.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| A Step-by-Step Guide to Spectral Clustering | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral%20clustering/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
-| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral%20clustering/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
+| A Step-by-Step Guide to Spectral Clustering | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral_clustering/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
+| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral_clustering/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
 
 ## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| JAX and Flax: A Simple Neural Network | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_28_jax_three_layer_NN.ipynb) | [<img src="imgs/2024_02_28_jax_three_layer_NN.png" />](https://youtu.be/GNLOa4riys8) |
-| Simple Neural Net in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
-| RBF: The Most Liked Formula in Machine Learning | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_12_09_squared_exponential.ipynb) | [<img src="imgs/2024_12_09_squared_exponential.png" />](https://youtu.be/H4S3QAoMEEo) |
-| The Perceptron: A Building Block of Neural Networks | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
+| JAX and Flax: A Simple Neural Network | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN.ipynb) | [<img src="imgs/2024_02_28_jax_three_layer_NN.png" />](https://youtu.be/GNLOa4riys8) |
+| Simple Neural Net in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
+| RBF: The Most Liked Formula in Machine Learning | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2024_12_09_squared_exponential.ipynb) | [<img src="imgs/2024_12_09_squared_exponential.png" />](https://youtu.be/H4S3QAoMEEo) |
+| The Perceptron: A Building Block of Neural Networks | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
