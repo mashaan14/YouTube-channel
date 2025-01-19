@@ -54,8 +54,8 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
-| JAX JIT Compilation Explained: From Python to JAXPR | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_04_14_jax_speed_test.ipynb) | [<img src="imgs/2024_04_14_jax_speed_test.png" />](https://youtu.be/1SQFVYVSuyE) |
+| Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/jax_performance/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
+| JAX JIT Compilation Explained: From Python to JAXPR | [code](https://github.com/mashaan14/YouTube-channel/blob/main/jax_performance/2024_04_14_jax_speed_test.ipynb) | [<img src="imgs/2024_04_14_jax_speed_test.png" />](https://youtu.be/1SQFVYVSuyE) |
 
 ## Convolutional Neural Nets
 Convolutional Neural Nets implemented in PyTorch and JAX.
