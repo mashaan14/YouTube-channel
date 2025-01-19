@@ -8,7 +8,7 @@ For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corr
 * [JAX Performance](#jax-performance)
 * [Convolutional Neural Nets](#convolutional-neural-nets)
 * [Spectral Clustering](#spectral-clustering)
-* [Intro to Neural Nets](#intro-to-neural-nets)
+* [Introduction to Neural Nets](#introduction-to-neural-nets)
 
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
@@ -69,10 +69,10 @@ Convolutional Neural Nets implemented in PyTorch and JAX.
 Code walkthroughs for spectral clustering and sparse subspace clustering.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| A Step-by-Step Guide to Spectral Clustering | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
-| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://github.com/mashaan14/YouTube-channel/blob/main/notebooks/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
+| A Step-by-Step Guide to Spectral Clustering | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral%20clustering/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
+| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral%20clustering/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
 
-## Intro to Neural Nets
+## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
