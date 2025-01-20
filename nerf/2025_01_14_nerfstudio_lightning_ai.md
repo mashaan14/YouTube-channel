@@ -2,6 +2,8 @@
 
 ![image](https://github.com/user-attachments/assets/7dedf2e6-e277-4137-b871-e67dd82fd1e1)
 
+## YouTube:
+I explained these instructions in a [YouTube video](https://youtu.be/cgTYkjKL1b0).
 
 ## Basic commands
 
