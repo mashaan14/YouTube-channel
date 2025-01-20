@@ -1,5 +1,8 @@
 # Running nerfacto algorithm on lightning ai GPUs
 
+![image](https://github.com/user-attachments/assets/7dedf2e6-e277-4137-b871-e67dd82fd1e1)
+
+
 ## Basic commands
 
 ```bash
