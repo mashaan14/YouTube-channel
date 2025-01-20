@@ -1,5 +1,8 @@
 # Replicate Mip-NeRF 360
 
+![Screenshot 2025-01-20 at 6 36 39 AM](https://github.com/user-attachments/assets/8644b4a5-9585-4a82-a12a-c2470c4fea63)
+
+
 ## Acknowledgment:
 Thanks to Google's TPU Research Cloud (TRC) for making cloud TPUs available for my use. For better explaination, watch [Jon Barron's video](https://youtu.be/zBSH-k9GbV4?si=aZonNYqVJcTLjBFG) talking about Mip-NeRF 360.
 
