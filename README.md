@@ -1,4 +1,3 @@
-![2025_01_20_SfM](https://github.com/user-attachments/assets/9f56b6f1-8825-48b2-9362-fdd1c94734a1)# Mashaan's YouTube channel
 For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository, organized into the following sections:
 
 * [Vision Transformers](#vision-transformers)
