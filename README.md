@@ -1,4 +1,4 @@
-# Mashaan's YouTube channel
+![2025_01_20_SfM](https://github.com/user-attachments/assets/9f56b6f1-8825-48b2-9362-fdd1c94734a1)# Mashaan's YouTube channel
 For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corresponding Jupyter notebook or Markdown file. You can find them all in this repository, organized into the following sections:
 
 * [Vision Transformers](#vision-transformers)
@@ -34,6 +34,7 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 | 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2024_10_14_3DGS.md) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 | Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_01_14_nerfstudio_lightning_ai.md) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.png" />](https://youtu.be/cgTYkjKL1b0) |
 | Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_01_20_Replicate_Mip_NeRF_360.md) | [<img src="imgs/2025_01_25_MipNerf360.png" />](https://youtu.be/5aQpIiNohDA) |
+| Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_01_25_sfm.md) | [<img src="imgs/2025_01_20_SfM.png" />](https://youtu.be/diBxFGgqAT0) |
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
