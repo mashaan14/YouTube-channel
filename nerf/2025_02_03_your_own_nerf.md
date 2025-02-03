@@ -1,6 +1,6 @@
 # Your own data with NeRF
 
-![2025_02_03_your_own_NeRF](https://github.com/user-attachments/assets/46ba34f7-59f1-4c66-8754-096bce8c2ce8)
+![2025_02_03_your_own_NeRF](https://github.com/user-attachments/assets/e6385c40-ca3d-4059-9c0f-2ccfaf0db44f)
 
 ## Acknowledgement
 I used the [notebook](https://lightning.ai/lightning-ai/studios/structure-from-motion-with-meta-s-vgg-sfm?view=public&section=featured) by Andy McSherry for VGGSfM. I also used Google's [MultiNeRF](https://github.com/google-research/multinerf/tree/main) repository for NeRF training. Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/about/) for making cloud TPUs available for my use.
