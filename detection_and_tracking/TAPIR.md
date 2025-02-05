@@ -7,7 +7,7 @@ Tracking Any Point with per-frame Initialization and temporal Refinement (TAPIR)
 ## References
 ```bibtex
 @inproceedings{doersch2023tapir,
-  title      = {&#123;TAPIR&#125;: Tracking any point with per-frame initialization and temporal refinement},
+  title      = {TAPIR: Tracking any point with per-frame initialization and temporal refinement},
   author     = {Doersch, Carl and Yang, Yi and Vecerik, Mel and Gokay, Dilara and Gupta, Ankush and Aytar, Yusuf and Carreira, Joao and Zisserman, Andrew},
   booktitle  = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
   pages      = {10061--10072},
