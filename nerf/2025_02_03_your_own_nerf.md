@@ -1,5 +1,7 @@
 # Your own data with NeRF
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6RNE155c7iA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ![2025_02_03_your_own_NeRF](https://github.com/user-attachments/assets/e6385c40-ca3d-4059-9c0f-2ccfaf0db44f)
 
 ## Acknowledgement
