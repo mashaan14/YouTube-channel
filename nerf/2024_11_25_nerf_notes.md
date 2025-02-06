@@ -28,7 +28,7 @@ booktitle ={ECCV},
 ```bibtex
 @software{jaxnerf2020github,
 author  = {Boyang Deng and Jonathan T. Barron and Pratul P. Srinivasan},
-title   = {{JaxNeRF}: an efficient {JAX} implementation of {NeRF}},
+title   = {JaxNeRF: an efficient JAX implementation of NeRF},
 url     = {https://github.com/google-research/google-research/tree/master/jaxnerf},
 version = {0.0},
 year    = {2020},
