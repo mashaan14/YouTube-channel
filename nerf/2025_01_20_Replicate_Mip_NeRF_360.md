@@ -21,7 +21,7 @@ Thanks to Google's TPU Research Cloud (TRC) for making cloud TPUs available for 
 
 ```bibtex
 @misc{multinerf2022,
- title  = {{MultiNeRF}: {A} {Code} {Release} for {Mip-NeRF} 360, {Ref-NeRF}, and {RawNeRF}},
+ title  = {MultiNeRF: A Code Release for Mip-NeRF 360, Ref-NeRF, and RawNeRF},
  author = {Ben Mildenhall and Dor Verbin and Pratul P. Srinivasan and Peter Hedman and Ricardo Martin-Brualla and Jonathan T. Barron},
  year   = {2022},
  url    = {https://github.com/google-research/multinerf},
