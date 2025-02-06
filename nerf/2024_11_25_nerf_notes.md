@@ -1,10 +1,8 @@
 # NeRF: Neural Radiance Fields
 
-![image](https://github.com/user-attachments/assets/3d5f95a6-f7bb-4fc3-b201-e941774ca096)
-
-
-## YouTube:
-I explained this notebook in a [YouTube video](https://youtu.be/kszswpg7sjs).
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/kszswpg7sjs" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## Code releases
 
