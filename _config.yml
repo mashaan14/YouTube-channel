@@ -1,0 +1,5 @@
+markdown: kramdown
+kramdown:
+  math_engine: katex
+  input: GFM 
+  syntax_highlighter: rouge 
