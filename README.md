@@ -29,10 +29,10 @@ Swin transformer code analysis and attention visualization.
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_02_03_your_own_nerf.md) | [<img src="imgs/2025_02_03_your_own_NeRF.png" />](https://youtu.be/6RNE155c7iA) |
-| Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360.md) | [<img src="imgs/2025_01_25_MipNerf360.png" />](https://youtu.be/5aQpIiNohDA) |
-| Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai.md) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.png" />](https://youtu.be/cgTYkjKL1b0) |
-| Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm.md) | [<img src="imgs/2025_01_20_SfM.png" />](https://youtu.be/diBxFGgqAT0) |
+| VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.png" />](https://youtu.be/6RNE155c7iA) |
+| Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360) | [<img src="imgs/2025_01_25_MipNerf360.png" />](https://youtu.be/5aQpIiNohDA) |
+| Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.png" />](https://youtu.be/cgTYkjKL1b0) |
+| Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm) | [<img src="imgs/2025_01_20_SfM.png" />](https://youtu.be/diBxFGgqAT0) |
 | How NeRF Works: Exploring a Tiny NeRF Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2024_11_25_nerf_notes.md) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
 | 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2024_10_14_3DGS.md) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 
@@ -40,7 +40,7 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 Famous GNNs implemented in PyG, DGL, and jraph.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction.ipynb) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
+| Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
 | Graph Sampling for GNNs: A Tutorial | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling.ipynb) | [<img src="imgs/2024_05_27_GNN_sampling.png" />](https://youtu.be/y0poBC8xN1k) |
 | Understanding Mini-Batch Training in PyTorch Geometric | [code](https://github.com/mashaan14/YouTube-channel/blob/main/graph_neural_networks/2024_04_29_GNN_mini_batch.ipynb) | [<img src="imgs/2024_04_29_GNN_mini_batch.png" />](https://youtu.be/ZfCtFLS_os0) |
 | Graph Attention Networks with PyTorch Geometric | [code](https://github.com/mashaan14/YouTube-channel/blob/main/graph_neural_networks/2024_02_05_GAT.ipynb) | [<img src="imgs/2024_02_05_GAT.png" />](https://youtu.be/AWkPjrZshug) |
