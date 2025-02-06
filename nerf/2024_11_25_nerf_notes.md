@@ -78,7 +78,7 @@ Fourier features let networks learn high frequency functions in low dimensional 
 ### Peak signal-to-noise ratio (PSNR)
 PSNR is commonly used to quantify reconstruction quality for images and video subject to lossy compression. But in NeRF, PSNR is used to compare a training image with a rendered image of the radiance field. The rendered image is taken from the same angle as the training image.
 
-![Screenshot 2025-02-06 at 10 43 39 AM](https://github.com/user-attachments/assets/fe2082b6-ad2c-441a-b78c-27341103b7e1)
+![Screenshot 2025-02-06 at 9 29 49 PM](https://github.com/user-attachments/assets/a09e2c96-a2ad-4159-8b38-12d8a18dc14f)
 
 where:
 
