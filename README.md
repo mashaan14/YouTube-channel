@@ -32,12 +32,12 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.png" />](https://youtu.be/6RNE155c7iA) |
+| VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.png" />](https://youtu.be/6RNE155c7iA) |
 | Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360) | [<img src="imgs/2025_01_25_MipNerf360.png" />](https://youtu.be/5aQpIiNohDA) |
 | Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.png" />](https://youtu.be/cgTYkjKL1b0) |
 | Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm) | [<img src="imgs/2025_01_20_SfM.png" />](https://youtu.be/diBxFGgqAT0) |
-| How NeRF Works: Exploring a Tiny NeRF Code | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2024_11_25_nerf_notes.md) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
-| 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2024_10_14_3DGS.md) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
+| How NeRF Works: Exploring a Tiny NeRF Code | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_11_25_nerf_notes) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
+| 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_10_14_3DGS) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
