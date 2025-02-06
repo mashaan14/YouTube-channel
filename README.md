@@ -11,6 +11,7 @@ For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corr
 
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
+
 |Title|Code|Video|
 |---|---|---|
 | Vision Transformers (ViT): A JAX Tutorial for Image Classification | [code](https://github.com/mashaan14/YouTube-channel/blob/main/vision_transformers/2024_03_28_jax_ViT.ipynb) | [<img src="imgs/2024_03_28_jax_ViT.png" />](https://youtu.be/LDwA31hARrA) |
@@ -20,6 +21,7 @@ Vision Transformers implemented in PyTorch and JAX.
 
 ## Swin Transformer
 Swin transformer code analysis and attention visualization.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | Analyzing Swin Transformer: A Code Walkthrough | [code](https://github.com/mashaan14/YouTube-channel/blob/main/swin_transformer/2024_08_19_swin_transformer_annotated.ipynb) | [<img src="imgs/2024_08_19_Swin_Transformer.png" />](https://youtu.be/LspWysWparE) |
@@ -27,6 +29,7 @@ Swin transformer code analysis and attention visualization.
 
 ## Neural Radiance Fields (NeRF)
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://github.com/mashaan14/YouTube-channel/blob/main/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.png" />](https://youtu.be/6RNE155c7iA) |
@@ -38,6 +41,7 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
@@ -54,6 +58,7 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://github.com/mashaan14/YouTube-channel/blob/main/jax_performance/2024_11_11_tpu_test.md) | [<img src="imgs/2024_11_11_tpu_test.png" />](https://youtu.be/PwYHoiB4Fag) |
@@ -61,6 +66,7 @@ Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JI
 
 ## Convolutional Neural Nets
 Convolutional Neural Nets implemented in PyTorch and JAX.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | PyTorch Conv2d Explained | [code](https://github.com/mashaan14/YouTube-channel/blob/main/convolutional_neural_nets/2024_01_29_Conv2d.ipynb) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
@@ -69,6 +75,7 @@ Convolutional Neural Nets implemented in PyTorch and JAX.
 
 ## Spectral Clustering
 Code walkthroughs for spectral clustering and sparse subspace clustering.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | A Step-by-Step Guide to Spectral Clustering | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral_clustering/2024_01_15_spectral_clustering.ipynb) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
@@ -76,6 +83,7 @@ Code walkthroughs for spectral clustering and sparse subspace clustering.
 
 ## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
+
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | JAX and Flax: A Simple Neural Network | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN.ipynb) | [<img src="imgs/2024_02_28_jax_three_layer_NN.png" />](https://youtu.be/GNLOa4riys8) |
