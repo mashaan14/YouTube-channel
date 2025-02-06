@@ -1,9 +1,8 @@
 # Running nerfacto algorithm on lightning ai GPUs
 
-![image](https://github.com/user-attachments/assets/7dedf2e6-e277-4137-b871-e67dd82fd1e1)
-
-## YouTube:
-I explained these instructions in a [YouTube video](https://youtu.be/cgTYkjKL1b0).
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/cgTYkjKL1b0" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## Basic commands
 
