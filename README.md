@@ -11,8 +11,8 @@ For each [YouTube](https://youtube.com/@mashaan14) video I post, I create a corr
 
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+|Title|Code|Video|
+|---|---|---|
 | Vision Transformers (ViT): A JAX Tutorial for Image Classification | [code](https://github.com/mashaan14/YouTube-channel/blob/main/vision_transformers/2024_03_28_jax_ViT.ipynb) | [<img src="imgs/2024_03_28_jax_ViT.png" />](https://youtu.be/LDwA31hARrA) |
 | Vision Transformers (ViT) pytorch code | [code](https://github.com/mashaan14/VisionTransformer-MNIST/blob/main/VisionTransformer_MNIST.ipynb) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
 | ViT vs CNN: A Comparative Experiment | [code](https://github.com/mashaan14/YouTube-channel/blob/main/vision_transformers/2024_01_08_CNN_and_ViT.ipynb) | [<img src="imgs/2024_01_08_CNN_and_ViT.png" />](https://youtu.be/uggBVJebdcY) |
