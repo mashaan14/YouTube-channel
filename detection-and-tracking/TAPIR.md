@@ -1,8 +1,4 @@
 --- 
----
-# My Page Title
-
-This is my Markdown content.
 
 # Point Tracking using TAPIR
 
