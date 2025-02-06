@@ -1,9 +1,8 @@
 # Replicate Mip-NeRF 360
 
-![Screenshot 2025-01-20 at 6 36 39 AM](https://github.com/user-attachments/assets/8644b4a5-9585-4a82-a12a-c2470c4fea63)
-
-## YouTube:
-I explained these instructions in a [YouTube video](https://youtu.be/5aQpIiNohDA).
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/5aQpIiNohDA" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## Acknowledgment:
 Thanks to Google's TPU Research Cloud (TRC) for making cloud TPUs available for my use. For better explaination, watch [Jon Barron's video](https://youtu.be/zBSH-k9GbV4?si=aZonNYqVJcTLjBFG) talking about Mip-NeRF 360.
