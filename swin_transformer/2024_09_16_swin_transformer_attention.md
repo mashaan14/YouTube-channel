@@ -7,7 +7,7 @@
 </head>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/LspWysWparE" frameborder="0" allowfullscreen></iframe>
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/mtCTIGgzfbc" frameborder="0" allowfullscreen></iframe>
 </div>
 
 ## Acknowledgment:
@@ -71,9 +71,9 @@ Device: cpu
 I copied these classes and functions from:
 
 
-*   [](https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py)
-*   [](https://github.com/microsoft/Swin-Transformer/blob/main/models/build.py)
-*   [](https://github.com/microsoft/Swin-Transformer/blob/main/main.py)
+*   https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py
+*   https://github.com/microsoft/Swin-Transformer/blob/main/models/build.py
+*   https://github.com/microsoft/Swin-Transformer/blob/main/main.py
 
 ```python
 class Mlp(nn.Module):
