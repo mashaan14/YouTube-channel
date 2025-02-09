@@ -19,14 +19,14 @@ I borrowed some code from these resources:
 ## References:
 ```bibtex
 @ARTICLE{726791,
-  author  = {Lecun, Y. and Bottou, L. and Bengio, Y. and Haffner, P.},
-  journal	= {Proceedings of the IEEE},
-  title	  = {Gradient-based learning applied to document recognition},
-  year	  = {1998},
-  volume  = {86},
-  number	= {11},
-  pages		= {2278-2324},
-  doi			= {10.1109/5.726791}}
+  author     = {Lecun, Y. and Bottou, L. and Bengio, Y. and Haffner, P.},
+  journal    = {Proceedings of the IEEE},
+  title	     = {Gradient-based learning applied to document recognition},
+  year	     = {1998},
+  volume     = {86},
+  number	   = {11},
+  pages		   = {2278-2324},
+  doi			   = {10.1109/5.726791}}
 ```
 ```bibtex
 @misc{dosovitskiy2021image,
