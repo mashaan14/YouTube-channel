@@ -311,7 +311,10 @@ plt.suptitle('first 3 subgraphs with batch_size=32')
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/9b555b7e-e965-45f2-ad22-a42f5770e28f)
+![image](https://github.com/user-attachments/assets/9ceb6f04-ed38-40bb-ba69-e3aa8a342e1e)
+
+![image](https://github.com/user-attachments/assets/dbd97f36-274c-4459-afcc-622d9e6d305b)
+
 
 ## `ClusterLoader`
 
@@ -438,7 +441,9 @@ plt.suptitle('first 3 subgraphs with num_parts=256 and batch_size=32')
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/e25e9243-c46e-408c-b7be-654629dfffad)
+![image](https://github.com/user-attachments/assets/be6f7217-963f-44c8-8dad-7b90bed373a3)
+
+![image](https://github.com/user-attachments/assets/43b66f3d-7c17-49d0-8aa2-8128f1710a6f)
 
 ![image](https://github.com/user-attachments/assets/2c718e56-4beb-47c5-8dc5-603c958d53c5)
 
@@ -449,7 +454,7 @@ plt.show()
 - Random edge sampler
 - Random walk based samplers
 
-$\text{number of subgraphs} = \text{num_steps parameter}$
+number of subgraphs = num_steps parameter
 
 ```python
 loader_SAINT_256_node = GraphSAINTNodeSampler(dataset[0], batch_size=256, num_steps=4)
@@ -542,8 +547,12 @@ for i in range(4):
 plt.suptitle('Subgraphs using GraphSAINT random walk Sampler')
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/dc0f8e9f-48a1-4640-aa66-432b69c91f82)
 
-![image](https://github.com/user-attachments/assets/dc4c155f-020a-4718-b59e-1ef1538bed12)
+![image](https://github.com/user-attachments/assets/926b7c67-13aa-489b-a44b-5431e07eed5d)
+
+![image](https://github.com/user-attachments/assets/1a916cbb-5cde-42d0-83d9-80a8bfe81208)
+
 
 
 <script>
