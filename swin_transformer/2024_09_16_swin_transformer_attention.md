@@ -71,9 +71,9 @@ Device: cpu
 I copied these classes and functions from:
 
 
-*   https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py
-*   https://github.com/microsoft/Swin-Transformer/blob/main/models/build.py
-*   https://github.com/microsoft/Swin-Transformer/blob/main/main.py
+*   [https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py](https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py)
+*   [https://github.com/microsoft/Swin-Transformer/blob/main/models/build.py](https://github.com/microsoft/Swin-Transformer/blob/main/models/build.py)
+*   [https://github.com/microsoft/Swin-Transformer/blob/main/main.py](https://github.com/microsoft/Swin-Transformer/blob/main/main.py)
 
 ```python
 class Mlp(nn.Module):
