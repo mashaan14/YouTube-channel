@@ -53,7 +53,7 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.png" />](https://youtu.be/G6c6zk0RhRM) |
-| Graph Sampling for GNNs: A Tutorial | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling.ipynb) | [<img src="imgs/2024_05_27_GNN_sampling.png" />](https://youtu.be/y0poBC8xN1k) |
+| Graph Sampling for GNNs: A Tutorial | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling) | [<img src="imgs/2024_05_27_GNN_sampling.png" />](https://youtu.be/y0poBC8xN1k) |
 | Understanding Mini-Batch Training in PyTorch Geometric | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch) | [<img src="imgs/2024_04_29_GNN_mini_batch.png" />](https://youtu.be/ZfCtFLS_os0) |
 | Graph Attention Networks with PyTorch Geometric | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_02_05_GAT) | [<img src="imgs/2024_02_05_GAT.png" />](https://youtu.be/AWkPjrZshug) |
 | Graph Attention Networks with DGL | [code](https://github.com/mashaan14/YouTube-channel/blob/main/graph_neural_networks/2024_05_13_DGL_GAT.ipynb) | [<img src="imgs/2024_05_13_DGL_GAT.png" />](https://youtu.be/-V-T7koEWig) |
