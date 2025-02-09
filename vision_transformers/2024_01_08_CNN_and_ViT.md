@@ -24,9 +24,9 @@ I borrowed some code from these resources:
   title	     = {Gradient-based learning applied to document recognition},
   year	     = {1998},
   volume     = {86},
-  number	   = {11},
-  pages		   = {2278-2324},
-  doi			   = {10.1109/5.726791}}
+  number     = {11},
+  pages      = {2278-2324},
+  doi        = {10.1109/5.726791}}
 ```
 ```bibtex
 @misc{dosovitskiy2021image,
