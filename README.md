@@ -88,7 +88,7 @@ Convolutional Neural Nets implemented in PyTorch and JAX.
 | :---: | :---: | :---: |
 | PyTorch Conv2d Explained | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d) | [<img src="imgs/2024_01_29_Conv2d.png" />](https://youtu.be/j19Wdlu7Rtg) |
 | JAX Conv Layer Explained | [code](https://github.com/mashaan14/YouTube-channel/blob/main/convolutional_neural_nets/2024_03_07_jax_conv.ipynb) | [<img src="imgs/2024_03_07_jax_conv.png" />](https://youtu.be/rn-RsD7IpIg) |
-| CNNs with Flax: A JAX Tutorial for Image Classification | [code](https://github.com/mashaan14/YouTube-channel/blob/main/convolutional_neural_nets/2024_04_02_jax_CNN.ipynb) | [<img src="imgs/2024_04_02_jax_CNN.png" />](https://youtu.be/Q0vvh95wes8) |
+| CNNs with Flax: A JAX Tutorial for Image Classification | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_04_02_jax_CNN) | [<img src="imgs/2024_04_02_jax_CNN.png" />](https://youtu.be/Q0vvh95wes8) |
 
 ## Spectral Clustering
 Code walkthroughs for spectral clustering and sparse subspace clustering.
