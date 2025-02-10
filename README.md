@@ -87,7 +87,7 @@ Code walkthroughs for spectral clustering and sparse subspace clustering.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | A Step-by-Step Guide to Spectral Clustering | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_01_15_spectral_clustering) | [<img src="imgs/2024_01_15_spectral_clustering.png" />](https://youtu.be/k7M1TMYac-Y) |
-| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://github.com/mashaan14/YouTube-channel/blob/main/spectral_clustering/2024_02_13_SSC.ipynb) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
+| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_02_13_SSC) | [<img src="imgs/2024_02_13_SSC.png" />](https://youtu.be/xUmO_S7lLG8) |
 
 ## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
