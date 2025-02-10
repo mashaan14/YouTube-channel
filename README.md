@@ -71,7 +71,7 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 | Building a Cluster-GCN Model with JAX: A Step-by-Step Guide | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_07_15_ClusterGCN_jax) | [<img src="imgs/2024_07_15_Cluster_GCN_sampler.png" />](https://youtu.be/8mknbxIIf94) |
 | Training GCNs with PyG and Jraph: A Side-by-Side Comparison | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | [<img src="imgs/2024_02_20_jraph.png" />](https://youtu.be/W-JDqd5AFio) |
 | PyTorch code for GCN and SGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
-| GCN Variants: SGC and ASGC | [code](https://github.com/mashaan14/YouTube-channel/blob/main/graph_neural_networks/2024_01_31_SGC_and_ASGC.ipynb) | [<img src="imgs/2024_01_31_SGC_and_ASGC.png" />](https://youtu.be/ZNMV5i84fmM) |
+| GCN Variants: SGC and ASGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC) | [<img src="imgs/2024_01_31_SGC_and_ASGC.png" />](https://youtu.be/ZNMV5i84fmM) |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
