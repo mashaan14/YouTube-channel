@@ -11,6 +11,7 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 * [Vision Transformers](#vision-transformers)
 * [Swin Transformer](#swin-transformer)
 * [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
+* [Detection and Tracking](#detection-and-tracking)
 * [Graph Neural Networks](#graph-neural-networks)
 * [JAX Performance](#jax-performance)
 * [Convolutional Neural Nets](#convolutional-neural-nets)
@@ -25,7 +26,6 @@ Vision Transformers implemented in PyTorch and JAX.
 | Vision Transformers (ViT): A JAX Tutorial for Image Classification | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | [<img src="imgs/2024_03_28_jax_ViT.png" />](https://youtu.be/LDwA31hARrA) |
 | Vision Transformers (ViT) pytorch code | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.png" />](https://youtu.be/y1ZmMcMYjkY) |
 | ViT vs CNN: A Comparative Experiment | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | [<img src="imgs/2024_01_08_CNN_and_ViT.png" />](https://youtu.be/uggBVJebdcY) |
-| Experimenting Object Detection with DETR | [code](https://github.com/mashaan14/YouTube-channel/blob/main/vision_transformers/2024_01_22_DETR_demo.md) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
 
 ## Swin Transformer
 Swin transformer code analysis and attention visualization.
@@ -46,6 +46,15 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 | Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm) | [<img src="imgs/2025_01_20_SfM.png" />](https://youtu.be/diBxFGgqAT0) |
 | How NeRF Works: Exploring a Tiny NeRF Code | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_11_25_nerf_notes) | [<img src="imgs/2024_11_25_NeRF.png" />](https://youtu.be/kszswpg7sjs) |
 | 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_10_14_3DGS) | [<img src="imgs/2024_10_14_3DGS.png" />](https://youtu.be/hGToeFGX-2M) |
+
+## Detection and Tracking
+Computer vision experiments exploring object detection and point tracking.
+
+|**Title**|**Code**|**Video**|
+| :---: | :---: | :---: |
+| Experimenting Object Detection with DETR | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
+
+
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
