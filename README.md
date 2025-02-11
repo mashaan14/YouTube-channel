@@ -104,6 +104,6 @@ This playlist covers fundamental neural network concepts blending theory and pra
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | JAX and Flax: A Simple Neural Network | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN) | [<img src="imgs/2024_02_28_jax_three_layer_NN.png" />](https://youtu.be/GNLOa4riys8) |
-| Simple Neural Net in PyTorch | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2023_12_17_three_layer_NN.ipynb) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
+| Simple Neural Net in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_17_three_layer_NN) | [<img src="imgs/2023_12_17_three_layer_NN.png" />](https://youtu.be/SQfTaOR8ApQ) |
 | RBF: The Most Liked Formula in Machine Learning | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2024_12_09_squared_exponential.ipynb) | [<img src="imgs/2024_12_09_squared_exponential.png" />](https://youtu.be/H4S3QAoMEEo) |
 | The Perceptron: A Building Block of Neural Networks | [code](https://github.com/mashaan14/YouTube-channel/blob/main/introduction_to_neural_nets/2023_12_10_SGD_Perceptron.ipynb) | [<img src="imgs/2023_12_10_SGD_Perceptron.png" />](https://youtu.be/RjJH_r5CXBU) |
