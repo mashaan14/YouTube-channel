@@ -1,3 +1,5 @@
+title: Mashaan blog
+
 markdown: kramdown
 kramdown:
   math_engine: katex
