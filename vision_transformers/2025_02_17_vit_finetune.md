@@ -99,40 +99,40 @@ cifar10 contains 60,000 divided into 10 classes, with 6000 images per class. All
 ## Checking VM specs
 
 to check the memory on VM:
-```console
+```bash
 free -h
 ```
 
 disk check:
-```console
+```bash
 df -h
 ```
 
 I couldn't find a terminal command to check TPUs. But we can check how many TPUs we have by running the following jax command:
-```console
+```bash
 python -c 'import jax; print(jax.devices())'
 ```
 
 ## Fine-tuning
 
 Check conda environments, then create a new one for ViT fine-tuning.
-```console
+```bash
 conda env list
 ```
 
-```console
+```bash
 conda create --name ViT     # create a new conda environment
 conda activate ViT
 ```
 
 Clone the vision transformer repository and change the directory to get inside the folder.
-```console
+```bash
 git clone --depth=1 https://github.com/google-research/vision_transformer
 cd vision_transformer
 ```
 
 Install the requirements specific for a TPU virtual machine.
-```console
+```bash
 pip install -r vit_jax/requirements-tpu.txt
 ```
 
@@ -147,7 +147,7 @@ We're going to run the fine-tuning script for $2000$ steps to save some time. I 
 |7000 |0.2774|0.9893|
 |10000|0.3059|0.9896|
 
-```console
+```bash
 python -m vit_jax.main --workdir=/tmp/vit-$(date +%s) \
     --config=$(pwd)/vit_jax/configs/vit.py:b16,cifar10 \
     --config.pretrained_dir='gs://vit_models/imagenet21k'\
