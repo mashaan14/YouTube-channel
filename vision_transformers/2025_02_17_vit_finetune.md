@@ -137,6 +137,7 @@ pip install -r vit_jax/requirements-tpu.txt
 ```
 
 We're going to run the fine-tuning script for $2000$ steps to save some time. I already run the fine-tuning script for $10000$ steps, and I got these results:
+
 |step|train loss|test accuracy|
 | ---: | ---: | ---: |
 |200  |0.9816|0.9567|
