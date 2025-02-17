@@ -1,7 +1,5 @@
 title: Mashaan blog
 
-google_analytics: G-ENRSL8W5M2
-
 markdown: kramdown
 kramdown:
   math_engine: katex
