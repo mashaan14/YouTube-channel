@@ -53,8 +53,8 @@ Computer vision experiments exploring object detection and point tracking.
 
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
+| Hands-On with TAPIR: Point Tracking Experiment & Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR) | [<img src="imgs/2025_03_03_TAPIR.png" />](https://youtu.be/U7jH_BiwVOU) |
 | Experimenting Object Detection with DETR | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | [<img src="imgs/2024_01_22_DETR.png" />](https://youtu.be/Z3fXiV4Cmz4) |
-
 
 
 ## Graph Neural Networks
