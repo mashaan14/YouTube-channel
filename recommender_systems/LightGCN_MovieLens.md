@@ -1,3 +1,14 @@
+# Movie Recommendations using LightGCN
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/G6c6zk0RhRM" frameborder="0" allowfullscreen></iframe>
+</div>
 
 | File Name    | Description                                           |
 | :--- | :---- | 
@@ -24,3 +35,16 @@
 
 
 $Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true}, // Display math (e.g., equations on their own line)
+        {left: '$', right: '$', display: false},  // Inline math (e.g., within a sentence)
+        {left: '\\(', right: '\\)', display: false}, // Another way to write inline math
+        {left: '\\[', right: '\\]', display: true}   // Another way to write display math
+      ]
+    });
+  });
+</script>
