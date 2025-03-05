@@ -21,3 +21,6 @@
 | ua.test      | Additional test set split                             |
 | ub.base      | Another additional training set split                 |
 | ub.test      | Another additional test set split                     |
+
+
+$Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
