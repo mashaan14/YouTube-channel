@@ -10,6 +10,15 @@
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/G6c6zk0RhRM" frameborder="0" allowfullscreen></iframe>
 </div>
 
+## Resources
+For this tutorial, I collected information from multiple resources:
+* Github repositories
+  * [LightGCN-PyTorch](https://github.com/gusye1234/LightGCN-PyTorch/tree/master)
+* Books
+  * [Multiple View Geometry in Computer Vision](https://www.robots.ox.ac.uk/~vgg/hzbook/)
+* Courses
+  * [CS224W: Machine Learning with Graphs](http://cs224w.Stanford.edu)
+
 | File Name    | Description                                           |
 | :--- | :---- | 
 | u.data       | This is the core file. It contains ratings data: user ID, movie ID, rating, timestamp    |
