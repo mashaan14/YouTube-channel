@@ -52,13 +52,30 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 }
 ```
 
+![mermaid-diagram-2025-03-09-173910](https://github.com/user-attachments/assets/7f6f1993-1cfb-496a-b02a-2a9cde4af295)
+
 ## Graph Convolutional Networks (GCNs)
 
-![mermaid-diagram-2025-03-09-173910](https://github.com/user-attachments/assets/7f6f1993-1cfb-496a-b02a-2a9cde4af295)
+![001](https://github.com/user-attachments/assets/af9feeb2-b061-4905-8314-5749a53a2a81)
+
+## Bipartite graph
+
+_A bipartite graph is a graph whose vertices can be separated into two sets $X$ and $Y$ in such a way that every edge in the graph has one end point in each set_ (Marcus, 2020, "Graph Theory: A Problem Oriented Approach", p. 45). To avoid confusion, we will rename the two sets in our bipartite graph to users $u$ and items $i$. 
+
+![Screenshot 2025-03-10 at 11 17 37 AM](https://github.com/user-attachments/assets/39696c73-2407-4700-b35a-6a0c5e313f75)
+
+> source: [CS224W: Machine Learning with Graphs](http://cs224w.Stanford.edu)
 
 ---
 
-![001](https://github.com/user-attachments/assets/af9feeb2-b061-4905-8314-5749a53a2a81)
+Here's the structure of the adjacency matrix for a bipartite graph.
+
+![Screenshot 2025-03-10 at 11 18 25 AM](https://github.com/user-attachments/assets/a42abebd-952f-42e7-86ce-7c03a8891925)
+
+
+> source: [CS224W: Machine Learning with Graphs](http://cs224w.Stanford.edu)
+
+## Recommender systems
 
 GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use $E$. Although they represent the same thing, $E$ can be confusing because it's also used for the set of edges.
 
@@ -73,6 +90,8 @@ GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use 
 ![005](https://github.com/user-attachments/assets/9d0dc691-3361-4019-a013-238235c81a2a)
 
 ![006](https://github.com/user-attachments/assets/ebffe2d2-c2ed-4f5e-b5a6-d31c39607b84)
+
+## MovieLens 100K Dataset
 
 | File Name    | Description                                           |
 | :--- | :---- | 
@@ -97,6 +116,17 @@ GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use 
 | ub.base      | Another additional training set split                 |
 | ub.test      | Another additional test set split                     |
 
+## Training
+
+![mermaid-diagram-2025-03-10-115350](https://github.com/user-attachments/assets/0050d6a9-349f-46fc-8147-43013d7e8498)
+
+## Bayesian Personalized Ranking (BPR) loss
+
+![Screenshot 2025-03-10 at 12 20 07 PM](https://github.com/user-attachments/assets/b03694b3-0a03-4d96-b1b1-51a54e893335)
+
+> source: (He et al., 2020)
+
+## Recall
 
 $Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
 
