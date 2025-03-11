@@ -130,6 +130,12 @@ GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use 
 
 $Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
 
+## Did Grok do well?
+
+* When Grok set up the training loop, the regularization term from the BPR loss got missed. I double-checked the paper and asked Grok to add it back in.
+* When testing the trained model, Grok had trouble matching user/movie mappings defined earlier in the code. I manually checked the user/movie IDs in the test set and found that the titles were mismatched. I then asked Grok to correct the mapping in the testing code.
+* I asked Grok to create a LightGCN class. Initially, it included the adjacency matrix construction within the class. I then asked Grok to change the code, moving the adjacency matrix construction outside the class and creating plots to visualize the matrix.
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     renderMathInElement(document.body, {
