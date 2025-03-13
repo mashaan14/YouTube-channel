@@ -83,15 +83,9 @@ GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use 
 
 ![003](https://github.com/user-attachments/assets/cde89b51-e98b-4003-bcbc-2bdfb2e3d69e)
 
-## Tensor shapes during training
-
-![004](https://github.com/user-attachments/assets/57930b5f-7c6c-4189-9593-52e4f10930f8)
-
-![005](https://github.com/user-attachments/assets/9d0dc691-3361-4019-a013-238235c81a2a)
-
-![006](https://github.com/user-attachments/assets/ebffe2d2-c2ed-4f5e-b5a6-d31c39607b84)
-
 ## MovieLens 100K Dataset
+
+This dataset, sourced from MovieLens, a movie recommendation platform, provides movie ratings. We'll be using the 100K ratings variant, available for download on  [Kaggle](https://www.kaggle.com/datasets/prajitdatta/movielens-100k-dataset). Below is a description of the files included.
 
 | File Name    | Description                                           |
 | :--- | :---- | 
@@ -116,19 +110,407 @@ GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use 
 | ub.base      | Another additional training set split                 |
 | ub.test      | Another additional test set split                     |
 
-## Training
+## Import and prepare the dataset
+
+```python
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("prajitdatta/movielens-100k-dataset")
+
+print("Path to dataset files:", path)
+```
+
+```python
+!pip install kaggle
+
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+
+!kaggle datasets download -d prajitdatta/movielens-100k-dataset
+!unzip movielens-100k-dataset.zip
+```
+
+```console
+Downloading movielens-100k-dataset.zip to /content
+ 84% 4.00M/4.77M [00:00<00:00, 5.98MB/s]
+100% 4.77M/4.77M [00:00<00:00, 5.04MB/s]
+Archive:  movielens-100k-dataset.zip
+  inflating: ml-100k/README          
+  inflating: ml-100k/allbut.pl       
+  inflating: ml-100k/mku.sh          
+  inflating: ml-100k/u.data          
+  inflating: ml-100k/u.genre         
+  inflating: ml-100k/u.info          
+  inflating: ml-100k/u.item          
+  inflating: ml-100k/u.occupation    
+  inflating: ml-100k/u.user          
+  inflating: ml-100k/u1.base         
+  inflating: ml-100k/u1.test         
+  inflating: ml-100k/u2.base         
+  inflating: ml-100k/u2.test         
+  inflating: ml-100k/u3.base         
+  inflating: ml-100k/u3.test         
+  inflating: ml-100k/u4.base         
+  inflating: ml-100k/u4.test         
+  inflating: ml-100k/u5.base         
+  inflating: ml-100k/u5.test         
+  inflating: ml-100k/ua.base         
+  inflating: ml-100k/ua.test         
+  inflating: ml-100k/ub.base         
+  inflating: ml-100k/ub.test       
+```
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+```python
+# Set device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+```
+
+```python
+data = pd.read_csv('ml-100k/u.data', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+print(data.shape)
+print(data.head(10))
+
+train_data = pd.read_csv('ml-100k/ua.base', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+print(train_data.shape)
+print(train_data.head(10))
+
+test_data = pd.read_csv('ml-100k/ua.test', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+print(test_data.shape)
+print(test_data.head(10))
+
+movie_data = pd.read_csv('ml-100k/u.item', sep='|', encoding='latin-1',
+                         names=['movie_id', 'title', 'release_date'], usecols=[0, 1, 2])
+print(movie_data.shape)
+print(movie_data.head(10))
+```
+
+```console
+(100000, 4)
+   user_id  movie_id  rating  timestamp
+0      196       242       3  881250949
+1      186       302       3  891717742
+2       22       377       1  878887116
+3      244        51       2  880606923
+4      166       346       1  886397596
+5      298       474       4  884182806
+6      115       265       2  881171488
+7      253       465       5  891628467
+8      305       451       3  886324817
+9        6        86       3  883603013
+(90570, 4)
+   user_id  movie_id  rating  timestamp
+0        1         1       5  874965758
+1        1         2       3  876893171
+2        1         3       4  878542960
+3        1         4       3  876893119
+4        1         5       3  889751712
+5        1         6       5  887431973
+6        1         7       4  875071561
+7        1         8       1  875072484
+8        1         9       5  878543541
+9        1        10       3  875693118
+(9430, 4)
+   user_id  movie_id  rating  timestamp
+0        1        20       4  887431883
+1        1        33       4  878542699
+2        1        61       4  878542420
+3        1       117       3  874965739
+4        1       155       2  878542201
+5        1       160       4  875072547
+6        1       171       5  889751711
+7        1       189       3  888732928
+8        1       202       5  875072442
+9        1       265       4  878542441
+(1682, 3)
+   movie_id                                              title release_date
+0         1                                   Toy Story (1995)  01-Jan-1995
+1         2                                   GoldenEye (1995)  01-Jan-1995
+2         3                                  Four Rooms (1995)  01-Jan-1995
+3         4                                  Get Shorty (1995)  01-Jan-1995
+4         5                                     Copycat (1995)  01-Jan-1995
+5         6  Shanghai Triad (Yao a yao yao dao waipo qiao) ...  01-Jan-1995
+6         7                              Twelve Monkeys (1995)  01-Jan-1995
+7         8                                        Babe (1995)  01-Jan-1995
+8         9                            Dead Man Walking (1995)  01-Jan-1995
+9        10                                 Richard III (1995)  22-Jan-1996
+```
+
+Mapping user and item IDs to continuous indices (0 to num_users-1 and 0 to num_items-1) is essential because PyTorch embeddings expect zero-based indices within bounds. Without this, raw IDs (e.g., 1 to 943) could exceed embedding sizes or cause gaps, leading to out-of-bounds errors like "index 2625 is out of bounds for dimension 0 with size 2625".
+
+```python
+user_ids = sorted(train_data['user_id'].unique())  # 1 to 943
+user_id_mapping = {id: i for i, id in enumerate(user_ids)}
+item_ids = sorted(train_data['movie_id'].unique())  # 1 to 1682
+item_id_mapping = {id: i for i, id in enumerate(item_ids)}
+
+train_data['user_id'] = train_data['user_id'].map(user_id_mapping)
+test_data['user_id'] = test_data['user_id'].map(user_id_mapping)
+train_data['movie_id'] = train_data['movie_id'].map(item_id_mapping)
+test_data['movie_id'] = test_data['movie_id'].map(item_id_mapping)
+
+num_users = len(user_ids)
+num_items = len(item_ids)
+
+print("Number of unique users:", num_users)
+print("Number of unique items:", num_items)
+print(train_data.head(10))
+print(test_data.head(10))
+```
+
+```console
+Number of unique users: 943
+Number of unique items: 1680
+   user_id  movie_id  rating  timestamp
+0        0         0       5  874965758
+1        0         1       3  876893171
+2        0         2       4  878542960
+3        0         3       3  876893119
+4        0         4       3  889751712
+5        0         5       5  887431973
+6        0         6       4  875071561
+7        0         7       1  875072484
+8        0         8       5  878543541
+9        0         9       3  875693118
+   user_id  movie_id  rating  timestamp
+0        0      19.0       4  887431883
+1        0      32.0       4  878542699
+2        0      60.0       4  878542420
+3        0     116.0       3  874965739
+4        0     154.0       2  878542201
+5        0     159.0       4  875072547
+6        0     170.0       5  889751711
+7        0     188.0       3  888732928
+8        0     201.0       5  875072442
+9        0     264.0       4  878542441
+```
+
+```python
+# Interaction tensors
+train_interactions = torch.tensor(train_data[['user_id', 'movie_id']].values, dtype=torch.long)
+test_interactions = torch.tensor(test_data[['user_id', 'movie_id']].values, dtype=torch.long)
+```
+
+```python
+# insights about train_interactions
+print(train_interactions.shape)
+print(train_interactions[:10])
+print("Data type:", train_interactions.dtype)
+print("Device:", train_interactions.device)
+```
+
+```console
+torch.Size([90570, 2])
+tensor([[0, 0],
+        [0, 1],
+        [0, 2],
+        [0, 3],
+        [0, 4],
+        [0, 5],
+        [0, 6],
+        [0, 7],
+        [0, 8],
+        [0, 9]])
+Data type: torch.int64
+Device: cpu
+```
+
+## Constructing the adjacency matrix
+
+We'll compute the Adjacency $A$, Degree $D$, and Normalized Adjacency $\tilde{A}$ matrices in the following code:
+
+```python
+# Adjacency matrix
+rows = torch.cat([train_interactions[:, 0], train_interactions[:, 1] + num_users], dim=0)
+cols = torch.cat([train_interactions[:, 1] + num_users, train_interactions[:, 0]], dim=0)
+indices = torch.stack([rows, cols], dim=0).to(device)
+values = torch.ones(indices.shape[1], device=device)
+adj = torch.sparse_coo_tensor(indices, values, size=(num_users + num_items, num_users + num_items), device=device)
+
+# Normalized adjacency matrix
+degrees = torch.sparse.sum(adj, dim=1).to_dense()
+norm_values = 1.0 / (torch.sqrt(degrees[rows]) * torch.sqrt(degrees[cols])).to(device)
+norm_adj = torch.sparse_coo_tensor(indices, norm_values, size=(num_users + num_items, num_users + num_items), device=device)
+```
+
+These plots visualize the adjacency matrix. We expect a block diagonal structure due to the bipartite graph.
+
+![image](https://github.com/user-attachments/assets/c2d22f3c-f301-4f01-b0ef-24749663452c)
+
+![image](https://github.com/user-attachments/assets/7c89b5fd-0bf0-4df4-b1bf-d74399472a1d)
+
+![image](https://github.com/user-attachments/assets/b04a76fc-10a3-444e-a863-c089a2b4b732)
+
+## LightGCN class
+
+The LightGCN class is shown below, where the forward function handles the main calculations.
+
+```python
+class LightGCN(nn.Module):
+    def __init__(self, num_users, num_items, embedding_dim, num_layers, norm_adj, device):
+        super(LightGCN, self).__init__()
+        self.num_users = num_users
+        self.num_items = num_items
+        self.embedding_dim = embedding_dim
+        self.num_layers = num_layers
+        self.device = device
+        self.register_buffer('norm_adj', norm_adj)
+        self.user_embeddings = nn.Embedding(num_users, embedding_dim)
+        self.item_embeddings = nn.Embedding(num_items, embedding_dim)
+        nn.init.normal_(self.user_embeddings.weight, std=0.01)                      # Initialize user embeddings with a normal distribution (mean=0, std=0.01) for small random values
+        nn.init.normal_(self.item_embeddings.weight, std=0.01)                      # Initialize item embeddings with a normal distribution (mean=0, std=0.01) for small random values
+
+    def forward(self, users, pos_items, neg_items):
+        all_embeddings = torch.cat([self.user_embeddings.weight, self.item_embeddings.weight], dim=0)
+        ego_embeddings = all_embeddings
+        for _ in range(self.num_layers):                                            # Loop over the specified number of graph convolution layers
+            all_embeddings = torch.spmm(self.norm_adj, all_embeddings)              # Perform sparse matrix multiplication with normalized adjacency matrix to propagate embeddings
+            ego_embeddings += all_embeddings                                        # Add the propagated embeddings to the running sum (LightGCN aggregates all layers)
+        final_embeddings = ego_embeddings / (self.num_layers + 1)                   # Average the embeddings across all layers (including ego layer) for smoothness
+        user_emb = final_embeddings[users]
+        pos_item_emb = final_embeddings[self.num_users + pos_items]                 # because we sampled pos_items from items (0 to 1681) we have to offset by the number of users
+        neg_item_emb = final_embeddings[self.num_users + neg_items]                 # because we sampled neg_items from items (0 to 1681) we have to offset by the number of users
+        pos_scores = (user_emb * pos_item_emb).sum(dim=-1)                          # predicted scores of positive samples
+        neg_scores = (user_emb * neg_item_emb).sum(dim=-1)                          # predicted scores of negative samples
+
+        return pos_scores, neg_scores
+
+    def get_embeddings(self):
+        all_embeddings = torch.cat([self.user_embeddings.weight, self.item_embeddings.weight], dim=0)
+        ego_embeddings = all_embeddings
+        for _ in range(self.num_layers):
+            all_embeddings = torch.spmm(self.norm_adj, all_embeddings)
+            ego_embeddings += all_embeddings
+        final_embeddings = ego_embeddings / (self.num_layers + 1)
+        user_emb = final_embeddings[:self.num_users]
+        item_emb = final_embeddings[self.num_users:]
+        return user_emb, item_emb
+```
+
+## Positive and negative items
+
+The chart shows the process of training a recommender system, which requires identifying positive pairs from the training set and randomly generating negative pairs.
 
 ![mermaid-diagram-2025-03-10-115350](https://github.com/user-attachments/assets/0050d6a9-349f-46fc-8147-43013d7e8498)
 
+On the left, we see the positive items (user-rated movies in the training set). On the right, the plot shows the randomly generated pairs.
+
+![image](https://github.com/user-attachments/assets/e3c3e390-6e96-4119-b94c-b592e9a4fbaf)
+
+Here's a distribution of positive and negative pairs.
+
+![image](https://github.com/user-attachments/assets/a5bd0613-010f-4975-af8e-d57b4679bb66)
+
+## Training loop
+
+```python
+# Hyperparameters
+embedding_dim = 64
+num_layers = 3
+learning_rate = 1e-3
+num_epochs = 1000
+lambda_reg = 1e-6  # Regularization weight
+
+# Initialize model
+model = LightGCN(num_users, num_items, embedding_dim, num_layers, norm_adj, device)
+model.to(device)
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+```
+
+```python
+for epoch in range(num_epochs):
+    model.train()
+    total_loss = 0
+
+    users = train_interactions[:, 0].to(device)
+    pos_items = train_interactions[:, 1].to(device)
+    neg_items = torch.randint(0, num_items, (len(train_interactions),), device=device)
+
+    # Forward pass
+    pos_scores, neg_scores = model(users, pos_items, neg_items)
+    bpr_loss = -torch.log(torch.sigmoid(pos_scores - neg_scores)).mean()
+
+    # L2 Regularization
+    user_embeddings = model.user_embeddings.weight
+    item_embeddings = model.item_embeddings.weight
+
+    # Calculate L2 norm of embeddings (squared sum of elements)
+    reg_loss = (user_embeddings**2).sum() + (item_embeddings**2).sum()
+
+    # Combine BPR loss and regularization term with a weight factor (lambda)
+    loss = bpr_loss + lambda_reg * reg_loss
+
+    # Backward pass
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    total_loss = loss.item()
+    print(f'Epoch {epoch + 1}/{num_epochs}, Loss: {total_loss:.4f}')
+```
+
+```console
+Epoch 1/1000, Loss: 0.6932
+Epoch 2/1000, Loss: 0.6931
+Epoch 3/1000, Loss: 0.6931
+Epoch 4/1000, Loss: 0.6930
+Epoch 5/1000, Loss: 0.6930
+Epoch 6/1000, Loss: 0.6928
+Epoch 7/1000, Loss: 0.6927
+Epoch 8/1000, Loss: 0.6925
+Epoch 9/1000, Loss: 0.6923
+Epoch 10/1000, Loss: 0.6920
+...
+...
+...
+Epoch 991/1000, Loss: 0.3547
+Epoch 992/1000, Loss: 0.3540
+Epoch 993/1000, Loss: 0.3530
+Epoch 994/1000, Loss: 0.3565
+Epoch 995/1000, Loss: 0.3559
+Epoch 996/1000, Loss: 0.3541
+Epoch 997/1000, Loss: 0.3553
+Epoch 998/1000, Loss: 0.3559
+Epoch 999/1000, Loss: 0.3535
+Epoch 1000/1000, Loss: 0.3526
+```
+
+## Tensor shapes in training
+
+![004](https://github.com/user-attachments/assets/57930b5f-7c6c-4189-9593-52e4f10930f8)
+
+![005](https://github.com/user-attachments/assets/9d0dc691-3361-4019-a013-238235c81a2a)
+
+![006](https://github.com/user-attachments/assets/ebffe2d2-c2ed-4f5e-b5a6-d31c39607b84)
+
+
 ## Bayesian Personalized Ranking (BPR) loss
 
-![Screenshot 2025-03-10 at 12 20 07 PM](https://github.com/user-attachments/assets/b03694b3-0a03-4d96-b1b1-51a54e893335)
+Recommender systems often use the Bayesian Personalized Ranking (BPR) loss for evaluation. It includes: (1) a term that measures the difference in predicted scores between positive and negative item pairs, and (2) a regularization term, weighted by $\lambda$. The objective is to optimize the model to assign higher scores to positive items.
 
-> source: (He et al., 2020)
+$$L\_{BPR} = -\sum\_{u=1}^{M} \sum\_{i \in N\_u} \sum\_{j \notin N\_u} \ln \ \sigma (\hat{y}\_{ui} - \hat{y}\_{uj}) + \lambda \lVert \mathbf{E}^{(0)} \rVert^2$$
+
 
 ## Recall
 
-$Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
+A common evaluation metric for recommender systems is Recall@K. It quantifies how often the system recommends relevant items within the top-K recommendations. We determine the 'correctness' of the recommendations by comparing them to the items a user has in the test set.
+
+$$Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$$
+
+> [!NOTE]  
+> The MovieLens ua.test split is structured such that each user has exactly 10 ratings. Therefore, when evaluating recall, it is not meaningful to calculate recall@k for k > 10. Any recall@k where k > 10 will simply be equivalent to recall@10, as there are no additional relevant items to retrieve beyond the 10 present in the test set.
 
 ## Did Grok do well?
 
