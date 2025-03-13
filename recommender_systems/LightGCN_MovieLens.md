@@ -248,7 +248,7 @@ print(movie_data.head(10))
 9        10                                 Richard III (1995)  22-Jan-1996
 ```
 
-Mapping user and item IDs to continuous indices (0 to num_users-1 and 0 to num_items-1) is essential because PyTorch embeddings expect zero-based indices within bounds. Without this, raw IDs (e.g., 1 to 943) could exceed embedding sizes or cause gaps, leading to out-of-bounds errors like "index 2625 is out of bounds for dimension 0 with size 2625".
+***Mapping user and item IDs to continuous indices (0 to num_users-1 and 0 to num_items-1) is essential because PyTorch embeddings expect zero-based indices within bounds. Without this, raw IDs (e.g., 1 to 943) could exceed embedding sizes or cause gaps, leading to out-of-bounds errors like "index 2625 is out of bounds for dimension 0 with size 2625".***
 
 ```python
 user_ids = sorted(train_data['user_id'].unique())  # 1 to 943
@@ -500,17 +500,16 @@ Epoch 1000/1000, Loss: 0.3526
 
 Recommender systems often use the Bayesian Personalized Ranking (BPR) loss for evaluation. It includes: (1) a term that measures the difference in predicted scores between positive and negative item pairs, and (2) a regularization term, weighted by $\lambda$. The objective is to optimize the model to assign higher scores to positive items.
 
-$$L\_{BPR} = -\sum\_{u=1}^{M} \sum\_{i \in N\_u} \sum\_{j \notin N\_u} \ln \ \sigma (\hat{y}\_{ui} - \hat{y}\_{uj}) + \lambda \lVert \mathbf{E}^{(0)} \rVert^2$$
+$L\_{BPR} = -\sum\_{u=1}^{M} \sum\_{i \in N\_u} \sum\_{j \notin N\_u} \ln \ \sigma (\hat{y}\_{ui} - \hat{y}\_{uj}) + \lambda \lVert \mathbf{E}^{(0)} \rVert^2$
 
 
 ## Recall
 
 A common evaluation metric for recommender systems is Recall@K. It quantifies how often the system recommends relevant items within the top-K recommendations. We determine the 'correctness' of the recommendations by comparing them to the items a user has in the test set.
 
-$$Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$$
+$Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\text{Total number of relevant items}}$
 
-> [!NOTE]  
-> The MovieLens ua.test split is structured such that each user has exactly 10 ratings. Therefore, when evaluating recall, it is not meaningful to calculate recall@k for k > 10. Any recall@k where k > 10 will simply be equivalent to recall@10, as there are no additional relevant items to retrieve beyond the 10 present in the test set.
+***The MovieLens ua.test split is structured such that each user has exactly 10 ratings. Therefore, when evaluating recall, it is not meaningful to calculate recall@k for k > 10. Any recall@k where k > 10 will simply be equivalent to recall@10, as there are no additional relevant items to retrieve beyond the 10 present in the test set.***
 
 ## Did Grok do well?
 
