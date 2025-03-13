@@ -511,6 +511,220 @@ $Recall@K = \frac{\text{Number of relevant items in top K recommendations}}{\tex
 
 ***The MovieLens ua.test split is structured such that each user has exactly 10 ratings. Therefore, when evaluating recall, it is not meaningful to calculate recall@k for k > 10. Any recall@k where k > 10 will simply be equivalent to recall@10, as there are no additional relevant items to retrieve beyond the 10 present in the test set.***
 
+## Computing the recall at $k=10$
+
+```python
+def recall_at_k(model, test_interactions, k=10):
+    model.eval()
+
+    with torch.no_grad():
+        user_emb, item_emb = model.get_embeddings()
+
+        # Compute preference scores for all users against all items via matrix multiplication
+        scores = user_emb @ item_emb.T
+
+        # Get the top-k item indices with highest scores for each user
+        _, top_k_items = torch.topk(scores, k, dim=1)
+        top_k_items = top_k_items.cpu().numpy()
+
+        test_user_items = {}
+
+        # Populate the dictionary with user -> set of rated movies from test_interactions
+        for user, movie in test_interactions:
+            user = user.item()
+            movie = movie.item()
+            if user not in test_user_items:
+                test_user_items[user] = set()
+            test_user_items[user].add(movie)
+
+        recall_data = []
+        total_recall = 0
+
+        # Create reverse mapping from mapped user IDs to original user IDs
+        reverse_user_mapping = {v: k for k, v in user_id_mapping.items()}
+
+        # Iterate over all possible mapped user IDs (0 to num_users-1)
+        for mapped_user_id in range(num_users):
+            if mapped_user_id in test_user_items:
+                true_items = test_user_items[mapped_user_id]
+                pred_items = set(top_k_items[mapped_user_id])
+                hits = len(pred_items & true_items)
+                num_true_items = len(true_items)
+
+                # Compute recall for this user (hits / true items), 0 if no true items
+                user_recall = hits / num_true_items if num_true_items > 0 else 0
+
+                # Get the original user ID from the mapped ID
+                original_user_id = reverse_user_mapping[mapped_user_id]
+
+                # Store user data in a dictionary
+                recall_data.append({
+                    'user_id': original_user_id,      # Original user ID (e.g., 186)
+                    'mapped_user_id': mapped_user_id, # Internal index (e.g., 1)
+                    'hits': hits,                     # Number of correct predictions
+                    'true_items_count': num_true_items, # Number of test set items
+                    'recall': user_recall             # Per-user recall value
+                })
+
+                total_recall += user_recall
+
+        total_recall = total_recall / len(test_user_items) if test_user_items else 0
+        recall_df = pd.DataFrame(recall_data)
+
+        return total_recall, recall_df
+
+total_recall, recall_df = recall_at_k(model, test_interactions, k=10)
+print(f"Total Recall@10: {total_recall:.4f}")
+print("\nPer-User Recall Data (first 5 rows):")
+print(recall_df.head())
+```
+
+```console
+Total Recall@10: 0.0957
+
+Per-User Recall Data (first 5 rows):
+   user_id  mapped_user_id  hits  true_items_count  recall
+0        1               0     0                10     0.0
+1        2               1     0                10     0.0
+2        3               2     2                10     0.2
+3        4               3     2                10     0.2
+4        5               4     1                10     0.1
+```
+
+## Recommending movies to the first 5 users
+
+```python
+def recommend_and_compare(model, user_ids, train_data, test_interactions, movie_data, k=10):
+    model.eval()
+    recommendations = []
+
+    with torch.no_grad():
+        user_emb, item_emb = model.get_embeddings()
+
+        if not user_ids:
+            print("No users specified for recommendations.")
+            return pd.DataFrame(columns=['user_id', 'mapped_user_id', 'movie_id', 'mapped_movie_id', 'title', 'in_train', 'in_test'])
+
+        test_user_items = {}
+
+        # Loop through each user-movie pair in test_interactions (a tensor of [mapped_user_id, mapped_movie_id])
+        for user, movie in test_interactions:
+            user = user.item()
+            movie = movie.item()
+            if user not in test_user_items:
+                test_user_items[user] = set()
+            test_user_items[user].add(movie)
+
+        # Create a reverse mapping from mapped movie IDs to original movie IDs (e.g., 0 -> 1 for Toy Story)
+        reverse_item_mapping = {v: k for k, v in item_id_mapping.items()}
+
+        # Iterate over each original user ID provided in the input user_ids list
+        for user_id in user_ids:
+            if user_id not in user_id_mapping:
+                print(f"Warning: User ID {user_id} not found in dataset. Skipping.")
+                continue
+
+            mapped_user_id = user_id_mapping[user_id]
+            user_scores = user_emb[mapped_user_id] @ item_emb.T
+
+            # Get the top-k indices (mapped_movie_ids) with the highest scores; _ discards the scores themselves
+            _, top_k_indices = torch.topk(user_scores, k)
+            top_k_indices = top_k_indices.cpu().numpy()
+
+            user_train_ratings = set(train_data[train_data['user_id'] == mapped_user_id]['movie_id'].tolist())
+            user_test_ratings = test_user_items.get(mapped_user_id, set())
+
+            # Convert the top-k mapped movie IDs to their original movie IDs using reverse_item_mapping
+            original_movie_ids = [reverse_item_mapping[mapped_id] for mapped_id in top_k_indices]
+
+            # Filter movie_data to get titles and original movie IDs for the recommended movies
+            recommended_movies = movie_data[movie_data['movie_id'].isin(original_movie_ids)][['movie_id', 'title']]
+
+            # Iterate over each recommended movie in the filtered DataFrame
+            for idx, row in recommended_movies.iterrows():
+                # Extract the original movie ID from movie_data (e.g., 1 for Toy Story)
+                original_movie_id = row['movie_id']
+                # Convert the original movie ID back to its mapped ID using item_id_mapping (e.g., 1 -> 0)
+                mapped_movie_id = item_id_mapping[original_movie_id]
+                title = row['title']
+                in_train = mapped_movie_id in user_train_ratings
+                in_test = mapped_movie_id in user_test_ratings
+                recommendations.append({
+                    'user_id': user_id,           # Original user ID from input (e.g., 1)
+                    'mapped_user_id': mapped_user_id,  # Mapped user ID (e.g., 0)
+                    'movie_id': original_movie_id,     # Original movie ID from u.item (e.g., 1)
+                    'mapped_movie_id': mapped_movie_id, # Mapped movie ID (e.g., 0)
+                    'title': title,              # Movie title (e.g., "Toy Story (1995)")
+                    'in_train': in_train,        # Boolean: True if movie is in training set
+                    'in_test': in_test           # Boolean: True if movie is in test set
+                })
+
+    rec_df = pd.DataFrame(recommendations)
+
+    return rec_df
+
+user_ids = [1, 2, 3, 4, 5]
+rec_df = recommend_and_compare(model, user_ids, train_data, test_interactions, movie_data, k=10)
+```
+
+```python
+rec_df
+```
+
+| user_id | mapped_user_id | movie_id | mapped_movie_id | title | in_train | in_test |
+|:---|:---|:---|:---|:---|:---|:---|
+|1|0|1|0|Toy Story (1995)|True|False|
+|1|0|7|6|Twelve Monkeys (1995)|True|False|
+|1|0|50|49|Star Wars (1977)|True|False|
+|1|0|56|55|Pulp Fiction (1994)|True|False|
+|1|0|98|97|Silence of the Lambs, The (1991)|True|False|
+|1|0|100|99|Fargo (1996)|True|False|
+|1|0|121|120|Independence Day (ID4) (1996)|True|False|
+|1|0|127|126|Godfather, The (1972)|True|False|
+|1|0|174|173|Raiders of the Lost Ark (1981)|True|False|
+|1|0|181|180|Return of the Jedi (1983)|True|False|
+|2|1|258|257|Contact (1997)|True|False|
+|2|1|269|268|Full Monty, The (1997)|True|False|
+|2|1|286|285|English Patient, The (1996)|True|False|
+|2|1|288|287|Scream (1996)|True|False|
+|2|1|294|293|Liar Liar (1997)|True|False|
+|2|1|300|299|Air Force One (1997)|True|False|
+|2|1|302|301|L.A. Confidential (1997)|True|False|
+|2|1|313|312|Titanic (1997)|True|False|
+|2|1|328|327|Conspiracy Theory (1997)|False|False|
+|2|1|748|747|Saint, The (1997)|False|False|
+|3|2|258|257|Contact (1997)|True|False|
+|3|2|286|285|English Patient, The (1996)|False|False|
+|3|2|288|287|Scream (1996)|True|False|
+|3|2|294|293|Liar Liar (1997)|False|True|
+|3|2|300|299|Air Force One (1997)|True|False|
+|3|2|302|301|L.A. Confidential (1997)|True|False|
+|3|2|307|306|Devil's Advocate, The (1997)|True|False|
+|3|2|328|327|Conspiracy Theory (1997)|False|True|
+|3|2|333|332|Game, The (1997)|True|False|
+|3|2|748|747|Saint, The (1997)|False|False|
+|4|3|258|257|Contact (1997)|True|False|
+|4|3|286|285|English Patient, The (1996)|False|False|
+|4|3|288|287|Scream (1996)|False|True|
+|4|3|294|293|Liar Liar (1997)|False|True|
+|4|3|300|299|Air Force One (1997)|True|False|
+|4|3|302|301|L.A. Confidential (1997)|False|False|
+|4|3|307|306|Devil's Advocate, The (1997)|False|False|
+|4|3|328|327|Conspiracy Theory (1997)|True|False|
+|4|3|333|332|Game, The (1997)|False|False|
+|4|3|748|747|Saint, The (1997)|False|False|
+|5|4|56|55|Pulp Fiction (1994)|False|False|
+|5|4|69|68|Forrest Gump (1994)|True|False|
+|5|4|98|97|Silence of the Lambs, The (1991)|False|True|
+|5|4|168|167|Monty Python and the Holy Grail (1974)|True|False|
+|5|4|172|171|Empire Strikes Back, The (1980)|True|False|
+|5|4|173|172|Princess Bride, The (1987)|True|False|
+|5|4|174|173|Raiders of the Lost Ark (1981)|True|False|
+|5|4|204|203|Back to the Future (1985)|True|False|
+|5|4|210|209|Indiana Jones and the Last Crusade (1989)|True|False|
+|5|4|423|422|E.T. the Extra-Terrestrial (1982)|True|False|
+
+
 ## Did Grok do well?
 
 * When Grok set up the training loop, the regularization term from the BPR loss got missed. I double-checked the paper and asked Grok to add it back in.
