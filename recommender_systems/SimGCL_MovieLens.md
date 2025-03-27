@@ -60,11 +60,13 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 
 ### LightGCN loss computation
 
-![SimGCL_MovieLens_001](https://github.com/user-attachments/assets/35cf0789-b2cc-4433-930b-b6532c28418e)
+![SimGCL_MovieLens_001](https://github.com/user-attachments/assets/5c1fec6e-299c-4ebc-a0c0-bfd5258064d7)
+
+---
 
 ### SimGCL loss computation
 
-![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/4a4d770c-1d95-403a-a6a2-c78992145261)
+![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/f89253a1-8696-43d6-a4be-8fb0b675bcde)
 
 
 <script>
