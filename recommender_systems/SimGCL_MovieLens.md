@@ -66,7 +66,7 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 
 ### SimGCL loss computation
 
-![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/f89253a1-8696-43d6-a4be-8fb0b675bcde)
+![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/69aed4c7-34b0-4320-8624-9e8bf8c9c744)
 
 
 <script>
