@@ -52,11 +52,13 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 }
 ```
 
-![mermaid-diagram-2025-03-09-173910](https://github.com/user-attachments/assets/7f6f1993-1cfb-496a-b02a-2a9cde4af295)
+![LightGCN_MovieLens_001](https://github.com/user-attachments/assets/5b863e97-e086-431a-9994-b0a6b6f8c644)
+
 
 ## Graph Convolutional Networks (GCNs)
 
 ![001](https://github.com/user-attachments/assets/af9feeb2-b061-4905-8314-5749a53a2a81)
+
 
 ## Bipartite graph
 
@@ -403,7 +405,8 @@ class LightGCN(nn.Module):
 
 The chart shows the process of training a recommender system, which requires identifying positive pairs from the training set and randomly generating negative pairs.
 
-![mermaid-diagram-2025-03-10-115350](https://github.com/user-attachments/assets/0050d6a9-349f-46fc-8147-43013d7e8498)
+![LightGCN_MovieLens_002](https://github.com/user-attachments/assets/ab18cec2-2883-4d8d-b471-8682fb54c87d)
+
 
 On the left, we see the positive items (user-rated movies in the training set). On the right, the plot shows the randomly generated pairs.
 
