@@ -58,15 +58,19 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 ```
 
 
-### LightGCN loss computation
+## LightGCN loss computation
 
 ![SimGCL_MovieLens_001](https://github.com/user-attachments/assets/5c1fec6e-299c-4ebc-a0c0-bfd5258064d7)
 
----
 
-### SimGCL loss computation
+## SimGCL loss computation
 
 ![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/69aed4c7-34b0-4320-8624-9e8bf8c9c744)
+
+
+## InfoNCE
+
+![SimGCL_MovieLens_003](https://github.com/user-attachments/assets/aac0a1b3-e7ec-4dfb-837d-fcbe07051274)
 
 
 <script>
