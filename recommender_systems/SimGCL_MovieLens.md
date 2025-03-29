@@ -67,8 +67,12 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 
 ![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/69aed4c7-34b0-4320-8624-9e8bf8c9c744)
 
+## BPR loss
 
-## InfoNCE
+![SimGCL_MovieLens_004](https://github.com/user-attachments/assets/329b904f-ca80-43d5-bd18-60cd295684d3)
+
+
+## InfoNCE loss
 
 ![SimGCL_MovieLens_003](https://github.com/user-attachments/assets/aac0a1b3-e7ec-4dfb-837d-fcbe07051274)
 
