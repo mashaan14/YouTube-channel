@@ -503,7 +503,7 @@ Epoch 1000/1000, Loss: 0.3526
 
 Recommender systems often use the Bayesian Personalized Ranking (BPR) loss for evaluation. It includes: (1) a term that measures the difference in predicted scores between positive and negative item pairs, and (2) a regularization term, weighted by $\lambda$. The objective is to optimize the model to assign higher scores to positive items.
 
-$L\_{BPR} = -\sum\_{u=1}^{M} \sum\_{i \in N\_u} \sum\_{j \notin N\_u} \ln \ \sigma (\hat{y}\_{ui} - \hat{y}\_{uj}) + \lambda \lVert \mathbf{E}^{(0)} \rVert^2$
+![Untitled-001](https://github.com/user-attachments/assets/b6b26adf-2984-4d68-a2a3-bee711f5324f)
 
 
 ## Recall
