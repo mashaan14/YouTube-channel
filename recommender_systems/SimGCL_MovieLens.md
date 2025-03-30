@@ -76,6 +76,10 @@ Bayesian Personalized Ranking (BPR) loss, which is common in recommender systems
 
 ![SimGCL_MovieLens_004](https://github.com/user-attachments/assets/329b904f-ca80-43d5-bd18-60cd295684d3)
 
+## Contrastive Learning
+
+![Screenshot 2025-03-31 at 2 15 13 AM](https://github.com/user-attachments/assets/19c3d5e8-c65a-4cf7-a4ad-bff3c572fb1e)
+> source: (Schroff et al., 2015)
 
 ## InfoNCE loss
 
