@@ -72,7 +72,7 @@ To replicate SimGCL functionality, I adapted code from the [SELFRec](https://git
 
 Bayesian Personalized Ranking (BPR) loss, which is common in recommender systems, has two main components: (1) a term that compares scores for positive and negative item pairs, and (2) a regularization term, scaled by $\lambda$. The idea is to train the model to rank positive items higher.
 
-![Untitled-001](https://github.com/user-attachments/assets/4e6ced41-2c6b-4613-bff6-b469367ca3f2)
+![Untitled-001](https://github.com/user-attachments/assets/d27360c1-3b9c-457a-b5d0-c894b429228a)
 
 ![SimGCL_MovieLens_004](https://github.com/user-attachments/assets/329b904f-ca80-43d5-bd18-60cd295684d3)
 
@@ -81,7 +81,7 @@ Bayesian Personalized Ranking (BPR) loss, which is common in recommender systems
 
 InfoNCE, with NCE meaning Noise-Contrastive Estimation, works by minimizing the distance between a user/item's representations in two different views, and maximizing the distance to other users/items in those views.
 
-![Untitled-002](https://github.com/user-attachments/assets/9d4206b6-389b-4dfb-8a60-63218fd5477b)
+![Untitled-002](https://github.com/user-attachments/assets/a62597e5-5785-46cc-bba8-216bb78d3d98)
 
 ![SimGCL_MovieLens_003](https://github.com/user-attachments/assets/aac0a1b3-e7ec-4dfb-837d-fcbe07051274)
 
