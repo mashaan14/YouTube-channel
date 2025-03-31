@@ -498,7 +498,7 @@ Epoch 1000/1000, Loss: 0.3526
 ![LightGCN_MovieLens_004](https://github.com/user-attachments/assets/07cf2b19-7a8f-411c-a304-12172fbf054b)
 
 ---
-![LightGCN_MovieLens_005](https://github.com/user-attachments/assets/7d6ee839-9242-44e3-978b-ca00d1d5a5c7)
+![LightGCN_MovieLens_005](https://github.com/user-attachments/assets/a34bb2f9-16fb-4caa-b86c-d95d63bf400a)
 
 
 ## Bayesian Personalized Ranking (BPR) loss
