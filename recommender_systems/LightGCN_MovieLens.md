@@ -492,7 +492,7 @@ Epoch 1000/1000, Loss: 0.3526
 
 ## Tensor shapes in training
 
-![LightGCN_MovieLens_003](https://github.com/user-attachments/assets/17365242-8ba2-4edc-bac2-32c7d1e2995b)
+![LightGCN_MovieLens_003](https://github.com/user-attachments/assets/e88e6361-9b7e-4b81-867d-bc4491c31f57)
 
 ---
 ![LightGCN_MovieLens_004](https://github.com/user-attachments/assets/07cf2b19-7a8f-411c-a304-12172fbf054b)
