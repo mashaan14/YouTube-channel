@@ -51,7 +51,7 @@ To replicate SimGCL functionality, I adapted code from the [SELFRec](https://git
 @ARTICLE{10158930,
   author  = {Yu, Junliang and Xia, Xin and Chen, Tong and Cui, Lizhen and Hung, Nguyen Quoc Viet and Yin, Hongzhi},
   journal = {IEEE Transactions on Knowledge \& Data Engineering},
-  title   = {{XSimGCL: Towards Extremely Simple Graph Contrastive Learning for Recommendation}},
+  title   = {XSimGCL: Towards Extremely Simple Graph Contrastive Learning for Recommendation},
   year    = {2024},
   pages   = {913-926}
 }
