@@ -59,12 +59,17 @@ To replicate SimGCL functionality, I adapted code from the [SELFRec](https://git
 
 ![SimGCL_MovieLens_005](https://github.com/user-attachments/assets/39e5551c-98fa-4122-a592-f122853c518e)
 
-## LightGCN loss computation
+## LightGCN vs SimGCL
+
+The key distinction between LightGCN and SimGCL lies in their optimization objectives. While LightGCN relies solely on the Bayesian Personalized Ranking (BPR) loss, a standard for recommender systems, SimGCL incorporates both BPR loss and the InfoNCE loss.
+
+### LightGCN loss computation
 
 ![SimGCL_MovieLens_001](https://github.com/user-attachments/assets/5c1fec6e-299c-4ebc-a0c0-bfd5258064d7)
 
+---
 
-## SimGCL loss computation
+### SimGCL loss computation
 
 ![SimGCL_MovieLens_002](https://github.com/user-attachments/assets/69aed4c7-34b0-4320-8624-9e8bf8c9c744)
 
@@ -74,9 +79,16 @@ Bayesian Personalized Ranking (BPR) loss, which is common in recommender systems
 
 ![Untitled-001](https://github.com/user-attachments/assets/d27360c1-3b9c-457a-b5d0-c894b429228a)
 
-![SimGCL_MovieLens_004](https://github.com/user-attachments/assets/329b904f-ca80-43d5-bd18-60cd295684d3)
+![SimGCL_MovieLens_004](https://github.com/user-attachments/assets/45ad5df2-39b9-4ddf-94ee-1e901648fdfe)
+
 
 ## Contrastive Learning
+
+So, with contrastive learning, we're showing the model 'positive' and 'negative' examples, basically. (Yeah, I get it, sounds like positive and negative items in recommenders, but trust me, it's different.) We're trying to teach it: 
+- `positive = original + noise` 'This is the same thing, even with some noise,' and
+- `negative` 'This one's totally different, not the same thing at all.'
+
+The point is to train the model to recognize what's similar and what's not, making it better at dealing with noise and more general.
 
 ![Screenshot 2025-03-31 at 2 15 13 AM](https://github.com/user-attachments/assets/19c3d5e8-c65a-4cf7-a4ad-bff3c572fb1e)
 > source: (Schroff et al., 2015)
@@ -88,6 +100,523 @@ InfoNCE, with NCE meaning Noise-Contrastive Estimation, works by minimizing the 
 ![Untitled-002](https://github.com/user-attachments/assets/a62597e5-5785-46cc-bba8-216bb78d3d98)
 
 ![SimGCL_MovieLens_003](https://github.com/user-attachments/assets/aac0a1b3-e7ec-4dfb-837d-fcbe07051274)
+
+## MovieLens 100K Dataset
+
+This dataset, sourced from MovieLens, a movie recommendation platform, provides movie ratings. We'll be using the 100K ratings variant, available for download on  [Kaggle](https://www.kaggle.com/datasets/prajitdatta/movielens-100k-dataset). Below is a description of the files included.
+
+| File Name    | Description                                           |
+| :--- | :---- | 
+| u.data       | This is the core file. It contains ratings data: user ID, movie ID, rating, timestamp    |
+| u.genre      | List of movie genres                                  |
+| u.info       | Summary statistics of the dataset                     |
+| u.item       | Movie information: movie ID, title, release date, genres |
+| u.occupation | List of user occupations                              |
+| u.user       | User information: user ID, age, gender, occupation, zip code |
+| u1.base      | Training set for fold 1 of 5-fold cross-validation    |
+| u1.test      | Test set for fold 1 of 5-fold cross-validation        |
+| u2.base      | Training set for fold 2 of 5-fold cross-validation    |
+| u2.test      | Test set for fold 2 of 5-fold cross-validation        |
+| u3.base      | Training set for fold 3 of 5-fold cross-validation    |
+| u3.test      | Test set for fold 3 of 5-fold cross-validation        |
+| u4.base      | Training set for fold 4 of 5-fold cross-validation    |
+| u4.test      | Test set for fold 4 of 5-fold cross-validation        |
+| u5.base      | Training set for fold 5 of 5-fold cross-validation    |
+| u5.test      | Test set for fold 5 of 5-fold cross-validation        |
+| ua.base      | Additional training set split                         |
+| ua.test      | Additional test set split                             |
+| ub.base      | Another additional training set split                 |
+| ub.test      | Another additional test set split                     |
+
+## Import and prepare the dataset
+
+```python
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("prajitdatta/movielens-100k-dataset")
+
+print("Path to dataset files:", path)
+```
+
+```bash
+!pip install kaggle
+
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+
+!kaggle datasets download -d prajitdatta/movielens-100k-dataset
+!unzip movielens-100k-dataset.zip
+```
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+```python
+# Set device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+```
+
+```python
+data = pd.read_csv('ml-100k/u.data', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+train_data = pd.read_csv('ml-100k/ua.base', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+test_data = pd.read_csv('ml-100k/ua.test', sep='\t', names=['user_id', 'movie_id', 'rating', 'timestamp'])
+movie_data = pd.read_csv('ml-100k/u.item', sep='|', encoding='latin-1',
+                         names=['movie_id', 'title', 'release_date'], usecols=[0, 1, 2])
+```
+
+***Mapping user and item IDs to continuous indices (0 to num_users-1 and 0 to num_items-1) is essential because PyTorch embeddings expect zero-based indices within bounds. Without this, raw IDs (e.g., 1 to 943) could exceed embedding sizes or cause gaps, leading to out-of-bounds errors like "index 2625 is out of bounds for dimension 0 with size 2625".***
+
+```python
+user_ids = sorted(train_data['user_id'].unique())  # 1 to 943
+user_id_mapping = {id: i for i, id in enumerate(user_ids)}
+item_ids = sorted(train_data['movie_id'].unique())  # 1 to 1682
+item_id_mapping = {id: i for i, id in enumerate(item_ids)}
+
+train_data['user_id'] = train_data['user_id'].map(user_id_mapping)
+test_data['user_id'] = test_data['user_id'].map(user_id_mapping)
+train_data['movie_id'] = train_data['movie_id'].map(item_id_mapping)
+test_data['movie_id'] = test_data['movie_id'].map(item_id_mapping)
+
+num_users = len(user_ids)
+num_items = len(item_ids)
+
+print("Number of unique users:", num_users)
+print("Number of unique items:", num_items)
+```
+
+```console
+Number of unique users: 943
+Number of unique items: 1680
+```
+
+```python
+# Interaction tensors
+train_interactions = torch.tensor(train_data[['user_id', 'movie_id']].values, dtype=torch.long)
+test_interactions = torch.tensor(test_data[['user_id', 'movie_id']].values, dtype=torch.long)
+```
+
+```python
+# insights about train_interactions
+print(train_interactions.shape)
+print(train_interactions[:10])
+print("Data type:", train_interactions.dtype)
+print("Device:", train_interactions.device)
+```
+
+```console
+torch.Size([90570, 2])
+tensor([[0, 0],
+        [0, 1],
+        [0, 2],
+        [0, 3],
+        [0, 4],
+        [0, 5],
+        [0, 6],
+        [0, 7],
+        [0, 8],
+        [0, 9]])
+Data type: torch.int64
+Device: cpu
+```
+
+## Constructing the adjacency matrix
+
+We'll compute the Adjacency $A$, Degree $D$, and Normalized Adjacency $\tilde{A}$ matrices in the following code:
+
+```python
+# Adjacency matrix
+rows = torch.cat([train_interactions[:, 0], train_interactions[:, 1] + num_users], dim=0)
+cols = torch.cat([train_interactions[:, 1] + num_users, train_interactions[:, 0]], dim=0)
+indices = torch.stack([rows, cols], dim=0).to(device)
+values = torch.ones(indices.shape[1], device=device)
+adj = torch.sparse_coo_tensor(indices, values, size=(num_users + num_items, num_users + num_items), device=device)
+
+# Normalized adjacency matrix
+degrees = torch.sparse.sum(adj, dim=1).to_dense()
+norm_values = 1.0 / (torch.sqrt(degrees[rows]) * torch.sqrt(degrees[cols])).to(device)
+norm_adj = torch.sparse_coo_tensor(indices, norm_values, size=(num_users + num_items, num_users + num_items), device=device)
+```
+
+These plots visualize the adjacency matrix. We expect a block diagonal structure due to the bipartite graph.
+
+![image](https://github.com/user-attachments/assets/c2d22f3c-f301-4f01-b0ef-24749663452c)
+
+![image](https://github.com/user-attachments/assets/7c89b5fd-0bf0-4df4-b1bf-d74399472a1d)
+
+## SimGCL class
+I borrowed SimGCL implementation from [`SimGCL.py`](https://github.com/Coder-Yu/SELFRec/blob/main/model/graph/SimGCL.py). I prompted Grok to remove external dependencies.
+
+```python
+class SimGCL(nn.Module):
+    def __init__(self, num_users, num_items, embedding_dim, num_layers, norm_adj, device):
+        super(SimGCL, self).__init__()
+        self.num_users = num_users
+        self.num_items = num_items
+        self.embedding_dim = embedding_dim
+        self.num_layers = num_layers
+        self.device = device
+        self.register_buffer('norm_adj', norm_adj)
+        self.user_embeddings = nn.Embedding(num_users, embedding_dim)
+        self.item_embeddings = nn.Embedding(num_items, embedding_dim)
+        nn.init.normal_(self.user_embeddings.weight, std=0.01)  # Initialize user embeddings
+        nn.init.normal_(self.item_embeddings.weight, std=0.01)  # Initialize item embeddings
+        self.eps = 0.1 
+
+    def forward(self, perturbed=False):
+        # Concatenate initial user and item embeddings
+        ego_embeddings = torch.cat([self.user_embeddings.weight, self.item_embeddings.weight], dim=0)
+        all_embeddings = []
+
+        # Iterate over the number of layers
+        for k in range(self.num_layers):
+            # Perform sparse matrix multiplication with the normalized adjacency matrix
+            ego_embeddings = torch.spmm(self.norm_adj, ego_embeddings)
+
+            # Apply perturbation if specified
+            if perturbed:
+                # Generate random noise with the same shape as ego_embeddings
+                random_noise = torch.rand_like(ego_embeddings).to(self.device)
+                # Add normalized noise scaled by eps
+                ego_embeddings += torch.sign(ego_embeddings) * F.normalize(random_noise, dim=-1) * self.eps
+
+            # Store embeddings from each layer
+            all_embeddings.append(ego_embeddings)
+
+        # Stack embeddings across layers and compute the mean
+        all_embeddings = torch.stack(all_embeddings, dim=1)
+        all_embeddings = torch.mean(all_embeddings, dim=1)
+
+        # Split into user and item embeddings
+        user_all_embeddings, item_all_embeddings = torch.split(
+            all_embeddings, [self.num_users, self.num_items]
+        )
+
+        return user_all_embeddings, item_all_embeddings
+
+    def get_embeddings(self):
+        all_embeddings = torch.cat([self.user_embeddings.weight, self.item_embeddings.weight], dim=0)
+        ego_embeddings = all_embeddings
+        for _ in range(self.num_layers):
+            all_embeddings = torch.spmm(self.norm_adj, all_embeddings)
+            ego_embeddings += all_embeddings
+        final_embeddings = ego_embeddings / (self.num_layers + 1)
+        user_emb = final_embeddings[:self.num_users]
+        item_emb = final_embeddings[self.num_users:]
+        return user_emb, item_emb
+```
+
+```python
+# Hyperparameters
+batch_size = 1024
+embedding_dim = 64
+num_layers = 3
+learning_rate = 1e-3
+num_epochs = 200
+lambda_reg = 1e-6  # Regularization weight
+cl_rate = 0.01  # Contrastive loss weight
+
+# Initialize model
+model = SimGCL(num_users, num_items, embedding_dim, num_layers, norm_adj, device)
+model.to(device)
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+```
+
+## Loss functions
+I borrowed these code snippets from [`SimGCL.py`](https://github.com/Coder-Yu/SELFRec/blob/main/model/graph/SimGCL.py) and [`loss_torch.py`](https://github.com/Coder-Yu/SELFRec/blob/main/util/loss_torch.py).
+
+```python
+def bpr_loss(user_emb, pos_item_emb, neg_item_emb):
+    pos_score = torch.mul(user_emb, pos_item_emb).sum(dim=1)
+    neg_score = torch.mul(user_emb, neg_item_emb).sum(dim=1)
+    loss = -torch.log(10e-6 + torch.sigmoid(pos_score - neg_score))
+    return torch.mean(loss)
+
+def l2_reg_loss(reg, *args):
+    emb_loss = 0
+    for emb in args:
+        emb_loss += torch.norm(emb, p=2)/emb.shape[0]
+    return emb_loss * reg
+
+def InfoNCE(view1, view2, temperature: float, b_cos: bool = True):
+    if b_cos:
+        view1, view2 = F.normalize(view1, dim=1), F.normalize(view2, dim=1)
+    pos_score = (view1 @ view2.T) / temperature
+    score = torch.diag(F.log_softmax(pos_score, dim=1))
+    return -score.mean()
+
+def cal_cl_loss(idx, model):
+    u_idx = torch.unique(torch.Tensor(idx[0]).type(torch.long)).to(device)
+    i_idx = torch.unique(torch.Tensor(idx[1]).type(torch.long)).to(device)
+    user_view_1, item_view_1 = model(perturbed=True)
+    user_view_2, item_view_2 = model(perturbed=True)
+    user_cl_loss = InfoNCE(user_view_1[u_idx], user_view_2[u_idx], 0.2)
+    item_cl_loss = InfoNCE(item_view_1[i_idx], item_view_2[i_idx], 0.2)
+    return user_cl_loss + item_cl_loss
+```
+
+## Training loop
+
+```python
+# Create lists to store losses for each epoch
+rec_losses = []
+cl_losses = []
+reg_losses = []
+total_losses = []
+
+# Create a DataLoader for mini-batch training
+dataset = TensorDataset(train_interactions)
+loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+
+for epoch in range(num_epochs):
+    model.train()
+    epoch_rec_loss = 0
+    epoch_cl_loss = 0
+    epoch_reg_loss = 0
+    epoch_total_loss = 0
+
+    for batch in loader:
+        # Extract users and positive items for this batch
+        users, pos_items = batch[0][:, 0].to(device), batch[0][:, 1].to(device)
+        neg_items = torch.randint(0, num_items, (len(users),), device=device)
+
+        # Forward pass
+        rec_user_emb, rec_item_emb = model()
+        user_emb = rec_user_emb[users]
+        pos_item_emb = rec_item_emb[pos_items]
+        neg_item_emb = rec_item_emb[neg_items]
+
+        # Compute losses
+        rec_loss = bpr_loss(user_emb, pos_item_emb, neg_item_emb)
+        cl_loss = cl_rate * cal_cl_loss([users, pos_items], model)
+        reg_loss = l2_reg_loss(lambda_reg, user_emb, pos_item_emb)
+        batch_loss = rec_loss + reg_loss + cl_loss
+
+        # Backward pass and optimization
+        optimizer.zero_grad()
+        batch_loss.backward()
+        optimizer.step()
+
+        # Accumulate losses for this epoch
+        epoch_rec_loss += rec_loss.item()
+        epoch_cl_loss += cl_loss.item()
+        epoch_reg_loss += reg_loss.item()
+        epoch_total_loss += batch_loss.item()
+
+    # Compute average losses for the epoch
+    num_batches = len(loader)
+    avg_rec_loss = epoch_rec_loss / num_batches
+    avg_cl_loss = epoch_cl_loss / num_batches
+    avg_reg_loss = epoch_reg_loss / num_batches
+    avg_total_loss = epoch_total_loss / num_batches
+
+    # Store the average losses
+    rec_losses.append(avg_rec_loss)
+    cl_losses.append(avg_cl_loss)
+    reg_losses.append(avg_reg_loss)
+    total_losses.append(avg_total_loss)
+
+    print(f'Epoch {epoch + 1}/{num_epochs}, rec_loss: {avg_rec_loss:.4f}, cl_loss: {avg_cl_loss:.4f}, reg_loss: {avg_reg_loss:.4f}, total_loss: {avg_total_loss:.4f}')
+```
+
+```console
+Epoch 1/200, rec_loss: 0.6931, cl_loss: 0.0651, reg_loss: 0.0000, total_loss: 0.7582
+Epoch 2/200, rec_loss: 0.6931, cl_loss: 0.0487, reg_loss: 0.0000, total_loss: 0.7418
+Epoch 3/200, rec_loss: 0.6931, cl_loss: 0.0456, reg_loss: 0.0000, total_loss: 0.7387
+Epoch 4/200, rec_loss: 0.6930, cl_loss: 0.0438, reg_loss: 0.0000, total_loss: 0.7368
+Epoch 5/200, rec_loss: 0.6930, cl_loss: 0.0425, reg_loss: 0.0000, total_loss: 0.7355
+Epoch 6/200, rec_loss: 0.6929, cl_loss: 0.0416, reg_loss: 0.0000, total_loss: 0.7345
+Epoch 7/200, rec_loss: 0.6928, cl_loss: 0.0409, reg_loss: 0.0000, total_loss: 0.7337
+Epoch 8/200, rec_loss: 0.6928, cl_loss: 0.0402, reg_loss: 0.0000, total_loss: 0.7330
+Epoch 9/200, rec_loss: 0.6927, cl_loss: 0.0397, reg_loss: 0.0000, total_loss: 0.7324
+Epoch 10/200, rec_loss: 0.6926, cl_loss: 0.0393, reg_loss: 0.0000, total_loss: 0.7319
+...
+...
+...
+Epoch 191/200, rec_loss: 0.2507, cl_loss: 0.0718, reg_loss: 0.0000, total_loss: 0.3225
+Epoch 192/200, rec_loss: 0.2491, cl_loss: 0.0718, reg_loss: 0.0000, total_loss: 0.3209
+Epoch 193/200, rec_loss: 0.2484, cl_loss: 0.0717, reg_loss: 0.0000, total_loss: 0.3201
+Epoch 194/200, rec_loss: 0.2510, cl_loss: 0.0716, reg_loss: 0.0000, total_loss: 0.3226
+Epoch 195/200, rec_loss: 0.2489, cl_loss: 0.0715, reg_loss: 0.0000, total_loss: 0.3205
+Epoch 196/200, rec_loss: 0.2473, cl_loss: 0.0716, reg_loss: 0.0000, total_loss: 0.3189
+Epoch 197/200, rec_loss: 0.2469, cl_loss: 0.0715, reg_loss: 0.0000, total_loss: 0.3183
+Epoch 198/200, rec_loss: 0.2470, cl_loss: 0.0714, reg_loss: 0.0000, total_loss: 0.3184
+Epoch 199/200, rec_loss: 0.2469, cl_loss: 0.0713, reg_loss: 0.0000, total_loss: 0.3181
+Epoch 200/200, rec_loss: 0.2463, cl_loss: 0.0713, reg_loss: 0.0000, total_loss: 0.3176
+```
+
+![image](https://github.com/user-attachments/assets/6d8c97a9-f9f1-4cd2-b47d-5df570b6c970)
+
+## Computing the recall at $k=10$
+
+```python
+def compute_recall_at_k(user_emb, item_emb, train_interactions, test_interactions, k=10, device='cuda'):
+    user_emb = user_emb.to(device)
+    item_emb = item_emb.to(device)
+
+    # Compute all user-item scores (no masking)
+    scores = torch.matmul(user_emb, item_emb.T)  # Shape: [943, 1682]
+
+    # Get top-k predictions
+    _, top_k_indices = torch.topk(scores, k, dim=1)  # Shape: [943, k]
+
+    # Convert test interactions to a dictionary
+    test_dict = {}
+    for user, item in test_interactions:
+        user = user.item()
+        item = item.item()
+        if user not in test_dict:
+            test_dict[user] = set()
+        test_dict[user].add(item)
+
+    # Compute recall for each user
+    recall_sum = 0
+    num_users = 0
+    for user in range(len(user_emb)):  # 0 to 942
+        if user not in test_dict:
+            continue
+        predicted_items = set(top_k_indices[user].cpu().tolist())
+        relevant_items = test_dict[user]
+        hits = len(predicted_items & relevant_items)
+        recall = hits / len(relevant_items) if len(relevant_items) > 0 else 0
+        recall_sum += recall
+        num_users += 1
+
+    return recall_sum / num_users if num_users > 0 else 0
+
+
+
+# After training, get final embeddings
+with torch.no_grad():
+    final_user_emb, final_item_emb = model()
+
+# Compute Recall@10 after training
+recall_at_10 = compute_recall_at_k(final_user_emb, final_item_emb, train_interactions, test_interactions, k=10, device=device)
+print(f'Recall@10 after training: {recall_at_10:.4f}')
+```
+
+```console
+Recall@10 after training: 0.1038
+```
+
+## The movies recommended to a single users
+
+```python
+def get_user_recommendations(true_user_id, user_id_mapping, item_id_mapping, final_user_emb, final_item_emb,
+                            train_interactions, test_interactions, movie_data, k=10, device='cuda'):
+    """
+    Scores a user against all movies, returns top-k recommendations with titles, and checks their presence in train/test sets.
+
+    Args:
+        true_user_id (int): Original user ID (1 to 943).
+        user_id_mapping (dict): Mapping from original user IDs to indices (e.g., {1: 0, 2: 1, ...}).
+        item_id_mapping (dict): Mapping from original movie IDs to indices (e.g., {1: 0, 2: 1, ...}).
+        final_user_emb (torch.Tensor): Trained user embeddings [943, embedding_dim].
+        final_item_emb (torch.Tensor): Trained item embeddings [1682, embedding_dim].
+        train_interactions (torch.Tensor): Training interactions [n_train, 2] with remapped indices.
+        test_interactions (torch.Tensor): Test interactions [n_test, 2] with remapped indices.
+        movie_data (pd.DataFrame): DataFrame with columns ['movie_id', 'title', 'release_date'].
+        k (int): Number of top recommendations to return (default: 10).
+        device (str): Device to perform computations on (default: 'cuda').
+
+    Returns:
+        List of tuples: (original_movie_id, title, score, source) where source is 'train', 'test', or 'none'.
+    """
+    # Map true user ID to remapped index
+    if true_user_id not in user_id_mapping:
+        raise ValueError(f"User ID {true_user_id} not found in user_id_mapping.")
+    user_idx = user_id_mapping[true_user_id]
+
+    # Move embeddings to device
+    user_emb = final_user_emb[user_idx].to(device)  # Shape: [embedding_dim]
+    item_emb = final_item_emb.to(device)  # Shape: [1682, embedding_dim]
+
+    # Compute scores for this user against all items
+    scores = torch.matmul(user_emb, item_emb.T)  # Shape: [1682]
+
+    # Get top-k movie indices and scores
+    top_k_scores, top_k_indices = torch.topk(scores, k, dim=0)  # Shape: [k]
+    top_k_indices = top_k_indices.cpu().tolist()
+    top_k_scores = top_k_scores.cpu().tolist()
+
+    # Reverse item_id_mapping to map indices back to original movie IDs
+    index_to_movie_id = {i: movie_id for movie_id, i in item_id_mapping.items()}
+
+    # Create a movie ID to title mapping from movie_data
+    movie_id_to_title = dict(zip(movie_data['movie_id'], movie_data['title']))
+
+    # Get training and test interactions for this user
+    train_items = set(train_interactions[train_interactions[:, 0] == user_idx, 1].cpu().tolist())
+    test_items = set(test_interactions[test_interactions[:, 0] == user_idx, 1].cpu().tolist())
+
+    # Build recommendations list with titles and source information
+    recommendations = []
+    for idx, score in zip(top_k_indices, top_k_scores):
+        original_movie_id = index_to_movie_id[idx]
+        title = movie_id_to_title.get(original_movie_id, "Unknown Title")
+        if idx in train_items:
+            source = 'train'
+        elif idx in test_items:
+            source = 'test'
+        else:
+            source = 'none'
+        recommendations.append((original_movie_id, title, score, source))
+
+    return recommendations
+
+
+# Load movie data (already done in your setup)
+movie_data = pd.read_csv('ml-100k/u.item', sep='|', encoding='latin-1',
+                         names=['movie_id', 'title', 'release_date'], usecols=[0, 1, 2])
+
+# After training loop
+with torch.no_grad():
+    final_user_emb, final_item_emb = model()
+
+# Get recommendations for a true user ID (e.g., 1)
+true_user_id = 4
+recommendations = get_user_recommendations(
+    true_user_id,
+    user_id_mapping,
+    item_id_mapping,
+    final_user_emb,
+    final_item_emb,
+    train_interactions,
+    test_interactions,
+    movie_data, 
+    k=10,
+    device=device
+)
+
+# Print results with movie titles
+print(f"Top-10 recommendations for user {true_user_id}:")
+for movie_id, title, score, source in recommendations:
+    print(f"Movie ID: {movie_id}, Title: {title}, Score: {score:.4f}, Source: {source}")
+```
+
+```console
+Top-10 recommendations for user 4:
+Movie ID: 300, Title: Air Force One (1997),         Score: 5.0164, Source: train
+Movie ID: 258, Title: Contact (1997),               Score: 4.8345, Source: train
+Movie ID: 328, Title: Conspiracy Theory (1997),     Score: 4.6349, Source: train
+Movie ID: 327, Title: Cop Land (1997),              Score: 4.6182, Source: train
+Movie ID: 302, Title: L.A. Confidential (1997),     Score: 4.2180, Source: none
+Movie ID: 690, Title: Seven Years in Tibet (1997),  Score: 4.2179, Source: none
+Movie ID: 271, Title: Starship Troopers (1997),     Score: 4.1511, Source: train
+Movie ID: 288, Title: Scream (1996),                Score: 4.0427, Source: test
+Movie ID: 333, Title: Game, The (1997),             Score: 4.0297, Source: none
+Movie ID: 294, Title: Liar Liar (1997),             Score: 4.0250, Source: test
+```
 
 
 <script>
