@@ -64,18 +64,14 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 
 _A bipartite graph is a graph whose vertices can be separated into two sets $X$ and $Y$ in such a way that every edge in the graph has one end point in each set_ (Marcus, 2020, "Graph Theory: A Problem Oriented Approach", p. 45). To avoid confusion, we will rename the two sets in our bipartite graph to users $u$ and items $i$. 
 
-![Screenshot 2025-03-10 at 11 17 37 AM](https://github.com/user-attachments/assets/39696c73-2407-4700-b35a-6a0c5e313f75)
 
-> source: [CS224W: Machine Learning with Graphs](http://cs224w.Stanford.edu)
+![LightGCN_MovieLens_006](https://github.com/user-attachments/assets/4421ae2f-8f04-4b81-a8ca-5ca7e3dcfba5)
 
 ---
 
 Here's the structure of the adjacency matrix for a bipartite graph.
 
-![Screenshot 2025-03-10 at 11 18 25 AM](https://github.com/user-attachments/assets/a42abebd-952f-42e7-86ce-7c03a8891925)
-
-
-> source: [CS224W: Machine Learning with Graphs](http://cs224w.Stanford.edu)
+![LightGCN_MovieLens_007](https://github.com/user-attachments/assets/c8519b03-9c4f-4e5a-b114-80632c41c6f1)
 
 ## Recommender systems
 
@@ -732,7 +728,7 @@ rec_df
 
 ## Did Grok do well?
 
-* When Grok set up the training loop, the regularization term from the BPR loss got missed. I double-checked the paper and asked Grok to add it back in.
+* When Grok set up the training loop, the regularization term in the BPR loss was missing. I double-checked the paper and asked Grok to add it back in.
 * When testing the trained model, Grok had trouble matching user/movie mappings defined earlier in the code. I manually checked the user/movie IDs in the test set and found that the titles were mismatched. I then asked Grok to correct the mapping in the testing code.
 * I asked Grok to create a LightGCN class. Initially, it included the adjacency matrix construction within the class. I then asked Grok to change the code, moving the adjacency matrix construction outside the class and creating plots to visualize the matrix.
 
