@@ -117,7 +117,9 @@ Data(x=[300, 10], edge_index=[2, 4750], y=[300], train_mask=[300], val_mask=[300
 ## GCN
 Here is the formula that shows the architecture for GCN with two convolutional layers:
 
-![image](https://github.com/user-attachments/assets/de274c1e-6166-430a-bbde-05706c0f3f25)
+![GCN-001](https://github.com/user-attachments/assets/98f60866-d346-44c6-9820-7f9b1cc51997)
+
+> source: equation (9) by Kipf and Welling (2017)
 
 
 ```python
