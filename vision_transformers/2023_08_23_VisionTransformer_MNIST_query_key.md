@@ -321,6 +321,19 @@ class VisionTransformer(nn.Module):
         return out
 ```
 
+These drawings illustrate the concept, even though I used varying values for `input_channels`, `embed_dim`, `batch_size`, `patch_size`, etc. For instance, MNIST has 1 input channel (grayscale), whereas these drawings are based on 3 input channels (RGB).
+
+![pytorch-ViT-001](https://github.com/user-attachments/assets/b840abb3-5f7a-4bb0-9da3-f906ef6cd6cd)
+
+---
+
+![pytorch-ViT-002](https://github.com/user-attachments/assets/8e0318f1-7b9b-4f3c-afc1-141c51737fe7)
+
+---
+
+![pytorch-ViT-003](https://github.com/user-attachments/assets/14f707d4-fb84-4974-bdc5-bcea16421b05)
+
+
 ```python
 model = VisionTransformer(embed_dim=embed_dim,
                           hidden_dim=hidden_dim,
