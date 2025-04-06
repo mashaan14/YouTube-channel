@@ -218,9 +218,11 @@ CNN(
 
 ## How data flows inside a CNN?
 
-![image](https://github.com/user-attachments/assets/cce6374e-654f-4da4-b3e1-9292b2530628)
+![pytorch-ViT-CNN-001](https://github.com/user-attachments/assets/2c14185c-0b07-4aea-a9fd-4f17bbd8bb04)
 
-![image](https://github.com/user-attachments/assets/fdecca2c-fcb4-4b8d-9cea-7f537d33f0b8)
+---
+
+![pytorch-ViT-CNN-002](https://github.com/user-attachments/assets/3dcfb089-8bdf-41fb-a06f-74ef04656232)
 
 ## CNN Training
 
@@ -657,9 +659,18 @@ VisionTransformer(
 
 ## How data flows inside a ViT?
 
-![image](https://github.com/user-attachments/assets/4479471d-9ba3-4dcb-833f-174da591816d)
+These drawings illustrate the concept, even though I used varying values for `input_channels`, `embed_dim`, `batch_size`, `patch_size`, etc. For instance, MNIST has 1 input channel (grayscale), whereas these drawings are based on 3 input channels (RGB).
 
-![image](https://github.com/user-attachments/assets/9cab0d2b-95cd-45ff-9321-01659aff9c7b)
+![pytorch-ViT-001](https://github.com/user-attachments/assets/b840abb3-5f7a-4bb0-9da3-f906ef6cd6cd)
+
+---
+
+![pytorch-ViT-002](https://github.com/user-attachments/assets/8e0318f1-7b9b-4f3c-afc1-141c51737fe7)
+
+---
+
+![pytorch-ViT-003](https://github.com/user-attachments/assets/14f707d4-fb84-4974-bdc5-bcea16421b05)
+
 
 ## ViT training
 
