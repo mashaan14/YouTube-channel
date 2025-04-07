@@ -1201,9 +1201,12 @@ x.shape after avgpool:            torch.Size([128, 768, 1])
 x.shape after flatten:            torch.Size([128, 768])
 ```
 
-![image](https://github.com/user-attachments/assets/646c9b54-abcc-49f3-a659-a7e9fbb8e877)
+## Visualizing how a SWIN transformer handles one batch of CIFAR-10 images
 
-![image](https://github.com/user-attachments/assets/5f6dfba3-0b36-4fd1-8640-758d934380e2)
+![swin-001](https://github.com/user-attachments/assets/281395c8-0763-4a04-92cc-db19b4edd42c)
+
+![swin-002](https://github.com/user-attachments/assets/ea75d34a-8704-4819-b1d1-0bf84f99f7f1)
+
 
 ```python
 x = torch.tensor([[0, 1, 2, 3,],
@@ -1237,7 +1240,24 @@ tensor([[ 5,  7],
         [13, 15]])
 ```
 
-![image](https://github.com/user-attachments/assets/ec70133c-a3ee-4fb5-8333-db0856b5eb06)
+![swin-003](https://github.com/user-attachments/assets/761453cc-6153-49c5-b76a-cc161d51eb0d)
+
+---
+
+![swin-004](https://github.com/user-attachments/assets/d11389f2-91a8-4fc6-b9d4-451c7154353f)
+
+---
+
+![swin-005](https://github.com/user-attachments/assets/ed436fe5-de69-47a3-8bc9-13f95c3b4953)
+
+---
+
+![swin-006](https://github.com/user-attachments/assets/415ecbdd-8bb3-4711-9a7d-209adc2c2239)
+
+---
+
+![swin-007](https://github.com/user-attachments/assets/5e9bb36e-b26f-4a06-b028-88d7d95c5280)
+
 
 ## Creating an attention mask based on a shifted window
 
