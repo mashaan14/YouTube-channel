@@ -58,8 +58,9 @@ I got most of the code in this post by prompting Grok, so thanks to the develope
 
 ## Graph Convolutional Networks (GCNs)
 
-![001](https://github.com/user-attachments/assets/af9feeb2-b061-4905-8314-5749a53a2a81)
+The key distinction between GCN and Simplifying Graph Convolution (SGC) is the removal of non-linearities in SGC's embedding computation. SGC simplifies the process to a single weight matrix applied to accumulated normalized adjacency.
 
+![LightGCN_MovieLens_008](https://github.com/user-attachments/assets/f22853fb-c471-4067-8d02-50092fcf566f)
 
 ## Bipartite graph
 
@@ -76,11 +77,14 @@ Here's the structure of the adjacency matrix for a bipartite graph.
 
 ## Recommender systems
 
-GCN and simplified GCN papers use $H$ for embeddings, but NGCF and LightGCN use $E$. Although they represent the same thing, $E$ can be confusing because it's also used for the set of edges.
+GCN and SGC papers use $H$ for embeddings, but NGCF and LightGCN use $E$. Although they represent the same thing, $E$ can be confusing because it's also used for the set of edges.
 
-![002](https://github.com/user-attachments/assets/e6b8ac00-0fa8-44e9-926d-be19fb454424)
+![LightGCN_MovieLens_009](https://github.com/user-attachments/assets/69bf21c0-1da1-4482-9ee1-17eff390e7ce)
 
-![003](https://github.com/user-attachments/assets/cde89b51-e98b-4003-bcbc-2bdfb2e3d69e)
+---
+
+![LightGCN_MovieLens_010](https://github.com/user-attachments/assets/1fdb433d-78f2-4f30-820f-3cf870e71be7)
+
 
 ## MovieLens 100K Dataset
 
