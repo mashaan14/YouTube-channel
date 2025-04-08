@@ -13,6 +13,7 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 * [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
 * [Detection and Tracking](#detection-and-tracking)
 * [Graph Neural Networks](#graph-neural-networks)
+* [Recommender Systems](#recommender-systems)
 * [JAX Performance](#jax-performance)
 * [Convolutional Neural Nets](#convolutional-neural-nets)
 * [Spectral Clustering](#spectral-clustering)
@@ -75,6 +76,13 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 | Training GCNs with PyG and Jraph: A Side-by-Side Comparison | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | [<img src="imgs/2024_02_20_jraph.png" />](https://youtu.be/W-JDqd5AFio) |
 | PyTorch code for GCN and SGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | [<img src="imgs/2023_12_13_GCN_and_SGC.png" />](https://youtu.be/PQT2QblNegY) |
 | GCN Variants: SGC and ASGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC) | [<img src="imgs/2024_01_31_SGC_and_ASGC.png" />](https://youtu.be/ZNMV5i84fmM) |
+
+## Recommender Systems
+Videos exploring how to use graph neural networks to build recommender systems.
+
+|**Title**|**Code**|**Video**|
+| :---: | :---: | :---: |
+| Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.png" />](https://youtu.be/hVdlUyD9fic) |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
