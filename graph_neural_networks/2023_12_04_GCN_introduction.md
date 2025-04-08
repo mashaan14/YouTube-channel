@@ -175,6 +175,11 @@ class GCN(nn.Module):
         return F.log_softmax(x, dim=1)
 ```
 
+## Visualizing the GCN Architecture
+
+![GCN-002](https://github.com/user-attachments/assets/b86d92b3-8ad5-4ad6-8dbc-52a4d381c3ba)
+
+
 ## Training
 
 ```python
