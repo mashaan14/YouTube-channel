@@ -73,7 +73,7 @@ tensor([[ 5,  7],
 
 ---
 
-![swin-005](https://github.com/user-attachments/assets/ed436fe5-de69-47a3-8bc9-13f95c3b4953)
+![swin-005](https://github.com/user-attachments/assets/e1881e9b-607c-4d6f-b6f2-2e2934bb130f)
 
 ---
 
