@@ -1205,7 +1205,9 @@ x.shape after flatten:            torch.Size([128, 768])
 
 ![swin-001](https://github.com/user-attachments/assets/281395c8-0763-4a04-92cc-db19b4edd42c)
 
-![swin-002](https://github.com/user-attachments/assets/ea75d34a-8704-4819-b1d1-0bf84f99f7f1)
+---
+
+![swin-002](https://github.com/user-attachments/assets/8bb46208-187f-4159-abc8-2dd0c98e7ab8)
 
 
 ```python
