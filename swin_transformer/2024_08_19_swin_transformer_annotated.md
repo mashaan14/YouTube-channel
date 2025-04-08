@@ -23,6 +23,67 @@ I borrowed some code from [Swin Transformer github repository](https://github.co
 }
 ```
 
+## Visualizing how a SWIN transformer handles one batch of CIFAR-10 images
+
+![swin-001](https://github.com/user-attachments/assets/1eba1f25-f16d-45c5-b192-22da571fc06a)
+
+---
+Swin Transformers use patch merging at the end of each layer. Here's a simple example to show how it works.
+
+![swin-002](https://github.com/user-attachments/assets/8bb46208-187f-4159-abc8-2dd0c98e7ab8)
+
+This code demonstrates patch merging with a basic 2D array.
+```python
+x = torch.tensor([[0, 1, 2, 3,],
+                  [4, 5, 6, 7,],
+                  [8, 9, 10, 11,],
+                  [12, 13, 14, 15,]])
+print(x)
+
+x0 = x[0::2, 0::2]
+x1 = x[1::2, 0::2]
+x2 = x[0::2, 1::2]
+x3 = x[1::2, 1::2]
+print(x0)
+print(x1)
+print(x2)
+print(x3)
+```
+
+```console
+tensor([[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11],
+        [12, 13, 14, 15]])
+tensor([[ 0,  2],
+        [ 8, 10]])
+tensor([[ 4,  6],
+        [12, 14]])
+tensor([[ 1,  3],
+        [ 9, 11]])
+tensor([[ 5,  7],
+        [13, 15]])
+```
+
+![swin-003](https://github.com/user-attachments/assets/761453cc-6153-49c5-b76a-cc161d51eb0d)
+
+---
+
+![swin-004](https://github.com/user-attachments/assets/d11389f2-91a8-4fc6-b9d4-451c7154353f)
+
+---
+
+![swin-005](https://github.com/user-attachments/assets/ed436fe5-de69-47a3-8bc9-13f95c3b4953)
+
+---
+
+![swin-006](https://github.com/user-attachments/assets/415ecbdd-8bb3-4711-9a7d-209adc2c2239)
+
+---
+
+![swin-007](https://github.com/user-attachments/assets/5e9bb36e-b26f-4a06-b028-88d7d95c5280)
+
+
 ## Install dependencies and load libraries
 
 ```bash
@@ -1200,66 +1261,6 @@ x.shape after norm:               torch.Size([128, 4, 768])
 x.shape after avgpool:            torch.Size([128, 768, 1])
 x.shape after flatten:            torch.Size([128, 768])
 ```
-
-## Visualizing how a SWIN transformer handles one batch of CIFAR-10 images
-
-![swin-001](https://github.com/user-attachments/assets/281395c8-0763-4a04-92cc-db19b4edd42c)
-
----
-
-![swin-002](https://github.com/user-attachments/assets/8bb46208-187f-4159-abc8-2dd0c98e7ab8)
-
-
-```python
-x = torch.tensor([[0, 1, 2, 3,],
-                  [4, 5, 6, 7,],
-                  [8, 9, 10, 11,],
-                  [12, 13, 14, 15,]])
-print(x)
-
-x0 = x[0::2, 0::2]
-x1 = x[1::2, 0::2]
-x2 = x[0::2, 1::2]
-x3 = x[1::2, 1::2]
-print(x0)
-print(x1)
-print(x2)
-print(x3)
-```
-
-```console
-tensor([[ 0,  1,  2,  3],
-        [ 4,  5,  6,  7],
-        [ 8,  9, 10, 11],
-        [12, 13, 14, 15]])
-tensor([[ 0,  2],
-        [ 8, 10]])
-tensor([[ 4,  6],
-        [12, 14]])
-tensor([[ 1,  3],
-        [ 9, 11]])
-tensor([[ 5,  7],
-        [13, 15]])
-```
-
-![swin-003](https://github.com/user-attachments/assets/761453cc-6153-49c5-b76a-cc161d51eb0d)
-
----
-
-![swin-004](https://github.com/user-attachments/assets/d11389f2-91a8-4fc6-b9d4-451c7154353f)
-
----
-
-![swin-005](https://github.com/user-attachments/assets/ed436fe5-de69-47a3-8bc9-13f95c3b4953)
-
----
-
-![swin-006](https://github.com/user-attachments/assets/415ecbdd-8bb3-4711-9a7d-209adc2c2239)
-
----
-
-![swin-007](https://github.com/user-attachments/assets/5e9bb36e-b26f-4a06-b028-88d7d95c5280)
-
 
 ## Creating an attention mask based on a shifted window
 
