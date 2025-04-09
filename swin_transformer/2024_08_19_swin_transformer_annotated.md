@@ -65,24 +65,23 @@ tensor([[ 5,  7],
         [13, 15]])
 ```
 
-![swin-003](https://github.com/user-attachments/assets/761453cc-6153-49c5-b76a-cc161d51eb0d)
+![swin-003](https://github.com/user-attachments/assets/33725dfe-acff-4b6c-9226-87b9fa8d7181)
 
 ---
 
-![swin-004](https://github.com/user-attachments/assets/d11389f2-91a8-4fc6-b9d4-451c7154353f)
+![swin-004](https://github.com/user-attachments/assets/39a5b1ca-bf11-4056-9acf-df11a587abab)
 
 ---
 
-![swin-005](https://github.com/user-attachments/assets/e1881e9b-607c-4d6f-b6f2-2e2934bb130f)
+![swin-005](https://github.com/user-attachments/assets/d0aaccc8-504e-4ae5-8ba3-7f075093c826)
 
 ---
 
-![swin-006](https://github.com/user-attachments/assets/415ecbdd-8bb3-4711-9a7d-209adc2c2239)
+![swin-006](https://github.com/user-attachments/assets/b1c14d78-281b-4bbd-be1c-cd2e2871566f)
 
 ---
 
-![swin-007](https://github.com/user-attachments/assets/5e9bb36e-b26f-4a06-b028-88d7d95c5280)
-
+![swin-007](https://github.com/user-attachments/assets/915259a4-52c2-4de5-bc1d-605437cf0770)
 
 ## Install dependencies and load libraries
 
