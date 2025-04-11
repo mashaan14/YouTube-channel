@@ -23,11 +23,12 @@ I borrowed some code from [Swin Transformer github repository](https://github.co
 }
 ```
 
-## Visualizing how a SWIN transformer handles one batch of CIFAR-10 images
+## SWIN transformer blocks
 
-![swin-001](https://github.com/user-attachments/assets/1eba1f25-f16d-45c5-b192-22da571fc06a)
+![swin-009](https://github.com/user-attachments/assets/401884a8-331e-498d-abb1-d7493fa73c2d)
 
 ---
+
 Swin Transformers use patch merging at the end of each layer. Here's a simple example to show how it works.
 
 ![swin-002](https://github.com/user-attachments/assets/8bb46208-187f-4159-abc8-2dd0c98e7ab8)
@@ -64,6 +65,22 @@ tensor([[ 1,  3],
 tensor([[ 5,  7],
         [13, 15]])
 ```
+
+---
+
+![swin-010](https://github.com/user-attachments/assets/b3b560d0-c65a-44c5-baef-27aa076f775a)
+
+
+---
+
+![swin-011](https://github.com/user-attachments/assets/3873501e-b5ce-4400-93c6-79dacf66cca4)
+
+
+## Visualizing how a SWIN transformer handles one batch of CIFAR-10 images
+
+![swin-001](https://github.com/user-attachments/assets/1eba1f25-f16d-45c5-b192-22da571fc06a)
+
+---
 
 ![swin-003](https://github.com/user-attachments/assets/33725dfe-acff-4b6c-9226-87b9fa8d7181)
 
