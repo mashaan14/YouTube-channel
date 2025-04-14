@@ -104,7 +104,8 @@ A = np.exp(A / (2* sigma**2))
 np.fill_diagonal(A, 0)
 ```
 
-![image](https://github.com/user-attachments/assets/e0bad839-c6a9-4ad5-b9fa-a435a16044c3)
+![SC-001](https://github.com/user-attachments/assets/1e018829-aa43-4f61-b34a-07c5e1d3f219)
+
 
 ```python
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
