@@ -331,11 +331,12 @@ class VisionTransformer(nn.Module):
 
 These drawings illustrate the concept, even though I used varying values for `input_channels`, `embed_dim`, `batch_size`, `patch_size`, etc. For instance, MNIST has 1 input channel (grayscale), whereas these drawings are based on 3 input channels (RGB). The `MultiheadAttention` class was explained in this [post](https://pytorch.org/tutorials/intermediate/transformer_building_blocks.html).
 
-![pytorch-ViT-001](https://github.com/user-attachments/assets/b840abb3-5f7a-4bb0-9da3-f906ef6cd6cd)
+![pytorch-ViT-001](https://github.com/user-attachments/assets/8b68f6a4-3973-4b4e-9e7f-37e9e200bb2d)
 
 ---
 
-![pytorch-ViT-004](https://github.com/user-attachments/assets/e1e156aa-e8cd-4bdc-85f5-b1d4d6d3946b)
+![pytorch-ViT-004](https://github.com/user-attachments/assets/83f924e5-7440-457f-9371-692d444cebfe)
+
 
 ---
 
@@ -344,7 +345,7 @@ These drawings illustrate the concept, even though I used varying values for `in
 
 ---
 
-![pytorch-ViT-003](https://github.com/user-attachments/assets/14f707d4-fb84-4974-bdc5-bcea16421b05)
+![pytorch-ViT-003](https://github.com/user-attachments/assets/c2550850-2a7c-4916-ad1c-6f45e5cd9124)
 
 
 ## Initializing the model
