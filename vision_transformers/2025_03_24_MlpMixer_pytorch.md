@@ -16,6 +16,28 @@
 
 All code snippets in this blog were created by prompting Gemini in Google Colab. Thanks to the developers who made their code available.
 
+## MLP-Mixer architecture
+
+![mlp-mixer-005](https://github.com/user-attachments/assets/b8276965-d00b-48f1-847c-d65a57155a05)
+
+## Visualizing how an MLP-Mixer handles one batch of CIFAR-10 images
+
+Here's a visualization of how MLP-Mixer processes a single batch of CIFAR-10 data. The statements in these figures are in JAX, based on the original code. We will rewrite these statements in PyTorch.
+
+![mlp-mixer-001](https://github.com/user-attachments/assets/ce584113-98fc-441a-adc5-a05c6a7a1820)
+
+---
+
+![mlp-mixer-002](https://github.com/user-attachments/assets/be859d55-01ef-4497-bc7a-df7077a721f6)
+
+---
+
+![mlp-mixer-003](https://github.com/user-attachments/assets/64abbf7b-166d-4fdc-9565-ba99bc4d43e5)
+
+---
+
+![mlp-mixer-004](https://github.com/user-attachments/assets/4122b65d-1dd7-4479-b8a2-7c9ebf10183c)
+
 ## Loading CIFAR-10
 
 > **prompt:** `load cifar10 from torchvision`
