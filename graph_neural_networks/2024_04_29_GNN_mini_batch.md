@@ -33,10 +33,14 @@ I borrowed some code from [pytorch-geometric tutorials](https://pytorch-geometri
   }
 ```
 
-![image](https://github.com/user-attachments/assets/b5d09839-cd9b-42a4-bcc5-3783a4be59fa)
+Neural nets learn by seeing samples from the training set then adjusting the weights so as to make the actual output more like the desired target values. There are three ways to present samples to the neural net:
+- stochastic training
+- mini-batch training
+- batch training
 
-![image](https://github.com/user-attachments/assets/930c43e2-61c6-4041-8f2e-5fc216b622c8)
+Suppose we have a dataset of size 100 by 2:
 
+![Untitled](https://github.com/user-attachments/assets/e22fc899-53f6-4af9-b45f-79b6caad99ab)
 
 ![image](https://github.com/user-attachments/assets/eb620fd7-2275-467e-8ad6-b6e878ac707b)
 
