@@ -6,7 +6,7 @@
 ### Hi there 👋
 ### I'm Mashaan (مشعان)
 
-I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video, I also create a corresponding Jupyter notebook or Markdown file.  You can find all of these materials in this repository, organized into the following sections:
+I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video, I also create a corresponding post featuring code snippets and figures related to the topic. You can find all of these posts in this repository, organized into the following sections:
 
 * [Vision Transformers](#vision-transformers)
 * [Swin Transformer](#swin-transformer)
@@ -83,6 +83,7 @@ Videos exploring how to use graph neural networks to build recommender systems.
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
 | Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.png" />](https://youtu.be/hVdlUyD9fic) |
+| Graph Contrastive Learning: Building MovieLens-100k Recommendations | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/SimGCL_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.png" />](https://youtu.be/ENVArKM2A3I) |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
