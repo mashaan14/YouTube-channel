@@ -180,7 +180,8 @@ plt.show()
 
 ![image](https://github.com/user-attachments/assets/61ddd997-f8b0-44ab-95b5-d21f2b307ecc)
 
-![image](https://github.com/user-attachments/assets/13bb392f-ecfd-4e1f-828a-267ccc5d4000)
+![Untitled 001](https://github.com/user-attachments/assets/12d78c68-f6fa-48fa-b7ef-258bb93f8e3b)
+
 
 ## `NeighborLoader`
 
@@ -445,7 +446,8 @@ plt.show()
 
 ![image](https://github.com/user-attachments/assets/43b66f3d-7c17-49d0-8aa2-8128f1710a6f)
 
-![image](https://github.com/user-attachments/assets/2c718e56-4beb-47c5-8dc5-603c958d53c5)
+![Untitled 002](https://github.com/user-attachments/assets/de206613-6863-4f7d-9aa0-79aad39662b6)
+
 
 ## `GraphSAINTSampler`
 
