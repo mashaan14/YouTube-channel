@@ -63,7 +63,7 @@ Videos on Self-supervised learning (SSL) techniques, such as SimCLR, SwAV, iBOT,
 
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | [<img src="imgs/2024_08_19_Swin_Transformer.png" />](https://youtu.be/j2_42Yx_1_w) |
+| Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | [<img src="imgs/2025_05_12_DINOv2.png" />](https://youtu.be/j2_42Yx_1_w) |
 
 ## Neural Radiance Fields (NeRF)
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
