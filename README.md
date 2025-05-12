@@ -11,7 +11,7 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 * [Vision Transformers](#vision-transformers)
 * [Swin Transformer](#swin-transformer)
 * [Graph Neural Networks](#graph-neural-networks)
-* [Self-Supervised Learning](#self-supervised-earning)
+* [Self-Supervised Learning](#self-supervised-learning)
 * [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
 * [Detection and Tracking](#detection-and-tracking)
 * [Recommender Systems](#recommender-systems)
