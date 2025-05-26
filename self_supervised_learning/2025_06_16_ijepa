@@ -32,3 +32,78 @@ x.shape after predictor_blocks: torch.Size([512, 99, 384])
 INFO:root:[1,     0] loss: 0.468 masks: 57.0 42.0 [wd: 4.00e-02] [lr: 2.03e-04] [mem: 0.00e+00] (-1.0 ms)
 INFO:root:[1,     0] grad_stats: [2.91e-02 1.51e-02] (1.46e-02, 3.33e-02)
 ```
+
+---
+
+```console
+itr: 0
+/Users/mashaanalshammari/Downloads/ijepa/src/train.py:318: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(dtype=torch.bfloat16, enabled=use_bfloat16):
+/opt/miniconda3/envs/ijepa/lib/python3.11/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+inside forward_target
+---------------encoder start-----------------
+x.shape:  torch.Size([128, 3, 224, 224])
+x.shape:  torch.Size([128, 256, 768])
+pos_embed.shape:  torch.Size([1, 256, 768])
+x.shape after pos_embed:  torch.Size([128, 256, 768])
+x.shape after mask:  torch.Size([128, 256, 768])
+x.shape after blocks:  torch.Size([128, 256, 768])
+---------------encoder end-------------------
+inside forward_context
+---------------encoder start-----------------
+x.shape:  torch.Size([128, 3, 224, 224])
+x.shape:  torch.Size([128, 256, 768])
+pos_embed.shape:  torch.Size([1, 256, 768])
+x.shape after pos_embed:  torch.Size([128, 256, 768])
+x.shape after mask:  torch.Size([128, 87, 768])
+x.shape after blocks:  torch.Size([128, 87, 768])
+---------------encoder end-------------------
+---------------predictor start---------------
+x.shape: torch.Size([128, 87, 768])
+masks_x.shape: torch.Size([128, 87])
+masks.shape: torch.Size([128, 35])
+Batch Size: 128
+x.shape after predictor_embed: torch.Size([128, 87, 384])
+x_pos_embed.shape: torch.Size([128, 256, 384])
+x.shape after adding positional embedding: torch.Size([128, 87, 384])
+pos_embs.shape: torch.Size([512, 35, 384])
+pred_tokens.shape: torch.Size([512, 35, 384])
+x.shape after concat mask tokens: torch.Size([512, 122, 384])
+x.shape after predictor_blocks: torch.Size([512, 122, 384])
+---------------predictor end-----------------
+INFO:root:[1,     0] loss: 0.468 masks: 87.0 35.0 [wd: 4.00e-02] [lr: 2.03e-04] [mem: 0.00e+00] (-1.0 ms)
+INFO:root:[1,     0] grad_stats: [3.49e-02 1.85e-02] (1.78e-02, 3.99e-02)
+itr: 1
+inside forward_target
+---------------encoder start-----------------
+x.shape:  torch.Size([128, 3, 224, 224])
+x.shape:  torch.Size([128, 256, 768])
+pos_embed.shape:  torch.Size([1, 256, 768])
+x.shape after pos_embed:  torch.Size([128, 256, 768])
+x.shape after mask:  torch.Size([128, 256, 768])
+x.shape after blocks:  torch.Size([128, 256, 768])
+---------------encoder end-------------------
+inside forward_context
+---------------encoder start-----------------
+x.shape:  torch.Size([128, 3, 224, 224])
+x.shape:  torch.Size([128, 256, 768])
+pos_embed.shape:  torch.Size([1, 256, 768])
+x.shape after pos_embed:  torch.Size([128, 256, 768])
+x.shape after mask:  torch.Size([128, 75, 768])
+x.shape after blocks:  torch.Size([128, 75, 768])
+---------------encoder end-------------------
+---------------predictor start---------------
+x.shape: torch.Size([128, 75, 768])
+masks_x.shape: torch.Size([128, 75])
+masks.shape: torch.Size([128, 42])
+Batch Size: 128
+x.shape after predictor_embed: torch.Size([128, 75, 384])
+x_pos_embed.shape: torch.Size([128, 256, 384])
+x.shape after adding positional embedding: torch.Size([128, 75, 384])
+pos_embs.shape: torch.Size([512, 42, 384])
+pred_tokens.shape: torch.Size([512, 42, 384])
+x.shape after concat mask tokens: torch.Size([512, 117, 384])
+x.shape after predictor_blocks: torch.Size([512, 117, 384])
+---------------predictor end-----------------
+```
