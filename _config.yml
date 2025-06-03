@@ -7,3 +7,6 @@ kramdown:
   math_engine: katex
   input: GFM 
   syntax_highlighter: rouge 
+
+include:
+  - sitemap.xml
