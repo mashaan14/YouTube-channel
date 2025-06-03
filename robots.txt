@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mashaan14.github.io/YouTube-channel/sitemap.xml
