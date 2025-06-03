@@ -1,10 +1,9 @@
 title: Mashaan blog
+url: "https://mashaan14.github.io"
+baseurl: "/YouTube-channel"
 
 markdown: kramdown
 kramdown:
   math_engine: katex
   input: GFM 
   syntax_highlighter: rouge 
-
-plugins:
-  - jekyll-sitemap
