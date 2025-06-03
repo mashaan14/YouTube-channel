@@ -1,0 +1,56 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url><loc>https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_03_07_jax_conv.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_04_02_jax_CNN.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_02_05_GAT.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_18_jraph_GAT.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_13_DGL_GAT.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_06_24_neighbor_sampler.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_07_15_ClusterGCN_jax.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_10_SGD_Perceptron.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_17_three_layer_NN.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_12_09_squared_exponential.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/jax_performance/2024_11_11_tpu_test.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2024_10_14_3DGS.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2024_11_25_nerf_notes.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/nerf/2025_02_03_your_own_nerf.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/recommender_systems/LightGCN_MovieLens.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/recommender_systems/SimGCL_MovieLens.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_06_16_ijepa.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_01_15_spectral_clustering.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_02_13_SSC.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_08_19_swin_transformer_annotated.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_09_16_swin_transformer_attention.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_08_23_VisionTransformer_MNIST_query_key.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch.html</loc></url>
+  <url><loc>https://mashaan14.github.io/YouTube-channel/</loc></url>
+
+</urlset>
