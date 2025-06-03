@@ -92,8 +92,8 @@ Videos exploring how to use graph neural networks to build recommender systems.
 
 |**Title**|**Code**|**Video**|
 | :---: | :---: | :---: |
-| Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.avif" />](https://youtu.be/hVdlUyD9fic) |
-| Graph Contrastive Learning: Building MovieLens-100k Recommendations | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/SimGCL_MovieLens) | [<img src="imgs/2025_04_21_SimGCL.avif" />](https://youtu.be/ENVArKM2A3I) |
+| Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_07_LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.avif" />](https://youtu.be/hVdlUyD9fic) |
+| Graph Contrastive Learning: Building MovieLens-100k Recommendations | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_21_SimGCL_MovieLens) | [<img src="imgs/2025_04_21_SimGCL.avif" />](https://youtu.be/ENVArKM2A3I) |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
