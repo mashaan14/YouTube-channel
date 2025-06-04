@@ -173,6 +173,109 @@ Here is how the augmentations look like:
 ![image](https://github.com/user-attachments/assets/21b05ca8-4b04-4f5a-8b51-352b4dc2e4f2)
 
 
+## ViT architecture
+
+```python
+# Patch Embedding
+class PatchEmbedding(nn.Module):
+    def __init__(self, img_size, patch_size, in_channels, embed_dim):
+        super().__init__()
+        self.patch_size = patch_size
+        self.proj = nn.Conv2d(in_channels, embed_dim, kernel_size=patch_size, stride=patch_size)
+        self.num_patches = (img_size // patch_size) ** 2
+
+    def forward(self, x):
+        x = self.proj(x)  # (B, E, H/P, W/P)
+        x = x.flatten(2).transpose(1, 2)  # (B, N, E)
+        return x
+
+# Transformer Encoder Block
+class TransformerBlock(nn.Module):
+    def __init__(self, dim, heads, mlp_dim, dropout):
+        super().__init__()
+        self.norm1 = nn.LayerNorm(dim)
+        self.attn = nn.MultiheadAttention(dim, heads, dropout=dropout, batch_first=True)
+        self.norm2 = nn.LayerNorm(dim)
+        self.mlp = nn.Sequential(
+            nn.Linear(dim, mlp_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(mlp_dim, dim),
+            nn.Dropout(dropout)
+        )
+
+    def forward(self, x):
+        x = x + self.attn(self.norm1(x), self.norm1(x), self.norm1(x))[0]
+        x = x + self.mlp(self.norm2(x))
+        return x
+
+# ViT Model
+class ViT(nn.Module):
+    def __init__(self, img_size, patch_size, in_channels, embed_dim,
+                 depth, num_heads, mlp_dim, dropout, head_mlp_dim, head_dim):
+        super().__init__()
+        self.patch_embed = PatchEmbedding(img_size, patch_size, in_channels, embed_dim)
+        self.cls_token = nn.Parameter(torch.randn(1, 1, embed_dim))
+        self.pos_embed = nn.Parameter(torch.randn(1, self.patch_embed.num_patches + 1, embed_dim))
+        self.dropout = nn.Dropout(config.DROPOUT)
+
+        self.blocks = nn.Sequential(*[
+            TransformerBlock(embed_dim, num_heads, mlp_dim, dropout)
+            for _ in range(depth)
+        ])
+        self.norm = nn.LayerNorm(embed_dim)
+        self.head = nn.Sequential(
+            nn.Linear(embed_dim, head_mlp_dim),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(head_mlp_dim, head_mlp_dim),
+            nn.Dropout(dropout),
+            nn.Linear(head_mlp_dim, head_dim)
+        )
+
+    def forward(self, x):
+        B = x.size(0)
+        x = self.patch_embed(x)
+        cls_tokens = self.cls_token.expand(B, -1, -1)  # (B, 1, D)
+        x = torch.cat((cls_tokens, x), dim=1)
+        x = x + self.pos_embed
+        x = self.dropout(x)
+
+        x = self.blocks(x)
+        x = self.norm(x)
+        return self.head(x)
+```
+
+## ViT initialization
+
+```python
+model_student = ViT(
+    img_size =      Config['IMG_SIZE'],
+    patch_size =    Config['PATCH_SIZE'],
+    in_channels =   Config['IN_CHANNELS'],
+    embed_dim =     Config['EMBED_DIM'],
+    depth =         Config['DEPTH'],
+    num_heads =     Config['NUM_HEADS'],
+    mlp_dim =       Config['MLP_DIM'],
+    dropout =       Config['DROPOUT'],
+    head_mlp_dim =  Config['HEAD_MLP_DIM'],
+    head_dim =      Config['HEAD_DIM']
+).to(config.DEVICE)
+
+model_teacher = ViT(
+    img_size =      Config['IMG_SIZE'],
+    patch_size =    Config['PATCH_SIZE'],
+    in_channels =   Config['IN_CHANNELS'],
+    embed_dim =     Config['EMBED_DIM'],
+    depth =         Config['DEPTH'],
+    num_heads =     Config['NUM_HEADS'],
+    mlp_dim =       Config['MLP_DIM'],
+    dropout =       Config['DROPOUT'],
+    head_mlp_dim =  Config['HEAD_MLP_DIM'],
+    head_dim =      Config['HEAD_DIM']
+).to(config.DEVICE)
+```
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
