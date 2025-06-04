@@ -250,29 +250,29 @@ class ViT(nn.Module):
 
 ```python
 model_student = ViT(
-    img_size =      Config['IMG_SIZE'],
-    patch_size =    Config['PATCH_SIZE'],
-    in_channels =   Config['IN_CHANNELS'],
-    embed_dim =     Config['EMBED_DIM'],
-    depth =         Config['DEPTH'],
-    num_heads =     Config['NUM_HEADS'],
-    mlp_dim =       Config['MLP_DIM'],
-    dropout =       Config['DROPOUT'],
-    head_mlp_dim =  Config['HEAD_MLP_DIM'],
-    head_dim =      Config['HEAD_DIM']
+    img_size     = Config['IMG_SIZE'],
+    patch_size   = Config['PATCH_SIZE'],
+    in_channels  = Config['IN_CHANNELS'],
+    embed_dim    = Config['EMBED_DIM'],
+    depth        = Config['DEPTH'],
+    num_heads    = Config['NUM_HEADS'],
+    mlp_dim      = Config['MLP_DIM'],
+    dropout      = Config['DROPOUT'],
+    head_mlp_dim = Config['HEAD_MLP_DIM'],
+    head_dim     = Config['HEAD_DIM']
 ).to(config.DEVICE)
 
 model_teacher = ViT(
-    img_size =      Config['IMG_SIZE'],
-    patch_size =    Config['PATCH_SIZE'],
-    in_channels =   Config['IN_CHANNELS'],
-    embed_dim =     Config['EMBED_DIM'],
-    depth =         Config['DEPTH'],
-    num_heads =     Config['NUM_HEADS'],
-    mlp_dim =       Config['MLP_DIM'],
-    dropout =       Config['DROPOUT'],
-    head_mlp_dim =  Config['HEAD_MLP_DIM'],
-    head_dim =      Config['HEAD_DIM']
+    img_size     = Config['IMG_SIZE'],
+    patch_size   = Config['PATCH_SIZE'],
+    in_channels  = Config['IN_CHANNELS'],
+    embed_dim    = Config['EMBED_DIM'],
+    depth        = Config['DEPTH'],
+    num_heads    = Config['NUM_HEADS'],
+    mlp_dim      = Config['MLP_DIM'],
+    dropout      = Config['DROPOUT'],
+    head_mlp_dim = Config['HEAD_MLP_DIM'],
+    head_dim     = Config['HEAD_DIM']
 ).to(config.DEVICE)
 ```
 
