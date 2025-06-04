@@ -11,10 +11,10 @@
 </div>
 
 
-## Acknowledgment:
+## Acknowledgment
 Thanks to the authors for making their code available. I borrowed some code from [DINOv2](https://github.com/facebookresearch/dinov2) and [I-JEPA](https://github.com/facebookresearch/ijepa/tree/main) repositories.
 
-## References:
+## References
 
 ```bibtex
 @Article{chen2020simsiam,
@@ -42,6 +42,8 @@ Thanks to the authors for making their code available. I borrowed some code from
   year      = {2022}
 }
 ```
+
+## Importing and augmenting CIFAR-10
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
