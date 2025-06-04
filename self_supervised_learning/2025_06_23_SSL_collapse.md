@@ -276,6 +276,161 @@ model_teacher = ViT(
 ).to(config.DEVICE)
 ```
 
+## Training loop with SGD enabled for the teacher network
+
+```python
+optimizer_student = torch.optim.AdamW(model_student.parameters(), lr=config.LR)
+optimizer_teacher = torch.optim.AdamW(model_teacher.parameters(), lr=config.LR)
+
+total_loss_plot = []
+
+for epoch in range(config.EPOCHS):
+  model_student.train()
+  model_teacher.train()
+  total_loss = 0
+  batch_idx = 1
+  for (data_student, data_teacher) in zip(trainloader_student, trainloader_teacher):
+    inputs_student, _ = data_student
+    inputs_teacher, _ = data_teacher
+    inputs_student, inputs_teacher = inputs_student.to(config.DEVICE), inputs_teacher.to(config.DEVICE)
+    
+    optimizer_student.zero_grad()
+    optimizer_teacher.zero_grad()
+    outputs_student = model_student(inputs_student)
+    outputs_student = outputs_student[:, 1:, :] # pulling all tokens except the cls_token
+    outputs_student = F.log_softmax(outputs_student, dim=-1)
+      
+    outputs_teacher = model_teacher(inputs_teacher)
+    outputs_teacher = outputs_teacher[:, 1:, :] # pulling all tokens except the cls_token
+    outputs_teacher = F.softmax(outputs_teacher, dim=-1)      
+    
+    loss_pointwise = -1 * torch.sum(outputs_teacher * outputs_student, dim=-1)
+    loss = loss_pointwise.mean()
+    total_loss += loss.item()
+
+    loss.backward()                             # SGD for student and teacher
+    optimizer_student.step()
+    optimizer_teacher.step()
+
+    print(f"Epoch [{epoch+1}/{config.EPOCHS}] Batch [{batch_idx}/{len(trainloader_student)}] Loss: {loss.item():.8f}")
+    batch_idx += 1
+
+
+  total_loss_plot.append(total_loss/len(trainloader_student))
+  print(f"Epoch [{epoch+1}/{config.EPOCHS}], Loss: {total_loss/len(trainloader_student):.8f}")
+```
+
+**COLLAPSE!!**
+
+Here is the loss after using SGD to update both the student and teacher networks:
+
+![drawings-01 001](https://github.com/user-attachments/assets/b74a97c6-d207-4962-b411-c46b4cbbb56b)
+
+## Training loop with SGD stopped for the teacher network
+
+```python
+optimizer_student = torch.optim.AdamW(model_student.parameters(), lr=config.LR)
+optimizer_teacher = torch.optim.AdamW(model_teacher.parameters(), lr=config.LR)
+
+total_loss_plot = []
+
+for epoch in range(config.EPOCHS):
+  model_student.train()
+  model_teacher.train()
+  total_loss = 0
+  batch_idx = 1
+  for (data_student, data_teacher) in zip(trainloader_student, trainloader_teacher):
+    inputs_student, _ = data_student
+    inputs_teacher, _ = data_teacher
+    inputs_student, inputs_teacher = inputs_student.to(config.DEVICE), inputs_teacher.to(config.DEVICE)
+    
+    optimizer_student.zero_grad()
+    # optimizer_teacher.zero_grad()
+    outputs_student = model_student(inputs_student)
+    outputs_student = outputs_student[:, 1:, :]     # pulling all tokens except the cls_token
+    outputs_student = F.log_softmax(outputs_student, dim=-1)
+      
+    with torch.no_grad():
+        outputs_teacher = model_teacher(inputs_teacher)
+        outputs_teacher = outputs_teacher[:, 1:, :] # pulling all tokens except the cls_token
+        outputs_teacher = F.softmax(outputs_teacher, dim=-1)    
+    
+    loss_pointwise = -1 * torch.sum(outputs_teacher * outputs_student, dim=-1)
+    loss = loss_pointwise.mean()
+    total_loss += loss.item()
+
+    loss.backward()                             # SGD for student and teacher
+    optimizer_student.step()
+    # optimizer_teacher.step()
+
+    print(f"Epoch [{epoch+1}/{config.EPOCHS}] Batch [{batch_idx}/{len(trainloader_student)}] Loss: {loss.item():.8f}")
+    batch_idx += 1
+
+
+  total_loss_plot.append(total_loss/len(trainloader_student))
+  print(f"Epoch [{epoch+1}/{config.EPOCHS}], Loss: {total_loss/len(trainloader_student):.8f}")
+```
+
+Here is the loss after stopping SGD updates on the teacher network. The loss didn't collapse to zero but stopped improving because the teacher parameters were not changing.
+
+![drawings-01 002](https://github.com/user-attachments/assets/808de15f-9b35-466e-b3f7-ecc41d723631)
+
+## Training loop with student parameters copied over to the teacher network
+
+```python
+optimizer_student = torch.optim.AdamW(model_student.parameters(), lr=config.LR)
+optimizer_teacher = torch.optim.AdamW(model_teacher.parameters(), lr=config.LR)
+
+total_loss_plot = []
+
+for epoch in range(config.EPOCHS):
+  model_student.train()
+  model_teacher.train()
+  total_loss = 0
+  batch_idx = 1
+  for (data_student, data_teacher) in zip(trainloader_student, trainloader_teacher):
+    inputs_student, _ = data_student
+    inputs_teacher, _ = data_teacher
+    inputs_student, inputs_teacher = inputs_student.to(config.DEVICE), inputs_teacher.to(config.DEVICE)
+    
+    optimizer_student.zero_grad()
+    # optimizer_teacher.zero_grad()
+    outputs_student = model_student(inputs_student)
+    outputs_student = outputs_student[:, 1:, :]     # pulling all tokens except the cls_token
+    outputs_student = F.log_softmax(outputs_student, dim=-1)
+      
+    with torch.no_grad():
+        outputs_teacher = model_teacher(inputs_teacher)
+        outputs_teacher = outputs_teacher[:, 1:, :] # pulling all tokens except the cls_token
+        outputs_teacher = F.softmax(outputs_teacher, dim=-1)    
+    
+    loss_pointwise = -1 * torch.sum(outputs_teacher * outputs_student, dim=-1)
+    loss = loss_pointwise.mean()
+    total_loss += loss.item()
+
+    loss.backward()                             # SGD for student and teacher
+    optimizer_student.step()
+    # optimizer_teacher.step()
+
+    print(f"Epoch [{epoch+1}/{config.EPOCHS}] Batch [{batch_idx}/{len(trainloader_student)}] Loss: {loss.item():.8f}")
+    batch_idx += 1
+
+
+  state_dict_student = model_student.state_dict()
+  state_dict_teacher = model_teacher.state_dict()
+  for name in state_dict_teacher:
+    state_dict_teacher[name].copy_(state_dict_student[name])
+
+  model_teacher.load_state_dict(state_dict_teacher)
+
+  total_loss_plot.append(total_loss/len(trainloader_student))
+  print(f"Epoch [{epoch+1}/{config.EPOCHS}], Loss: {total_loss/len(trainloader_student):.8f}")
+```
+
+Here is the loss after copying the student parameters to teacher network after each epoch. The loss is heading to the right direction. The DINO practice here is not to copy the parameters over, instead the new teacher parameters are the result of adding ($\lambda$ * teacher parameters) and ($1 - \lambda$ * student parameters). $\lambda$ goes from 0.996 to 1 according to a cosine scheduler.
+
+![drawings-01 003](https://github.com/user-attachments/assets/f6a27b7d-2ac8-42ea-8de3-cf1f2035dbac)
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
