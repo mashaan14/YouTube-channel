@@ -436,6 +436,72 @@ Here is the loss after copying the student parameters to teacher network after e
 
 ![drawings-01 003](https://github.com/user-attachments/assets/f6a27b7d-2ac8-42ea-8de3-cf1f2035dbac)
 
+## Applying SVD to analyze MLP projection dimensions
+Here I attempted to create a figure like figure 2 in DirectCLR paper. Unfortunately, I was not successful. I did not get the same drop they had in the paper. This might be because they were using contrastive learning with negative pairs, and I was not using negative pairs.
+
+Here is figure 2 from DirectCLR paper:
+
+![drawings-01 013](https://github.com/user-attachments/assets/cbb7d81a-2156-479b-9f62-6a45bb4ac612)
+> source: Jing et al. (2021)
+
+Here is what I've done:
+
+![drawings-02 002](https://github.com/user-attachments/assets/5aa5ad08-40da-47d5-8813-bb3fe06122e2)
+
+```python
+# inside the training loop
+with torch.no_grad():
+  for (data_student, data_teacher) in zip(testloader_student, testloader_teacher):
+    inputs_student, _ = data_student
+    inputs_teacher, _ = data_teacher
+    inputs_student, inputs_teacher = inputs_student.to(config.DEVICE), inputs_teacher.to(config.DEVICE)
+
+    optimizer_student.zero_grad()
+    optimizer_teacher.zero_grad()
+    outputs_student = model_student(inputs_student)
+    outputs_student = outputs_student[:, 1:, :]
+    outputs_teacher = model_teacher(inputs_teacher)
+    outputs_teacher = outputs_teacher[:, 1:, :]
+    all_outputs_student.append(outputs_student.flatten(start_dim=0, end_dim=1).detach().cpu())
+    all_outputs_teacher.append(outputs_teacher.flatten(start_dim=0, end_dim=1).detach().cpu())
+
+
+# Concatenate all outputs and save as NumPy array
+all_outputs_student_np = torch.cat(all_outputs_student).numpy()
+all_outputs_teacher_np = torch.cat(all_outputs_teacher).numpy()
+
+X_centered = all_outputs_student_np - np.mean(all_outputs_student_np, axis=0)
+cov_matrix = np.cov(X_centered, rowvar=False)
+_, S_student, _ = np.linalg.svd(cov_matrix)
+
+X_centered = all_outputs_teacher_np - np.mean(all_outputs_teacher_np, axis=0)
+cov_matrix = np.cov(X_centered, rowvar=False)
+_, S_teacher, _ = np.linalg.svd(cov_matrix)
+
+fig, axes = plt.subplots(1, 2, figsize=(16, 8))
+axes[0].plot(np.log(S_student), marker='o', linewidth=3)
+axes[0].set_title('Student')
+axes[0].set_ylabel('Log of Singular Value')
+axes[1].plot(np.log(S_teacher), marker='o', linewidth=3)
+axes[1].set_title('Teacher')
+axes[1].set_xlabel('Singular Value Index')
+axes[1].set_ylabel('Log of Singular Value')
+```
+
+But unfortunately, for all three cases above, I got a similar singular values plot.
+
+**Teacher SGD on**:
+
+![drawings-01 004](https://github.com/user-attachments/assets/15c8a1ef-8e90-4296-b280-e8902a5dec5c)
+
+**Teacher SGD on**:
+
+![drawings-01 005](https://github.com/user-attachments/assets/9b594bc0-5030-4b20-904d-23304f724610)
+
+**Student parameters copied to the teacher**:
+
+![drawings-01 006](https://github.com/user-attachments/assets/a134926c-d440-4439-bdd7-d2fed9c8d8ba)
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
