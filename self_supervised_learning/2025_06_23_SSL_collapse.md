@@ -246,6 +246,11 @@ class ViT(nn.Module):
         return self.head(x)
 ```
 
+## Visualizing tensor shapes
+
+![drawings-02 001](https://github.com/user-attachments/assets/6d1a0679-357c-4c1c-9433-7cc7b325bf9b)
+
+
 ## ViT initialization
 
 ```python
