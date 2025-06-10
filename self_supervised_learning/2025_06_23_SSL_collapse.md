@@ -494,7 +494,7 @@ But unfortunately, for all three cases above, I got a similar singular values pl
 
 ![drawings-01 004](https://github.com/user-attachments/assets/15c8a1ef-8e90-4296-b280-e8902a5dec5c)
 
-**Teacher SGD on**:
+**Teacher SGD off**:
 
 ![drawings-01 005](https://github.com/user-attachments/assets/9b594bc0-5030-4b20-904d-23304f724610)
 
