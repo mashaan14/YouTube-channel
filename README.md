@@ -44,19 +44,19 @@ Swin transformer code analysis and attention visualization.
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
   
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.avif" />](https://youtu.be/G6c6zk0RhRM) |
-| Graph Sampling for GNNs: A Tutorial | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling) | [<img src="imgs/2024_05_27_GNN_sampling.avif" />](https://youtu.be/y0poBC8xN1k) |
-| Understanding Mini-Batch Training in PyTorch Geometric | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch) | [<img src="imgs/2024_04_29_GNN_mini_batch.avif" />](https://youtu.be/ZfCtFLS_os0) |
-| Graph Attention Networks with PyTorch Geometric | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_02_05_GAT) | [<img src="imgs/2024_02_05_GAT.avif" />](https://youtu.be/AWkPjrZshug) |
-| Graph Attention Networks with DGL | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_13_DGL_GAT) | [<img src="imgs/2024_05_13_DGL_GAT.avif" />](https://youtu.be/-V-T7koEWig) |
-| Graph Attention Networks with JAX | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_18_jraph_GAT) | [<img src="imgs/2024_03_18_jraph_GAT.avif" />](https://youtu.be/O1zGWMEgW7A) |
-| Implementing GNN Neighbor Sampler in JAX: A Practical Guide | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_06_24_neighbor_sampler) | [<img src="imgs/2024_06_24_neighbor_sampler.avif" />](https://youtu.be/YQwUlmUkJuI) |
-| Building a Cluster-GCN Model with JAX: A Step-by-Step Guide | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_07_15_ClusterGCN_jax) | [<img src="imgs/2024_07_15_Cluster_GCN_sampler.avif" />](https://youtu.be/8mknbxIIf94) |
-| Training GCNs with PyG and Jraph: A Side-by-Side Comparison | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | [<img src="imgs/2024_02_20_jraph.avif" />](https://youtu.be/W-JDqd5AFio) |
-| PyTorch code for GCN and SGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | [<img src="imgs/2023_12_13_GCN_and_SGC.avif" />](https://youtu.be/PQT2QblNegY) |
-| GCN Variants: SGC and ASGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC) | [<img src="imgs/2024_01_31_SGC_and_ASGC.avif" />](https://youtu.be/ZNMV5i84fmM) |
+| Video | Code | Title |
+|:---:|:---:|:---|
+| [<img src="imgs/2023_12_04_GCN_introduction.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/G6c6zk0RhRM) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | Graph Convolutional Networks (GCNs) in PyTorch |
+| [<img src="imgs/2024_05_27_GNN_sampling.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/y0poBC8xN1k) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling) | Graph Sampling for GNNs: A Tutorial |
+| [<img src="imgs/2024_04_29_GNN_mini_batch.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/ZfCtFLS_os0) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch) | Understanding Mini-Batch Training in PyTorch Geometric |
+| [<img src="imgs/2024_02_05_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/AWkPjrZshug) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_02_05_GAT) | Graph Attention Networks with PyTorch Geometric |
+| [<img src="imgs/2024_05_13_DGL_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/-V-T7koEWig) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_13_DGL_GAT) | Graph Attention Networks with DGL |
+| [<img src="imgs/2024_03_18_jraph_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/O1zGWMEgW7A) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_18_jraph_GAT) | Graph Attention Networks with JAX |
+| [<img src="imgs/2024_06_24_neighbor_sampler.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/YQwUlmUkJuI) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_06_24_neighbor_sampler) | Implementing GNN Neighbor Sampler in JAX: A Practical Guide |
+| [<img src="imgs/2024_07_15_Cluster_GCN_sampler.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/8mknbxIIf94) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_07_15_ClusterGCN_jax) | Building a Cluster-GCN Model with JAX: A Step-by-Step Guide |
+| [<img src="imgs/2024_02_20_jraph.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/W-JDqd5AFio) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | Training GCNs with PyG and Jraph: A Side-by-Side Comparison |
+| [<img src="imgs/2023_12_13_GCN_and_SGC.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/PQT2QblNegY) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | PyTorch code for GCN and SGC |
+| [<img src="imgs/2024_01_31_SGC_and_ASGC.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/ZNMV5i84fmM) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC) | GCN Variants: SGC and ASGC |
 
 
 ## Self-Supervised Learning
