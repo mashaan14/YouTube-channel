@@ -23,25 +23,66 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
 
-| Video | Code | Title |
-|:---:|:---:|:---|
-| [<img src="imgs/2024_03_28_jax_ViT.avif" width="640" />](https://youtu.be/LDwA31hARrA) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | Vision Transformers (ViT): A JAX Tutorial for Image Classification |
-| [<img src="imgs/2025_03_17_MLP_mixer.avif" width="640" />](https://youtu.be/90Zqonk6UqI) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer) | Getting to Know MLP-Mixer: A CIFAR-10 Run |
-| [<img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" width="640" />](https://youtu.be/y1ZmMcMYjkY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | Vision Transformers (ViT) PyTorch Code |
-| [<img src="imgs/2025_02_17_vit_finetune.avif" width="640" />](https://youtu.be/RjG6_FP_DgU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) |
-| [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" width="640" />](https://youtu.be/AvORgJ2wVhU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | MLP-Mixer in PyTorch: Google Gemini's Code Generation |
-| [<img src="imgs/2024_01_08_CNN_and_ViT.avif" width="640" />](https://youtu.be/uggBVJebdcY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | ViT vs CNN: A Comparative Experiment |
-
+<table style="text-align: center; width: 100%; border-collapse: collapse;">
+  <tr>
+    <th style="width: 50%;">Video</th>
+    <th style="width: 10%;">Code</th>
+    <th style="width: 40%;">Title</th>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/LDwA31hARrA"><img src="imgs/2024_03_28_jax_ViT.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT">code</a></td>
+    <td>Vision Transformers (ViT): A JAX Tutorial for Image Classification</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/90Zqonk6UqI"><img src="imgs/2025_03_17_MLP_mixer.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer">code</a></td>
+    <td>Getting to Know MLP-Mixer: A CIFAR-10 Run</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/y1ZmMcMYjkY"><img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST">code</a></td>
+    <td>Vision Transformers (ViT) PyTorch Code</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/RjG6_FP_DgU"><img src="imgs/2025_02_17_vit_finetune.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune">code</a></td>
+    <td>Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10)</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/AvORgJ2wVhU"><img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch">code</a></td>
+    <td>MLP-Mixer in PyTorch: Google Gemini's Code Generation</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/uggBVJebdcY"><img src="imgs/2024_01_08_CNN_and_ViT.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT">code</a></td>
+    <td>ViT vs CNN: A Comparative Experiment</td>
+  </tr>
+</table>
 
 
 
 ## Swin Transformer
 Swin transformer code analysis and attention visualization.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Analyzing Swin Transformer: A Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_08_19_swin_transformer_annotated) | [<img src="imgs/2024_08_19_Swin_Transformer.avif" width="360" height="202" />](https://youtu.be/LspWysWparE) |
-| A Deep Dive into Swin Transformer Attention Maps | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_09_16_swin_transformer_attention) | [<img src="imgs/2024_09_16_Swin_Transformer_Attention.avif" width="360" height="202" />](https://youtu.be/mtCTIGgzfbc) |
+<table style="text-align: center; width: 100%; border-collapse: collapse;">
+  <tr>
+    <th style="width: 50%;">Video</th>
+    <th style="width: 10%;">Code</th>
+    <th style="width: 40%;">Title</th>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/LspWysWparE"><img src="imgs/2024_08_19_Swin_Transformer.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_08_19_swin_transformer_annotated">code</a></td>
+    <td>Analyzing Swin Transformer: A Code Walkthrough</td>
+  </tr>
+  <tr>
+    <td><a href="https://youtu.be/mtCTIGgzfbc"><img src="imgs/2024_09_16_Swin_Transformer_Attention.avif" style="width: 100%; object-fit: contain;" /></a></td>
+    <td><a href="https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_09_16_swin_transformer_attention">code</a></td>
+    <td>A Deep Dive into Swin Transformer Attention Maps</td>
+  </tr>
+</table>
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
