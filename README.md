@@ -62,72 +62,70 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 ## Self-Supervised Learning
 Videos on Self-supervised learning (SSL) techniques, such as SimCLR, SwAV, iBOT, and DINOv2.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | [<img src="imgs/2025_05_12_DINOv2.avif" />](https://youtu.be/j2_42Yx_1_w) |
-| Self-Supervised Learning Review: From SimCLR to DINOv2 | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL) | [<img src="imgs/2025_05_19_SSL.avif" />](https://youtu.be/7NE0NH-PfkA) |
-
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2025_05_12_DINOv2.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/j2_42Yx_1_w) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment |
+| [<img src="imgs/2025_05_19_SSL.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/7NE0NH-PfkA) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL) | Self-Supervised Learning Review: From SimCLR to DINOv2 |
 
 ## Neural Radiance Fields (NeRF)
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.avif" />](https://youtu.be/6RNE155c7iA) |
-| Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360) | [<img src="imgs/2025_01_25_MipNerf360.avif" />](https://youtu.be/5aQpIiNohDA) |
-| Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.avif" />](https://youtu.be/cgTYkjKL1b0) |
-| Structure from Motion (SfM): From COLMAP to VGGSfM | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm) | [<img src="imgs/2025_01_20_SfM.avif" />](https://youtu.be/diBxFGgqAT0) |
-| How NeRF Works: Exploring a Tiny NeRF Code | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_11_25_nerf_notes) | [<img src="imgs/2024_11_25_NeRF.avif" />](https://youtu.be/kszswpg7sjs) |
-| 3D Gaussian Splatting: Optimization Explained & Viewer Demo | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_10_14_3DGS) | [<img src="imgs/2024_10_14_3DGS.avif" />](https://youtu.be/hGToeFGX-2M) |
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2025_02_03_your_own_NeRF.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/6RNE155c7iA) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_02_03_your_own_nerf) | VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction |
+| [<img src="imgs/2025_01_25_MipNerf360.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/5aQpIiNohDA) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360) | Exploring Mip-NeRF 360: A Quick TPU Experiment |
+| [<img src="imgs/2025_01_13_LightningAI_NerfStudio.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/cgTYkjKL1b0) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai) | Nerfstudio on Lightning AI (GPU Installation Tutorial) |
+| [<img src="imgs/2025_01_20_SfM.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/diBxFGgqAT0) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_25_sfm) | Structure from Motion (SfM): From COLMAP to VGGSfM |
+| [<img src="imgs/2024_11_25_NeRF.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/kszswpg7sjs) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_11_25_nerf_notes) | How NeRF Works: Exploring a Tiny NeRF Code |
+| [<img src="imgs/2024_10_14_3DGS.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/hGToeFGX-2M) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2024_10_14_3DGS) | 3D Gaussian Splatting: Optimization Explained & Viewer Demo |
 
 ## Detection and Tracking
 Computer vision experiments exploring object detection and point tracking.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Hands-On with TAPIR: Point Tracking Experiment & Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR) | [<img src="imgs/2025_03_03_TAPIR.avif" />](https://youtu.be/U7jH_BiwVOU) |
-| Experimenting Object Detection with DETR | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | [<img src="imgs/2024_01_22_DETR.avif" />](https://youtu.be/Z3fXiV4Cmz4) |
-
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2025_03_03_TAPIR.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/U7jH_BiwVOU) | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR) | Hands-On with TAPIR: Point Tracking Experiment & Code Walkthrough |
+| [<img src="imgs/2024_01_22_DETR.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/Z3fXiV4Cmz4) | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | Experimenting Object Detection with DETR |
 
 ## Recommender Systems
 Videos exploring how to use graph neural networks to build recommender systems.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_07_LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.avif" />](https://youtu.be/hVdlUyD9fic) |
-| Graph Contrastive Learning: Building MovieLens-100k Recommendations | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_21_SimGCL_MovieLens) | [<img src="imgs/2025_04_21_SimGCL.avif" />](https://youtu.be/ENVArKM2A3I) |
+| Video | Code | Title |
+|:---:|:---:|---|
+| [<img src="imgs/2025_04_07_LightGCN.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/hVdlUyD9fic) | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_07_LightGCN_MovieLens) | Exploring LightGCN: A Movie Recommendations Experiment |
+| [<img src="imgs/2025_04_21_SimGCL.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/ENVArKM2A3I) | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_21_SimGCL_MovieLens) | Graph Contrastive Learning: Building MovieLens-100k Recommendations |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_11_11_tpu_test) | [<img src="imgs/2024_11_11_tpu_test.avif" />](https://youtu.be/PwYHoiB4Fag) |
-| JAX JIT Compilation Explained: From Python to JAXPR | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test) | [<img src="imgs/2024_04_14_jax_speed_test.avif" />](https://youtu.be/1SQFVYVSuyE) |
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2024_11_11_tpu_test.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/PwYHoiB4Fag) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_11_11_tpu_test) | Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud |
+| [<img src="imgs/2024_04_14_jax_speed_test.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/1SQFVYVSuyE) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test) | JAX JIT Compilation Explained: From Python to JAXPR |
 
 ## Convolutional Neural Nets
 Convolutional Neural Nets implemented in PyTorch and JAX.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| PyTorch Conv2d Explained | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d) | [<img src="imgs/2024_01_29_Conv2d.avif" />](https://youtu.be/j19Wdlu7Rtg) |
-| JAX Conv Layer Explained | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_03_07_jax_conv) | [<img src="imgs/2024_03_07_jax_conv.avif" />](https://youtu.be/rn-RsD7IpIg) |
-| CNNs with Flax: A JAX Tutorial for Image Classification | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_04_02_jax_CNN) | [<img src="imgs/2024_04_02_jax_CNN.avif" />](https://youtu.be/Q0vvh95wes8) |
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2024_01_29_Conv2d.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/j19Wdlu7Rtg) | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d) | PyTorch Conv2d Explained |
+| [<img src="imgs/2024_03_07_jax_conv.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/rn-RsD7IpIg) | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_03_07_jax_conv) | JAX Conv Layer Explained |
+| [<img src="imgs/2024_04_02_jax_CNN.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/Q0vvh95wes8) | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_04_02_jax_CNN) | CNNs with Flax: A JAX Tutorial for Image Classification |
 
 ## Spectral Clustering
 Code walkthroughs for spectral clustering and sparse subspace clustering.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| A Step-by-Step Guide to Spectral Clustering | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_01_15_spectral_clustering) | [<img src="imgs/2024_01_15_spectral_clustering.avif" />](https://youtu.be/k7M1TMYac-Y) |
-| Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_02_13_SSC) | [<img src="imgs/2024_02_13_SSC.avif" />](https://youtu.be/xUmO_S7lLG8) |
+| Video | Code | Title |
+| :---: | :---: | :--- |
+| [<img src="imgs/2024_01_15_spectral_clustering.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/k7M1TMYac-Y) | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_01_15_spectral_clustering) | A Step-by-Step Guide to Spectral Clustering |
+| [<img src="imgs/2024_02_13_SSC.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/xUmO_S7lLG8) | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_02_13_SSC) | Exploring Sparse Subspace Clustering: Theory and Practice |
 
 ## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
 
-| Title | Code | Video |
-| :--- | :---: | :---: |
-| JAX and Flax: A Simple Neural Network | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN) | [<img src="imgs/2024_02_28_jax_three_layer_NN.avif" />](https://youtu.be/GNLOa4riys8) |
-| Simple Neural Net in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_17_three_layer_NN) | [<img src="imgs/2023_12_17_three_layer_NN.avif" />](https://youtu.be/SQfTaOR8ApQ) |
-| RBF: The Most Liked Formula in Machine Learning | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_12_09_squared_exponential) | [<img src="imgs/2024_12_09_squared_exponential.avif" />](https://youtu.be/H4S3QAoMEEo) |
-| The Perceptron: A Building Block of Neural Networks | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_10_SGD_Perceptron) | [<img src="imgs/2023_12_10_SGD_Perceptron.avif" />](https://youtu.be/RjJH_r5CXBU) |
+| Video | Code | Title |
+| :---: | :--- | :--- |
+| [<img src="imgs/2024_02_28_jax_three_layer_NN.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/GNLOa4riys8) | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN) | JAX and Flax: A Simple Neural Network |
+| [<img src="imgs/2023_12_17_three_layer_NN.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/SQfTaOR8ApQ) | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_17_three_layer_NN) | Simple Neural Net in PyTorch |
+| [<img src="imgs/2024_12_09_squared_exponential.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/H4S3QAoMEEo) | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_12_09_squared_exponential) | RBF: The Most Liked Formula in Machine Learning |
+| [<img src="imgs/2023_12_10_SGD_Perceptron.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/RjJH_r5CXBU) | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_10_SGD_Perceptron) | The Perceptron: A Building Block of Neural Networks |
