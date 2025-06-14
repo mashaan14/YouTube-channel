@@ -25,12 +25,12 @@ Vision Transformers implemented in PyTorch and JAX.
 
 | Video | Code | Title |
 |:---:|:---:|:---|
-| [<img src="imgs/2024_03_28_jax_ViT.avif" width="640" height="360" />](https://youtu.be/LDwA31hARrA) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | Vision Transformers (ViT): A JAX Tutorial for Image Classification |
-| [<img src="imgs/2025_03_17_MLP_mixer.avif" width="640" height="360" />](https://youtu.be/90Zqonk6UqI) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer) | Getting to Know MLP-Mixer: A CIFAR-10 Run |
-| [<img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" width="640" height="360" />](https://youtu.be/y1ZmMcMYjkY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | Vision Transformers (ViT) PyTorch Code |
-| [<img src="imgs/2025_02_17_vit_finetune.avif" width="640" height="360" />](https://youtu.be/RjG6_FP_DgU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) |
-| [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" width="640" height="360" />](https://youtu.be/AvORgJ2wVhU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | MLP-Mixer in PyTorch: Google Gemini's Code Generation |
-| [<img src="imgs/2024_01_08_CNN_and_ViT.avif" width="640" height="360" />](https://youtu.be/uggBVJebdcY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | ViT vs CNN: A Comparative Experiment |
+| [<img src="imgs/2024_03_28_jax_ViT.avif" width="640" />](https://youtu.be/LDwA31hARrA) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | Vision Transformers (ViT): A JAX Tutorial for Image Classification |
+| [<img src="imgs/2025_03_17_MLP_mixer.avif" width="640" />](https://youtu.be/90Zqonk6UqI) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer) | Getting to Know MLP-Mixer: A CIFAR-10 Run |
+| [<img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" width="640" />](https://youtu.be/y1ZmMcMYjkY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | Vision Transformers (ViT) PyTorch Code |
+| [<img src="imgs/2025_02_17_vit_finetune.avif" width="640" />](https://youtu.be/RjG6_FP_DgU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) |
+| [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" width="640" />](https://youtu.be/AvORgJ2wVhU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | MLP-Mixer in PyTorch: Google Gemini's Code Generation |
+| [<img src="imgs/2024_01_08_CNN_and_ViT.avif" width="640" />](https://youtu.be/uggBVJebdcY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | ViT vs CNN: A Comparative Experiment |
 
 
 
