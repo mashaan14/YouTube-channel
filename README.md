@@ -23,28 +23,31 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 ## Vision Transformers
 Vision Transformers implemented in PyTorch and JAX.
 
-| Title | Code | Video |
-|---|---|---|
-| Vision Transformers (ViT): A JAX Tutorial for Image Classification | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | [<img src="imgs/2024_03_28_jax_ViT.avif" />](https://youtu.be/LDwA31hARrA) |
-| Getting to Know MLP-Mixer: A CIFAR-10 Run | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer) | [<img src="imgs/2025_03_17_MLP_mixer.avif" />](https://youtu.be/90Zqonk6UqI) |
-| Vision Transformers (ViT) pytorch code | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | [<img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" />](https://youtu.be/y1ZmMcMYjkY) |
-| Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | [<img src="imgs/2025_02_17_vit_finetune.avif" />](https://youtu.be/RjG6_FP_DgU) |
-| MLP-Mixer in PyTorch: Google Gemini's Code Generation | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" />](https://youtu.be/AvORgJ2wVhU) |
-| ViT vs CNN: A Comparative Experiment | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | [<img src="imgs/2024_01_08_CNN_and_ViT.avif" />](https://youtu.be/uggBVJebdcY) |
+| Video | Code | Title |
+|:---:|:---:|:---|
+| [<img src="imgs/2024_03_28_jax_ViT.avif" width="640" height="360" />](https://youtu.be/LDwA31hARrA) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_03_28_jax_ViT) | Vision Transformers (ViT): A JAX Tutorial for Image Classification |
+| [<img src="imgs/2025_03_17_MLP_mixer.avif" width="640" height="360" />](https://youtu.be/90Zqonk6UqI) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_17_MlpMixer) | Getting to Know MLP-Mixer: A CIFAR-10 Run |
+| [<img src="imgs/2023-11-29-VisionTransformer-MNIST.avif" width="640" height="360" />](https://youtu.be/y1ZmMcMYjkY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2023_11_29_VisionTransformer_MNIST) | Vision Transformers (ViT) PyTorch Code |
+| [<img src="imgs/2025_02_17_vit_finetune.avif" width="640" height="360" />](https://youtu.be/RjG6_FP_DgU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) |
+| [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" width="640" height="360" />](https://youtu.be/AvORgJ2wVhU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | MLP-Mixer in PyTorch: Google Gemini's Code Generation |
+| [<img src="imgs/2024_01_08_CNN_and_ViT.avif" width="640" height="360" />](https://youtu.be/uggBVJebdcY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | ViT vs CNN: A Comparative Experiment |
+
+
+
 
 ## Swin Transformer
 Swin transformer code analysis and attention visualization.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
-| Analyzing Swin Transformer: A Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_08_19_swin_transformer_annotated) | [<img src="imgs/2024_08_19_Swin_Transformer.avif" />](https://youtu.be/LspWysWparE) |
-| A Deep Dive into Swin Transformer Attention Maps | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_09_16_swin_transformer_attention) | [<img src="imgs/2024_09_16_Swin_Transformer_Attention.avif" />](https://youtu.be/mtCTIGgzfbc) |
+| Title | Code | Video |
+| :--- | :---: | :---: |
+| Analyzing Swin Transformer: A Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_08_19_swin_transformer_annotated) | [<img src="imgs/2024_08_19_Swin_Transformer.avif" width="360" height="202" />](https://youtu.be/LspWysWparE) |
+| A Deep Dive into Swin Transformer Attention Maps | [code](https://mashaan14.github.io/YouTube-channel/swin_transformer/2024_09_16_swin_transformer_attention) | [<img src="imgs/2024_09_16_Swin_Transformer_Attention.avif" width="360" height="202" />](https://youtu.be/mtCTIGgzfbc) |
 
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.avif" />](https://youtu.be/G6c6zk0RhRM) |
 | Graph Sampling for GNNs: A Tutorial | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_27_GNN_sampling) | [<img src="imgs/2024_05_27_GNN_sampling.avif" />](https://youtu.be/y0poBC8xN1k) |
 | Understanding Mini-Batch Training in PyTorch Geometric | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch) | [<img src="imgs/2024_04_29_GNN_mini_batch.avif" />](https://youtu.be/ZfCtFLS_os0) |
@@ -61,16 +64,16 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 ## Self-Supervised Learning
 Videos on Self-supervised learning (SSL) techniques, such as SimCLR, SwAV, iBOT, and DINOv2.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | [<img src="imgs/2025_05_12_DINOv2.avif" />](https://youtu.be/j2_42Yx_1_w) |
 | Self-Supervised Learning Review: From SimCLR to DINOv2 | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL) | [<img src="imgs/2025_05_19_SSL.avif" />](https://youtu.be/7NE0NH-PfkA) |
 
 ## Neural Radiance Fields (NeRF)
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | VGG-SfM and Mip-NeRF 360 Pipeline for iPhone Video 3D Reconstruction | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_02_03_your_own_nerf) | [<img src="imgs/2025_02_03_your_own_NeRF.avif" />](https://youtu.be/6RNE155c7iA) |
 | Exploring Mip-NeRF 360: A Quick TPU Experiment | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_20_Replicate_Mip_NeRF_360) | [<img src="imgs/2025_01_25_MipNerf360.avif" />](https://youtu.be/5aQpIiNohDA) |
 | Nerfstudio on Lightning AI (GPU Installation Tutorial) | [code](https://mashaan14.github.io/YouTube-channel/nerf/2025_01_14_nerfstudio_lightning_ai) | [<img src="imgs/2025_01_13_LightningAI_NerfStudio.avif" />](https://youtu.be/cgTYkjKL1b0) |
@@ -81,8 +84,8 @@ Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
 ## Detection and Tracking
 Computer vision experiments exploring object detection and point tracking.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | Hands-On with TAPIR: Point Tracking Experiment & Code Walkthrough | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR) | [<img src="imgs/2025_03_03_TAPIR.avif" />](https://youtu.be/U7jH_BiwVOU) |
 | Experimenting Object Detection with DETR | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | [<img src="imgs/2024_01_22_DETR.avif" />](https://youtu.be/Z3fXiV4Cmz4) |
 
@@ -90,24 +93,24 @@ Computer vision experiments exploring object detection and point tracking.
 ## Recommender Systems
 Videos exploring how to use graph neural networks to build recommender systems.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | Exploring LightGCN: A Movie Recommendations Experiment | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_07_LightGCN_MovieLens) | [<img src="imgs/2025_04_07_LightGCN.avif" />](https://youtu.be/hVdlUyD9fic) |
 | Graph Contrastive Learning: Building MovieLens-100k Recommendations | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_21_SimGCL_MovieLens) | [<img src="imgs/2025_04_21_SimGCL.avif" />](https://youtu.be/ENVArKM2A3I) |
 
 ## JAX Performance
 Videos about how to get free TPUs through Google's TPU Research Cloud and JAX JIT compilation (Python to JAXPR) for maximum speed.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_11_11_tpu_test) | [<img src="imgs/2024_11_11_tpu_test.avif" />](https://youtu.be/PwYHoiB4Fag) |
 | JAX JIT Compilation Explained: From Python to JAXPR | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test) | [<img src="imgs/2024_04_14_jax_speed_test.avif" />](https://youtu.be/1SQFVYVSuyE) |
 
 ## Convolutional Neural Nets
 Convolutional Neural Nets implemented in PyTorch and JAX.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | PyTorch Conv2d Explained | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d) | [<img src="imgs/2024_01_29_Conv2d.avif" />](https://youtu.be/j19Wdlu7Rtg) |
 | JAX Conv Layer Explained | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_03_07_jax_conv) | [<img src="imgs/2024_03_07_jax_conv.avif" />](https://youtu.be/rn-RsD7IpIg) |
 | CNNs with Flax: A JAX Tutorial for Image Classification | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_04_02_jax_CNN) | [<img src="imgs/2024_04_02_jax_CNN.avif" />](https://youtu.be/Q0vvh95wes8) |
@@ -115,16 +118,16 @@ Convolutional Neural Nets implemented in PyTorch and JAX.
 ## Spectral Clustering
 Code walkthroughs for spectral clustering and sparse subspace clustering.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | A Step-by-Step Guide to Spectral Clustering | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_01_15_spectral_clustering) | [<img src="imgs/2024_01_15_spectral_clustering.avif" />](https://youtu.be/k7M1TMYac-Y) |
 | Exploring Sparse Subspace Clustering: Theory and Practice | [code](https://mashaan14.github.io/YouTube-channel/spectral_clustering/2024_02_13_SSC) | [<img src="imgs/2024_02_13_SSC.avif" />](https://youtu.be/xUmO_S7lLG8) |
 
 ## Introduction to Neural Nets
 This playlist covers fundamental neural network concepts blending theory and practical coding.
 
-|**Title**|**Code**|**Video**|
-| :---: | :---: | :---: |
+| Title | Code | Video |
+| :--- | :---: | :---: |
 | JAX and Flax: A Simple Neural Network | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_02_28_jax_three_layer_NN) | [<img src="imgs/2024_02_28_jax_three_layer_NN.avif" />](https://youtu.be/GNLOa4riys8) |
 | Simple Neural Net in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2023_12_17_three_layer_NN) | [<img src="imgs/2023_12_17_three_layer_NN.avif" />](https://youtu.be/SQfTaOR8ApQ) |
 | RBF: The Most Liked Formula in Machine Learning | [code](https://mashaan14.github.io/YouTube-channel/introduction_to_neural_nets/2024_12_09_squared_exponential) | [<img src="imgs/2024_12_09_squared_exponential.avif" />](https://youtu.be/H4S3QAoMEEo) |
