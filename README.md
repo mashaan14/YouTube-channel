@@ -87,6 +87,9 @@ Swin transformer code analysis and attention visualization.
 ## Graph Neural Networks
 Famous GNNs implemented in PyG, DGL, and jraph.
 
+<div class="table-container">
+<table class="markdown-table">
+  
 | Title | Code | Video |
 | :--- | :---: | :---: |
 | Graph Convolutional Networks (GCNs) in PyTorch | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_04_GCN_introduction) | [<img src="imgs/2023_12_04_GCN_introduction.avif" />](https://youtu.be/G6c6zk0RhRM) |
@@ -100,15 +103,21 @@ Famous GNNs implemented in PyG, DGL, and jraph.
 | Training GCNs with PyG and Jraph: A Side-by-Side Comparison | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | [<img src="imgs/2024_02_20_jraph.avif" />](https://youtu.be/W-JDqd5AFio) |
 | PyTorch code for GCN and SGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | [<img src="imgs/2023_12_13_GCN_and_SGC.avif" />](https://youtu.be/PQT2QblNegY) |
 | GCN Variants: SGC and ASGC | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_01_31_SGC_and_ASGC) | [<img src="imgs/2024_01_31_SGC_and_ASGC.avif" />](https://youtu.be/ZNMV5i84fmM) |
-
+</table>
+</div>
 
 ## Self-Supervised Learning
 Videos on Self-supervised learning (SSL) techniques, such as SimCLR, SwAV, iBOT, and DINOv2.
+
+<div class="table-container">
+<table class="markdown-table">
 
 | Title | Code | Video |
 | :--- | :---: | :---: |
 | Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | [<img src="imgs/2025_05_12_DINOv2.avif" />](https://youtu.be/j2_42Yx_1_w) |
 | Self-Supervised Learning Review: From SimCLR to DINOv2 | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL) | [<img src="imgs/2025_05_19_SSL.avif" />](https://youtu.be/7NE0NH-PfkA) |
+</table>
+</div>
 
 ## Neural Radiance Fields (NeRF)
 Videos about Neural Radiance Fields (NeRF) and Gaussian splatting.
