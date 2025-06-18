@@ -1,3 +1,22 @@
+## no sharding
+```console
+Step 2, Loss: 3.595409870147705, Elapsed Time: 13.40 seconds
+Step 4, Loss: 4.5290117263793945, Elapsed Time: 0.33 seconds
+Step 6, Loss: 3.436495542526245, Elapsed Time: 0.33 seconds
+Step 8, Loss: 2.7333998680114746, Elapsed Time: 0.33 seconds
+Step 10, Loss: 2.441728115081787, Elapsed Time: 0.34 seconds
+Step 12, Loss: 2.345740795135498, Elapsed Time: 0.34 seconds
+Step 14, Loss: 2.193572759628296, Elapsed Time: 0.33 seconds
+Step 16, Loss: 2.16274094581604, Elapsed Time: 0.33 seconds
+Step 18, Loss: 2.162346363067627, Elapsed Time: 0.71 seconds
+Step 20, Loss: 2.176154613494873, Elapsed Time: 0.33 seconds
+Step 22, Loss: 2.1908531188964844, Elapsed Time: 0.33 seconds
+Step 24, Loss: 2.1944799423217773, Elapsed Time: 0.33 seconds
+Step 26, Loss: 2.1980717182159424, Elapsed Time: 0.33 seconds
+Step 28, Loss: 2.143333911895752, Elapsed Time: 0.33 seconds
+```
+
+## sharding
 ```console
 Step 2, Loss: 4.734677314758301, Elapsed Time: 24.84 seconds
 Step 4, Loss: 6.122281074523926, Elapsed Time: 11.69 seconds
