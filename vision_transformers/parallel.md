@@ -1,3 +1,20 @@
+```console
+Step 2, Loss: 4.734677314758301, Elapsed Time: 24.84 seconds
+Step 4, Loss: 6.122281074523926, Elapsed Time: 11.69 seconds
+Step 6, Loss: 5.498552322387695, Elapsed Time: 0.36 seconds
+Step 8, Loss: 3.5090627670288086, Elapsed Time: 0.37 seconds
+Step 10, Loss: 2.668524742126465, Elapsed Time: 0.37 seconds
+Step 12, Loss: 2.560586929321289, Elapsed Time: 0.38 seconds
+Step 14, Loss: 2.3328449726104736, Elapsed Time: 0.37 seconds
+Step 16, Loss: 2.3895015716552734, Elapsed Time: 0.36 seconds
+Step 18, Loss: 2.3689160346984863, Elapsed Time: 0.35 seconds
+Step 20, Loss: 2.2298121452331543, Elapsed Time: 0.36 seconds
+Step 22, Loss: 2.21760892868042, Elapsed Time: 0.35 seconds
+Step 24, Loss: 2.238011121749878, Elapsed Time: 0.35 seconds
+Step 26, Loss: 2.220581531524658, Elapsed Time: 0.34 seconds
+Step 28, Loss: 2.1452765464782715, Elapsed Time: 0.35 seconds
+```
+
 ```python
 class PatchEmbedding(nnx.Module):
     def __init__(self, img_size, patch_size, embed_dim, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
