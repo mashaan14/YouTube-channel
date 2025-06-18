@@ -18,6 +18,19 @@ Step 28, Loss: 2.143333911895752, Elapsed Time: 0.33 seconds
 
 ## sharding
 ```console
+Epoch 1 completed in 110.53 seconds
+Epoch 2 completed in 73.25 seconds
+Epoch 3 completed in 73.60 seconds
+Epoch 4 completed in 72.83 seconds
+Epoch 5 completed in 73.35 seconds
+Epoch 6 completed in 73.46 seconds
+Epoch 7 completed in 72.53 seconds
+Epoch 8 completed in 74.09 seconds
+Epoch 9 completed in 73.96 seconds
+
+```
+
+```console
 Step 2, Loss: 4.734677314758301, Elapsed Time: 24.84 seconds
 Step 4, Loss: 6.122281074523926, Elapsed Time: 11.69 seconds
 Step 6, Loss: 5.498552322387695, Elapsed Time: 0.36 seconds
