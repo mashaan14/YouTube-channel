@@ -60,6 +60,11 @@ Step 350, Loss: 1.6960369348526, Elapsed Time: 0.09 seconds
 Epoch 5 completed in 87.34 seconds
 ```
 
+## Error
+```console
+[libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/message_lite.cc:449] tensorflow.profiler.XSpace exceeded maximum protobuf size of 2GB: 2420964887
+```
+
 ```python
 class PatchEmbedding(nnx.Module):
     def __init__(self, img_size, patch_size, embed_dim, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
