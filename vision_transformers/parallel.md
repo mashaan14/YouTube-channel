@@ -18,46 +18,26 @@ Step 28, Loss: 2.143333911895752, Elapsed Time: 0.33 seconds
 
 ## sharding (4,2)
 ```console
-Step 50, Loss: 2.0222089290618896, Elapsed Time: 0.10 seconds
-Step 100, Loss: 1.9536722898483276, Elapsed Time: 0.12 seconds
-Step 150, Loss: 1.8822193145751953, Elapsed Time: 0.06 seconds
-Step 200, Loss: 1.860122799873352, Elapsed Time: 0.10 seconds
-Step 250, Loss: 1.7819035053253174, Elapsed Time: 0.07 seconds
-Step 300, Loss: 1.8086696863174438, Elapsed Time: 0.08 seconds
-Step 350, Loss: 1.775278925895691, Elapsed Time: 0.07 seconds
-Epoch 1 completed in 87.38 seconds
-Step 50, Loss: 1.7539153099060059, Elapsed Time: 0.05 seconds
-Step 100, Loss: 1.694887638092041, Elapsed Time: 0.08 seconds
-Step 150, Loss: 1.7047514915466309, Elapsed Time: 0.10 seconds
-Step 200, Loss: 1.675998330116272, Elapsed Time: 0.07 seconds
-Step 250, Loss: 1.6657073497772217, Elapsed Time: 0.06 seconds
-Step 300, Loss: 1.6906852722167969, Elapsed Time: 0.06 seconds
-Step 350, Loss: 1.6561832427978516, Elapsed Time: 0.09 seconds
-Epoch 2 completed in 87.30 seconds
-Step 50, Loss: 1.657387137413025, Elapsed Time: 0.07 seconds
-Step 100, Loss: 1.6667324304580688, Elapsed Time: 0.06 seconds
-Step 150, Loss: 1.656468152999878, Elapsed Time: 0.07 seconds
-Step 200, Loss: 1.679901123046875, Elapsed Time: 0.09 seconds
-Step 250, Loss: 1.652742862701416, Elapsed Time: 0.06 seconds
-Step 300, Loss: 1.674971103668213, Elapsed Time: 0.07 seconds
-Step 350, Loss: 1.686550259590149, Elapsed Time: 0.08 seconds
-Epoch 3 completed in 86.83 seconds
-Step 50, Loss: 1.6657437086105347, Elapsed Time: 0.09 seconds
-Step 100, Loss: 1.6324213743209839, Elapsed Time: 0.07 seconds
-Step 150, Loss: 1.6472724676132202, Elapsed Time: 0.10 seconds
-Step 200, Loss: 1.6728358268737793, Elapsed Time: 0.08 seconds
-Step 250, Loss: 1.6434122323989868, Elapsed Time: 0.05 seconds
-Step 300, Loss: 1.642844557762146, Elapsed Time: 0.07 seconds
-Step 350, Loss: 1.6884466409683228, Elapsed Time: 0.09 seconds
-Epoch 4 completed in 87.20 seconds
-Step 50, Loss: 1.7139999866485596, Elapsed Time: 0.10 seconds
-Step 100, Loss: 1.6662925481796265, Elapsed Time: 0.07 seconds
-Step 150, Loss: 1.6493831872940063, Elapsed Time: 0.07 seconds
-Step 200, Loss: 1.7121976613998413, Elapsed Time: 0.08 seconds
-Step 250, Loss: 1.7038582563400269, Elapsed Time: 0.07 seconds
-Step 300, Loss: 1.6735692024230957, Elapsed Time: 0.08 seconds
-Step 350, Loss: 1.6960369348526, Elapsed Time: 0.09 seconds
-Epoch 5 completed in 87.34 seconds
+Step 20, Loss: 3.453094244003296, Elapsed Time: 0.16 seconds
+Step 40, Loss: 2.156808614730835, Elapsed Time: 0.06 seconds
+Step 60, Loss: 2.0604236125946045, Elapsed Time: 0.05 seconds
+Step 80, Loss: 2.031639337539673, Elapsed Time: 0.08 seconds
+Step 100, Loss: 2.0111751556396484, Elapsed Time: 0.08 seconds
+Step 120, Loss: 2.0107836723327637, Elapsed Time: 0.07 seconds
+Step 140, Loss: 1.969140648841858, Elapsed Time: 0.05 seconds
+Step 160, Loss: 1.932132363319397, Elapsed Time: 0.08 seconds
+Step 180, Loss: 1.9253463745117188, Elapsed Time: 0.07 seconds
+Step 200, Loss: 1.9450167417526245, Elapsed Time: 0.05 seconds
+Step 220, Loss: 1.8802388906478882, Elapsed Time: 0.05 seconds
+Step 240, Loss: 1.8732833862304688, Elapsed Time: 0.06 seconds
+Step 260, Loss: 1.8219003677368164, Elapsed Time: 0.08 seconds
+Step 280, Loss: 1.866715669631958, Elapsed Time: 0.07 seconds
+Step 300, Loss: 1.8167908191680908, Elapsed Time: 0.08 seconds
+Step 320, Loss: 1.8108484745025635, Elapsed Time: 0.08 seconds
+Step 340, Loss: 1.846405029296875, Elapsed Time: 0.07 seconds
+Step 360, Loss: 1.8250162601470947, Elapsed Time: 0.09 seconds
+Step 380, Loss: 1.7758228778839111, Elapsed Time: 0.08 seconds
+Epoch 1 completed in 122.90 seconds
 ```
 
 ## Error
