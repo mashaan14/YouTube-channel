@@ -40,6 +40,30 @@ Step 380, Loss: 1.7758228778839111, Elapsed Time: 0.08 seconds
 Epoch 1 completed in 122.90 seconds
 ```
 
+## sharding (8,1)
+```console
+Step 20, Loss: 3.4433820247650146, Elapsed Time: 0.13 seconds
+Step 40, Loss: 2.1730141639709473, Elapsed Time: 0.08 seconds
+Step 60, Loss: 2.0638296604156494, Elapsed Time: 0.08 seconds
+Step 80, Loss: 2.033846616744995, Elapsed Time: 0.06 seconds
+Step 100, Loss: 2.0194597244262695, Elapsed Time: 0.05 seconds
+Step 120, Loss: 1.989200234413147, Elapsed Time: 0.08 seconds
+Step 140, Loss: 1.957165002822876, Elapsed Time: 0.08 seconds
+Step 160, Loss: 1.9412504434585571, Elapsed Time: 0.09 seconds
+Step 180, Loss: 1.9434207677841187, Elapsed Time: 0.06 seconds
+Step 200, Loss: 1.9121586084365845, Elapsed Time: 0.08 seconds
+Step 220, Loss: 1.8719624280929565, Elapsed Time: 0.08 seconds
+Step 240, Loss: 1.8523155450820923, Elapsed Time: 0.07 seconds
+Step 260, Loss: 1.8232351541519165, Elapsed Time: 0.10 seconds
+Step 280, Loss: 1.8448708057403564, Elapsed Time: 0.07 seconds
+Step 300, Loss: 1.8149839639663696, Elapsed Time: 0.05 seconds
+Step 320, Loss: 1.7714861631393433, Elapsed Time: 0.12 seconds
+Step 340, Loss: 1.8169745206832886, Elapsed Time: 0.08 seconds
+Step 360, Loss: 1.838454246520996, Elapsed Time: 0.10 seconds
+Step 380, Loss: 1.7932828664779663, Elapsed Time: 0.06 seconds
+Epoch 1 completed in 134.89 seconds
+```
+
 ## Error
 ```console
 [libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/message_lite.cc:449] tensorflow.profiler.XSpace exceeded maximum protobuf size of 2GB: 2420964887
