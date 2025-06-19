@@ -1,19 +1,25 @@
 ## no sharding
 ```console
-Step 2, Loss: 3.595409870147705, Elapsed Time: 13.40 seconds
-Step 4, Loss: 4.5290117263793945, Elapsed Time: 0.33 seconds
-Step 6, Loss: 3.436495542526245, Elapsed Time: 0.33 seconds
-Step 8, Loss: 2.7333998680114746, Elapsed Time: 0.33 seconds
-Step 10, Loss: 2.441728115081787, Elapsed Time: 0.34 seconds
-Step 12, Loss: 2.345740795135498, Elapsed Time: 0.34 seconds
-Step 14, Loss: 2.193572759628296, Elapsed Time: 0.33 seconds
-Step 16, Loss: 2.16274094581604, Elapsed Time: 0.33 seconds
-Step 18, Loss: 2.162346363067627, Elapsed Time: 0.71 seconds
-Step 20, Loss: 2.176154613494873, Elapsed Time: 0.33 seconds
-Step 22, Loss: 2.1908531188964844, Elapsed Time: 0.33 seconds
-Step 24, Loss: 2.1944799423217773, Elapsed Time: 0.33 seconds
-Step 26, Loss: 2.1980717182159424, Elapsed Time: 0.33 seconds
-Step 28, Loss: 2.143333911895752, Elapsed Time: 0.33 seconds
+Step 20, Loss: 2.8329226970672607, Elapsed Time: 0.09 seconds
+Step 40, Loss: 2.125962257385254, Elapsed Time: 0.11 seconds
+Step 60, Loss: 2.019329786300659, Elapsed Time: 0.05 seconds
+Step 80, Loss: 1.98526132106781, Elapsed Time: 0.04 seconds
+Step 100, Loss: 1.9606808423995972, Elapsed Time: 0.04 seconds
+Step 120, Loss: 1.8936665058135986, Elapsed Time: 0.06 seconds
+Step 140, Loss: 1.8879919052124023, Elapsed Time: 0.08 seconds
+Step 160, Loss: 1.868575096130371, Elapsed Time: 0.09 seconds
+Step 180, Loss: 1.852310061454773, Elapsed Time: 0.08 seconds
+Step 200, Loss: 1.8214492797851562, Elapsed Time: 0.09 seconds
+Step 220, Loss: 1.8057546615600586, Elapsed Time: 0.07 seconds
+Step 240, Loss: 1.7646404504776, Elapsed Time: 0.05 seconds
+Step 260, Loss: 1.75190007686615, Elapsed Time: 0.03 seconds
+Step 280, Loss: 1.7592840194702148, Elapsed Time: 0.04 seconds
+Step 300, Loss: 1.7529516220092773, Elapsed Time: 0.08 seconds
+Step 320, Loss: 1.7421925067901611, Elapsed Time: 0.03 seconds
+Step 340, Loss: 1.7424205541610718, Elapsed Time: 0.06 seconds
+Step 360, Loss: 1.7304487228393555, Elapsed Time: 0.12 seconds
+Step 380, Loss: 1.6941728591918945, Elapsed Time: 0.07 seconds
+Epoch 1 completed in 96.38 seconds
 ```
 
 ## sharding (4,2)
