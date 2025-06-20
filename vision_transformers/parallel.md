@@ -119,4 +119,6 @@ Epoch 1 completed in 104.58 seconds
 [libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/message_lite.cc:449] tensorflow.profiler.XSpace exceeded maximum protobuf size of 2GB: 2420964887
 ```
 
-![peak_memory_allocation](https://github.com/user-attachments/assets/6ddc097e-c181-42e8-a101-21d8c82f7222)
+![epoch_run_time](https://github.com/user-attachments/assets/c9e2285b-6475-4dbe-8a4e-8ea743ea9e59)
+
+![peak_memory_allocation](https://github.com/user-attachments/assets/20cfa203-cfa2-434b-86a5-9b2e5a684c46)
