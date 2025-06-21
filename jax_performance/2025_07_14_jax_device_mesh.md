@@ -1,3 +1,34 @@
+# Parallel Vision Transformer using JAX Device Mesh
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/G6c6zk0RhRM" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+
+## Acknowledgment
+I borrowed some code from these resources:
+  - [https://github.com/tkipf/pygcn/tree/master](https://github.com/tkipf/pygcn/tree/master)
+  - [https://lightning.ai/docs/pytorch/stable/notebooks/course_UvA-DL/06-graph-neural-networks.html](https://lightning.ai/docs/pytorch/stable/notebooks/course_UvA-DL/06-graph-neural-networks.html)
+
+## References
+```bibtex
+@misc{kipf2017semisupervised,
+    title         = {Semi-Supervised Classification with Graph Convolutional Networks},
+    author        = {Thomas N. Kipf and Max Welling},
+    year          = {2017},
+    eprint        = {1609.02907},
+    archivePrefix = {arXiv},
+    primaryClass  = {cs.LG}
+}
+```
+
 ## Epoch run time
 ![epoch_run_time](https://github.com/user-attachments/assets/3f316f0a-bef7-4d9e-83a2-33dae47c7e06)
 
@@ -79,3 +110,18 @@ Here is a screenshot of the memory viewer, you can pick a profiler file from the
 
 ![Screenshot 2025-06-21 at 12 44 35 AM](https://github.com/user-attachments/assets/03e2e861-ddc0-46e3-9121-cec6d1cc65d2)
 
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true}, // Display math (e.g., equations on their own line)
+        {left: '$', right: '$', display: false},  // Inline math (e.g., within a sentence)
+        {left: '\\(', right: '\\)', display: false}, // Another way to write inline math
+        {left: '\\[', right: '\\]', display: true}   // Another way to write display math
+      ]
+    });
+  });
+</script>
