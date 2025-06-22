@@ -13,9 +13,9 @@
 
 
 ## Acknowledgment
-I borrowed some code from these resources:
-  - [https://github.com/tkipf/pygcn/tree/master](https://github.com/tkipf/pygcn/tree/master)
-  - [https://lightning.ai/docs/pytorch/stable/notebooks/course_UvA-DL/06-graph-neural-networks.html](https://lightning.ai/docs/pytorch/stable/notebooks/course_UvA-DL/06-graph-neural-networks.html)
+These resources were helpful in preparing this post:
+  - [Train a miniGPT language model with JAX](https://docs.jaxstack.ai/en/latest/JAX_for_LLM_pretraining.html)
+  - [Train a Vision Transformer (ViT) for image classification with JAX](https://docs.jaxstack.ai/en/latest/JAX_Vision_transformer.html)
 
 ## References
 ```bibtex
