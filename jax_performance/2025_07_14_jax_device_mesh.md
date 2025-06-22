@@ -29,6 +29,34 @@ These resources were helpful in preparing this post:
 }
 ```
 
+## 
+```python
+print(f'model.encoder_blocks[0].mlp.fc2.kernel.shape: {model.encoder_blocks[0].mlp.fc2.kernel.shape}')
+print(model.encoder_blocks[0].mlp.fc2.kernel.sharding)
+jax.debug.visualize_array_sharding(model.encoder_blocks[0].mlp.fc2.kernel)
+print('---------------------------')
+print(f'model.encoder_blocks[0].mlp.fc2.bias.shape: {model.encoder_blocks[0].mlp.fc2.bias.shape}')
+print(model.encoder_blocks[0].mlp.fc2.bias.sharding)
+jax.debug.visualize_array_sharding(model.encoder_blocks[0].mlp.fc2.bias)
+```
+
+![Screenshot 2025-06-22 at 11 49 57 AM](https://github.com/user-attachments/assets/a7888d01-02a5-456d-a3ad-9018db576dff)
+
+
+```python
+print(f'labels.shape: {labels.shape}')
+print(labels.sharding)
+jax.debug.visualize_array_sharding(labels)
+```
+
+* Mesh4×2
+  
+![Screenshot 2025-06-22 at 11 50 33 AM](https://github.com/user-attachments/assets/3203c9fa-0ed5-4fb5-a9fb-6813de06c033)
+
+* Mesh 8×1
+  
+![Screenshot 2025-06-22 at 11 52 16 AM](https://github.com/user-attachments/assets/126e0567-5d21-4897-a256-1ce0542cb66f)
+
 ## Epoch run time
 ![epoch_run_time](https://github.com/user-attachments/assets/3f316f0a-bef7-4d9e-83a2-33dae47c7e06)
 
