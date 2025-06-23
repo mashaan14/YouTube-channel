@@ -15,7 +15,12 @@
 * [Acknowledgment](#acknowledgment)
 * [References](#references)
 * [Imports and configuration](#imports-and-configuration)
-* [Visualize parallelism with shard_map](#visualize-parallelism-with-shard_map)
+* [Preparing CIFAR-10](#preparing-cifar-10)
+* [Create a device mesh](#create-a-device-mesh)
+* [`VisionTransformer` class](#VisionTransformer-class)
+  * [ViT with a device mesh](#ViT-with-a-device-mesh)
+  * [ViT without a device mesh](#ViT-without-a-device-mesh) 
+* [Visualize parallelism with shard_map](#visualize-parallelism-with-create_device_mesh)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -88,7 +93,7 @@ model_config = ConfigDict(dict(
 ))
 ```
 
-## Prepare CIFAR-10
+## Preparing CIFAR-10
 
 We need `torchvision` to import CIFAR-10 and perform random flipping and cropping. We also need the images to be in numpy arrays to be accepted by jax.
 
@@ -203,9 +208,248 @@ plt.show()
 
 ![image](https://github.com/user-attachments/assets/397818f2-9c25-40f2-a653-3c4ac1fad921)
 
+## Create a device mesh
 
+We need to create a device mesh before creating the vision transformer class, so we can specify sharding options in vision transformer layers.
 
-## Visualize parallelism with `shard_map`
+```python
+# Create a `Mesh` object representing TPU device arrangement.
+mesh = Mesh(mesh_utils.create_device_mesh((4, 2)), ('batch', 'model'))
+# mesh = Mesh(mesh_utils.create_device_mesh((8, 1)), ('batch', 'model'))
+```
+
+## `VisionTransformer` class
+
+### ViT with a device mesh
+
+```python
+class PatchEmbedding(nnx.Module):
+    def __init__(self, img_size: int, patch_size: int, embed_dim: int, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
+        self.patch_size = patch_size
+        self.num_patches = (img_size // patch_size) ** 2
+        fh, fw = patch_size, patch_size # Filter height/width are your patch_size
+
+        self.conv_proj = nnx.Conv(
+            in_features=3,
+            out_features=embed_dim,         
+            kernel_size=(fh, fw),        
+            strides=(fh, fw),            
+            padding='VALID',             
+            kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+            bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+            dtype=dtype,                 
+            rngs=rngs,                   
+        )
+
+    def __call__(self, x: jax.Array) -> jax.Array:
+
+        x = self.conv_proj(x)
+        n, h, w, c = x.shape
+        x = jnp.reshape(x, [n, h * w, c])
+        return x
+
+class MLPBlock(nnx.Module): 
+            def __init__(self, embed_dim: int, mlp_dim: int, dropout_rate: float, *, rngs: nnx.Rngs, dtype: jnp.dtype, mesh: 'jax.sharding.Mesh'):
+                self.fc1 = nnx.Linear(
+                    in_features=embed_dim,
+                    out_features=mlp_dim,
+                    kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+                    bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+                    rngs=rngs,
+                    dtype=dtype
+                )
+                self.gelu = nnx.gelu
+                self.dropout1 = nnx.Dropout(rate=dropout_rate, rngs=rngs)
+                self.fc2 = nnx.Linear(
+                    in_features=mlp_dim,
+                    out_features=embed_dim,
+                    kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+                    bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+                    rngs=rngs,
+                    dtype=dtype
+                )
+                self.dropout2 = nnx.Dropout(rate=dropout_rate, rngs=rngs)
+
+            def __call__(self, x: jax.Array) -> jax.Array:
+                x = self.fc1(x)
+                x = self.gelu(x)
+                x = self.dropout1(x)
+                x = self.fc2(x)
+                x = self.dropout2(x)
+                return x
+
+class EncoderBlock(nnx.Module):
+    def __init__(self, embed_dim, num_heads, mlp_dim, dropout_rate=0.0, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
+        self.norm1 = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    scale_init=nnx.with_partitioning(nnx.initializers.ones_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    rngs=rngs)
+        self.attn = nnx.MultiHeadAttention(num_heads=num_heads,
+                                            in_features=embed_dim,
+                                            kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+                                            bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+                                            decode=False,
+                                            rngs=rngs)
+        self.norm2 = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    scale_init=nnx.with_partitioning(nnx.initializers.ones_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    rngs=rngs)
+
+        self.mlp = MLPBlock(embed_dim, mlp_dim, dropout_rate, rngs=rngs, dtype=dtype, mesh=mesh)
+
+    def __call__(self, x):
+        x = x + self.attn(self.norm1(x))
+        x = x + self.mlp(self.norm2(x))
+        return x
+
+class VisionTransformer(nnx.Module):
+    def __init__(self, img_size, patch_size, num_classes, embed_dim, num_layers, num_heads, mlp_dim, dropout_rate=0.0, *, rngs: nnx.Rngs = nnx.Rngs(0), dtype: jnp.dtype = jnp.float32):
+        self.patch_embed = PatchEmbedding(img_size, patch_size, embed_dim, rngs=rngs, dtype=dtype)
+        num_patches = (img_size // patch_size) ** 2
+        self.cls_token = nnx.Param(jnp.zeros((1, 1, embed_dim)))
+
+        self.encoder_blocks = [
+            EncoderBlock(embed_dim, num_heads, mlp_dim, dropout_rate, rngs=rngs, dtype=dtype)
+            for _ in range(num_layers)
+        ]
+        self.norm = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    scale_init=nnx.with_partitioning(nnx.initializers.ones_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P(None, 'model'))),
+                                    rngs=rngs)
+        self.head = nnx.Linear(in_features=embed_dim,
+                                out_features=num_classes,
+                                kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+                                bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+                                rngs=rngs,
+                                dtype=dtype)
+        self.dtype = dtype # Store the global dtype for the model
+
+    def __call__(self, x):
+        x = x.astype(self.dtype)
+        x = self.patch_embed(x)
+        batch_size = x.shape[0]
+        cls_tokens = jnp.tile(self.cls_token.value, (batch_size, 1, 1))
+        x = jnp.concatenate((cls_tokens, x), axis=1)
+        for block in self.encoder_blocks:
+            x = block(x)
+
+        cls_output = self.norm(x[:, 0])
+        return self.head(cls_output)
+```
+
+### ViT without a device mesh
+
+It is the same as the class above but with all `nnx.with_partitioning` removed.
+
+```python
+class PatchEmbedding(nnx.Module):
+    def __init__(self, img_size: int, patch_size: int, embed_dim: int, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
+        self.patch_size = patch_size
+        self.num_patches = (img_size // patch_size) ** 2
+        fh, fw = patch_size, patch_size # Filter height/width are your patch_size
+
+        self.conv_proj = nnx.Conv(
+            in_features=3,
+            out_features=embed_dim,          
+            kernel_size=(fh, fw),        
+            strides=(fh, fw),            
+            padding='VALID',             
+            dtype=dtype,                 
+            rngs=rngs,                   
+        )
+
+    def __call__(self, x: jax.Array) -> jax.Array:
+        x = self.conv_proj(x)
+        n, h, w, c = x.shape
+        x = jnp.reshape(x, [n, h * w, c])
+        return x
+
+class MLPBlock(nnx.Module): 
+            def __init__(self, embed_dim: int, mlp_dim: int, dropout_rate: float, *, rngs: nnx.Rngs, dtype: jnp.dtype):
+                self.fc1 = nnx.Linear(
+                    in_features=embed_dim,
+                    out_features=mlp_dim,
+                    rngs=rngs,
+                    dtype=dtype
+                )
+                self.gelu = nnx.gelu
+                self.dropout1 = nnx.Dropout(rate=dropout_rate, rngs=rngs)
+                self.fc2 = nnx.Linear(
+                    in_features=mlp_dim,
+                    out_features=embed_dim,
+                    rngs=rngs,
+                    dtype=dtype
+                )
+                self.dropout2 = nnx.Dropout(rate=dropout_rate, rngs=rngs)
+
+            def __call__(self, x: jax.Array) -> jax.Array:
+                x = self.fc1(x)
+                x = self.gelu(x)
+                x = self.dropout1(x)
+                x = self.fc2(x)
+                x = self.dropout2(x)
+                return x
+
+class EncoderBlock(nnx.Module):
+    def __init__(self, embed_dim, num_heads, mlp_dim, dropout_rate=0.0, *, rngs: nnx.Rngs, dtype: jnp.dtype = jnp.float32):
+        self.norm1 = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    rngs=rngs)
+        self.attn = nnx.MultiHeadAttention(num_heads=num_heads,
+                                            in_features=embed_dim,
+                                            decode=False,
+                                            rngs=rngs)
+        self.norm2 = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    rngs=rngs)
+
+        self.mlp = MLPBlock(embed_dim, mlp_dim, dropout_rate, rngs=rngs, dtype=dtype)
+
+    def __call__(self, x):
+        x = x + self.attn(self.norm1(x))
+        x = x + self.mlp(self.norm2(x))
+        return x
+
+class VisionTransformer(nnx.Module):
+    def __init__(self, img_size, patch_size, num_classes, embed_dim, num_layers, num_heads, mlp_dim, dropout_rate=0.0, *, rngs: nnx.Rngs = nnx.Rngs(0), dtype: jnp.dtype = jnp.float32):
+        self.patch_embed = PatchEmbedding(img_size, patch_size, embed_dim, rngs=rngs, dtype=dtype)
+        num_patches = (img_size // patch_size) ** 2
+        self.cls_token = nnx.Param(jnp.zeros((1, 1, embed_dim)))
+
+        self.encoder_blocks = [
+            EncoderBlock(embed_dim, num_heads, mlp_dim, dropout_rate, rngs=rngs, dtype=dtype)
+            for _ in range(num_layers)
+        ]
+        self.norm = nnx.LayerNorm(epsilon=1e-6,
+                                    num_features=embed_dim,
+                                    rngs=rngs)
+        self.head = nnx.Linear(in_features=embed_dim,
+                                out_features=num_classes,
+                                rngs=rngs,
+                                dtype=dtype)
+        self.dtype = dtype
+
+    def __call__(self, x):
+        x = x.astype(self.dtype)
+        x = self.patch_embed(x)
+        batch_size = x.shape[0]
+        cls_tokens = jnp.tile(self.cls_token.value, (batch_size, 1, 1))
+        x = jnp.concatenate((cls_tokens, x), axis=1)
+
+        for block in self.encoder_blocks:
+            x = block(x)
+
+        cls_output = self.norm(x[:, 0])
+        return self.head(cls_output)
+```
+
+## Initializing the Model
+
+## Visualize parallelism with `create_device_mesh`
+
 ```python
 print(f'model.encoder_blocks[0].mlp.fc2.kernel.shape: {model.encoder_blocks[0].mlp.fc2.kernel.shape}')
 print(model.encoder_blocks[0].mlp.fc2.kernel.sharding)
