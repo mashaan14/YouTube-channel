@@ -20,7 +20,13 @@
 * [`VisionTransformer` class](#VisionTransformer-class)
   * [ViT with a device mesh](#ViT-with-a-device-mesh)
   * [ViT without a device mesh](#ViT-without-a-device-mesh) 
+* [Initializing the model](#initializing-the-model)
 * [Visualize parallelism with shard_map](#visualize-parallelism-with-create_device_mesh)
+* [Training loop with `jax.profiler`](#training-loop-with-jaxprofiler)
+* [Visualize batches](Visualize-batches)
+* [Epoch run time](Epoch-run-time)
+* [Peak memory allocation](Peak-memory-allocation)
+* [Installing TensorBoard](Installing-TensorBoard)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -219,6 +225,10 @@ mesh = Mesh(mesh_utils.create_device_mesh((4, 2)), ('batch', 'model'))
 ```
 
 ## `VisionTransformer` class
+
+**⚠️ CAUTION: ⚠️**
+
+_**I did not measure the loss or accuracy on CIFAR-10, so I do not know how this code performs in terms of loss optimization. The sole purpose of this class is to monitor memory usage and runtime for a single epoch.**_
 
 ### ViT with a device mesh
 
@@ -446,7 +456,7 @@ class VisionTransformer(nnx.Module):
         return self.head(cls_output)
 ```
 
-## Initializing the Model
+## Initializing the model
 
 ```python
 def create_model(rngs):
@@ -510,6 +520,52 @@ jax.debug.visualize_array_sharding(labels)
 * Mesh 8×1
   
 ![Screenshot 2025-06-22 at 11 52 16 AM](https://github.com/user-attachments/assets/126e0567-5d21-4897-a256-1ce0542cb66f)
+
+
+## Training loop with `jax.profiler`
+
+```python
+num_steps_per_epoch = len(train_dataset) // data_config.batch_size
+
+log_dir = "./jax_profile_logs"
+jax.profiler.start_trace(log_dir)
+for epoch in range(model_config.num_epochs):
+    step = 0
+    epoch_start_time = time.time()
+    for batch in train_loader:
+        start_time = time.time()
+        if step >= num_steps_per_epoch:
+            break  # Skip extra steps beyond the intended epoch              
+
+        # with a device mesh
+        images = jax.device_put(batch[0], NamedSharding(mesh, P('batch', None)))
+        labels = jax.device_put(batch[1], NamedSharding(mesh, P('batch')))
+
+        # without a device mesh
+        # images = batch[0]
+        # labels = batch[1]
+
+        train_step(model, optimizer, metrics, images, labels)
+
+        if (step + 1) % 20 == 0:
+          for metric, value in metrics.compute().items():
+              metrics_history[f'train_{metric}'].append(value)
+          metrics.reset()
+
+          elapsed_time = time.time() - start_time
+          print(f"Step {step + 1}, Loss: {metrics_history['train_loss'][-1]}, Elapsed Time: {elapsed_time:.2f} seconds")
+
+        step += 1
+
+    epoch_elapsed_time = time.time() - epoch_start_time
+    print(f"Epoch {epoch + 1} completed in {epoch_elapsed_time:.2f} seconds")
+
+jax.profiler.stop_trace()
+```
+
+## Visualize batches
+
+![drawings-02 001](https://github.com/user-attachments/assets/d77bca39-e2cf-4f3b-9c5d-96775cd4ec04)
 
 ## Epoch run time
 ![epoch_run_time](https://github.com/user-attachments/assets/3f316f0a-bef7-4d9e-83a2-33dae47c7e06)
