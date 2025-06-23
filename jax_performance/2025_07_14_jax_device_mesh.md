@@ -15,21 +15,20 @@
 ## Acknowledgment
 These resources were helpful in preparing this post:
   - [Train a miniGPT language model with JAX](https://docs.jaxstack.ai/en/latest/JAX_for_LLM_pretraining.html)
-  - [Train a Vision Transformer (ViT) for image classification with JAX](https://docs.jaxstack.ai/en/latest/JAX_Vision_transformer.html)
+  - [Scale up on multiple devices](https://flax.readthedocs.io/en/latest/guides/flax_gspmd.html)
 
 ## References
 ```bibtex
-@misc{kipf2017semisupervised,
-    title         = {Semi-Supervised Classification with Graph Convolutional Networks},
-    author        = {Thomas N. Kipf and Max Welling},
-    year          = {2017},
-    eprint        = {1609.02907},
-    archivePrefix = {arXiv},
-    primaryClass  = {cs.LG}
+@software{jax2018github,
+  author  = {James Bradbury and Roy Frostig and Peter Hawkins and Matthew James Johnson and Chris Leary and Dougal Maclaurin and George Necula and Adam Paszke and Jake Vander{P}las and Skye Wanderman-{M}ilne and Qiao Zhang},
+  title   = {{JAX}: composable transformations of {P}ython+{N}um{P}y programs},
+  url     = {http://github.com/jax-ml/jax},
+  version = {0.3.13},
+  year    = {2018},
 }
 ```
 
-## 
+## Visualize parallelism with `shard_map`
 ```python
 print(f'model.encoder_blocks[0].mlp.fc2.kernel.shape: {model.encoder_blocks[0].mlp.fc2.kernel.shape}')
 print(model.encoder_blocks[0].mlp.fc2.kernel.sharding)
