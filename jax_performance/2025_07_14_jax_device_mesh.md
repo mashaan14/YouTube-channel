@@ -448,6 +448,40 @@ class VisionTransformer(nnx.Module):
 
 ## Initializing the Model
 
+```python
+def create_model(rngs):
+    return VisionTransformer(data_config.img_size, model_config.patch_size, model_config.num_classes, model_config.embed_dim, model_config.num_layers, model_config.num_heads, model_config.mlp_dim, model_config.dropout_rate, rngs=rngs, dtype=jnp.float32)
+
+model = create_model(rngs=nnx.Rngs(0))
+```
+
+```python
+def loss_fn(model, images, labels):
+    logits = model(images)
+    loss = optax.softmax_cross_entropy_with_integer_labels(logits=logits, labels=labels).mean()
+    return loss, logits
+
+@nnx.jit
+def train_step(model: VisionTransformer, optimizer: nnx.Optimizer, metrics: nnx.MultiMetric, images, labels):
+    grad_fn = nnx.value_and_grad(loss_fn, has_aux=True)
+    (loss, logits), grads = grad_fn(model, images, labels)
+    metrics.update(loss=loss, logits=logits, lables=labels)
+    optimizer.update(grads)
+```
+
+```python
+model = create_model(rngs=nnx.Rngs(0))
+optimizer = nnx.Optimizer(model, optax.adam(1e-3))
+metrics = nnx.MultiMetric(
+  loss=nnx.metrics.Average('loss'),
+)
+rng = jax.random.PRNGKey(0)
+
+metrics_history = {
+  'train_loss': [],
+}
+```
+
 ## Visualize parallelism with `create_device_mesh`
 
 ```python
