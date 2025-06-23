@@ -10,6 +10,12 @@
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/G6c6zk0RhRM" frameborder="0" allowfullscreen></iframe>
 </div>
 
+## Contents
+
+* [Acknowledgment](#acknowledgment)
+* [References](#references)
+* [Imports and configuration](#imports-and-configuration)
+* [Visualize parallelism with shard_map](#visualize-parallelism-with-shard_map)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -20,7 +26,7 @@ These resources were helpful in preparing this post:
 ```bibtex
 @software{jax2018github,
   author  = {James Bradbury and Roy Frostig and Peter Hawkins and Matthew James Johnson and Chris Leary and Dougal Maclaurin and George Necula and Adam Paszke and Jake Vander{P}las and Skye Wanderman-{M}ilne and Qiao Zhang},
-  title   = {{JAX}: composable transformations of {P}ython+{N}um{P}y programs},
+  title   = {JAX: composable transformations of Python+NumPy programs},
   url     = {http://github.com/jax-ml/jax},
   version = {0.3.13},
   year    = {2018},
