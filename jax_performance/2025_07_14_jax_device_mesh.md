@@ -216,6 +216,8 @@ plt.show()
 
 ## Create a device mesh
 
+![drawings-02 002](https://github.com/user-attachments/assets/36a44167-d54d-4b87-918c-8cc3efcff8c9)
+
 We need to create a device mesh before creating the vision transformer class, so we can specify sharding options in vision transformer layers.
 
 ```python
