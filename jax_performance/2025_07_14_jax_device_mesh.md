@@ -10,6 +10,12 @@
   <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/G6c6zk0RhRM" frameborder="0" allowfullscreen></iframe>
 </div>
 
+## Contents
+
+* [Acknowledgment](#acknowledgment)
+* [References](#references)
+* [Imports and configuration](#imports-and-configuration)
+* [Visualize parallelism with shard_map](#visualize-parallelism-with-shard_map)
 
 
 ## Acknowledgment
@@ -27,6 +33,178 @@ These resources were helpful in preparing this post:
   year    = {2018},
 }
 ```
+
+## Imports and configuration
+We need `ml_collections` to prepare the configs and `grain` for dataloaders.
+```bash
+pip install ml_collections grain
+```
+
+```python
+import jax
+import jax.numpy as jnp
+
+from jax.sharding import Mesh, PartitionSpec as P, NamedSharding # For data and model parallelism (explained in more detail later)
+from jax.experimental import mesh_utils
+import jax.profiler
+
+
+from flax import nnx
+import optax
+import grain.python as grain
+
+
+import torch
+import torchvision
+import torchvision.transforms as transforms
+
+import numpy as np
+import matplotlib.pyplot as plt
+from functools import partial
+from ml_collections import ConfigDict
+import time
+```
+
+```python
+data_config = ConfigDict(dict(
+    batch_size=128,             
+    img_size=32,                
+    seed=12,                    
+    crop_scales=(0.9, 1.0),     
+    crop_ratio=(0.9, 1.1),  
+    data_means=(0.4914, 0.4822, 0.4465),
+    data_std=(0.2023, 0.1994, 0.2010)
+))
+
+model_config = ConfigDict(dict(
+    num_epochs=1,              
+    learning_rate=1e-3,         
+    patch_size=4,               
+    num_classes=10,             
+    embed_dim=384,              
+    mlp_dim=1536,               
+    num_heads=8,                
+    num_layers=6,               
+    dropout_rate=0.1,           
+))
+```
+
+## Prepare CIFAR-10
+
+We need `torchvision` to import CIFAR-10 and perform random flipping and cropping. We also need the images to be in numpy arrays to be accepted by jax.
+
+```python
+def image_to_numpy(img):
+  img = np.array(img, dtype=np.float32)
+  img = (img / 255. - np.array(data_config.data_means)) / np.array(data_config.data_std)
+
+  return img
+```
+
+```python
+def numpy_collate(batch):
+  if isinstance(batch[0], np.ndarray):
+    return np.stack(batch)
+  elif isinstance(batch[0], (tuple, list)):
+    transposed = zip(*batch)
+    return [numpy_collate(samples) for samples in transposed]
+  else:
+    return np.array(batch)
+```
+
+```python
+# images in the test set will only be converted into numpy arrays
+test_transform = image_to_numpy
+# images in the train set will be randomly flipped, cropped, and then converted to numpy arrays
+train_transform = transforms.Compose([
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomResizedCrop((data_config.img_size), scale=data_config.crop_scales, ratio=data_config.crop_ratio),
+    image_to_numpy
+])
+
+train_dataset = torchvision.datasets.CIFAR10('data', train=True, transform=train_transform, download=True)
+val_dataset = torchvision.datasets.CIFAR10('data', train=True, transform=test_transform, download=True)
+train_set, _ = torch.utils.data.random_split(train_dataset, [45000, 5000])
+_, val_set = torch.utils.data.random_split(val_dataset, [45000, 5000])
+test_set = torchvision.datasets.CIFAR10('data', train=False, transform=test_transform, download=True)
+```
+
+```python
+train_sampler = grain.IndexSampler(
+    len(train_dataset),  
+    shuffle=True,            
+    seed=data_config.seed,               
+    shard_options=grain.NoSharding(),  # No sharding here, because it can be done inside the training loop
+    num_epochs=model_config.num_epochs,            
+)
+
+val_sampler = grain.IndexSampler(
+    len(val_dataset),  
+    shuffle=False,         
+    seed=data_config.seed,             
+    shard_options=grain.NoSharding(),  
+    num_epochs=model_config.num_epochs,          
+)
+
+
+train_loader = grain.DataLoader(
+    data_source=train_dataset,
+    sampler=train_sampler,                 
+    operations=[
+        grain.Batch(data_config.batch_size, drop_remainder=True),
+    ]
+)
+
+# Test (validation) dataset `grain.DataLoader`.
+val_loader = grain.DataLoader(
+    data_source=val_dataset,
+    sampler=val_sampler,                   
+    operations=[
+        grain.Batch(2*data_config.batch_size),
+    ]
+)
+```
+
+```python
+num_images_to_plot = 10
+images_plotted = 0
+cols = 5
+rows = (num_images_to_plot + cols - 1) // cols
+fig, axes = plt.subplots(rows, cols, figsize=(cols * 2.5, rows * 2.5))
+axes = axes.flatten()
+
+for i, batch in enumerate(train_loader):
+    images = batch[0]
+    labels = batch[1]
+
+    for j in range(images.shape[0]):
+        if images_plotted >= num_images_to_plot:
+            break
+
+        ax = axes[images_plotted]
+        img_to_plot = images[j]
+        if isinstance(img_to_plot, jax.Array):
+            img_to_plot = np.array(img_to_plot)
+
+        img_to_plot = img_to_plot * np.array(data_config.data_std) + np.array(data_config.data_means)
+        ax.imshow(img_to_plot)
+        ax.set_title(f"Label: {labels[j]}")
+        ax.axis('off')
+        images_plotted += 1
+
+    if images_plotted >= num_images_to_plot:
+        break
+
+for k in range(images_plotted, len(axes)):
+    fig.delaxes(axes[k])
+
+plt.tight_layout()
+plt.show()
+```
+
+![image](https://github.com/user-attachments/assets/397818f2-9c25-40f2-a653-3c4ac1fad921)
+
+
 
 ## Visualize parallelism with `shard_map`
 ```python
