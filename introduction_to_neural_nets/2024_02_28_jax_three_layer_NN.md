@@ -26,7 +26,7 @@ I borrowed some code from [UvA Deep Learning Tutorials](https://github.com/phlip
 ```
 ```bibtex
 @misc{lippe2022uvadlc,
-   title        = {{UvA Deep Learning Tutorials}},
+   title        = {UvA Deep Learning Tutorials},
    author       = {Phillip Lippe},
    year         = 2022,
    howpublished = {\url{https://uvadlc-notebooks.readthedocs.io/en/latest/}}
