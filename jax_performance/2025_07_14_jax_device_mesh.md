@@ -429,7 +429,8 @@ class VisionTransformer(nnx.Module):
     def __init__(self, img_size, patch_size, num_classes, embed_dim, num_layers, num_heads, mlp_dim, dropout_rate=0.0, *, rngs: nnx.Rngs = nnx.Rngs(0), dtype: jnp.dtype = jnp.float32):
         self.patch_embed = PatchEmbedding(img_size, patch_size, embed_dim, rngs=rngs, dtype=dtype)
         num_patches = (img_size // patch_size) ** 2
-        self.cls_token = nnx.Param(jnp.zeros((1, 1, embed_dim)))
+        self.cls_token = nnx.Param(jnp.zeros((1, 1, embed_dim)), dtype=dtype)
+        self.pos_embed = nnx.Param(jax.random.normal(rngs.params(), (1, num_patches + 1, embed_dim)), dtype=dtype)
 
         self.encoder_blocks = [
             EncoderBlock(embed_dim, num_heads, mlp_dim, dropout_rate, rngs=rngs, dtype=dtype)
@@ -450,6 +451,7 @@ class VisionTransformer(nnx.Module):
         batch_size = x.shape[0]
         cls_tokens = jnp.tile(self.cls_token.value, (batch_size, 1, 1))
         x = jnp.concatenate((cls_tokens, x), axis=1)
+        x = x + self.pos_embed.value
 
         for block in self.encoder_blocks:
             x = block(x)
@@ -465,6 +467,17 @@ def create_model(rngs):
     return VisionTransformer(data_config.img_size, model_config.patch_size, model_config.num_classes, model_config.embed_dim, model_config.num_layers, model_config.num_heads, model_config.mlp_dim, model_config.dropout_rate, rngs=rngs, dtype=jnp.float32)
 
 model = create_model(rngs=nnx.Rngs(0))
+
+model = VisionTransformer(data_config.img_size, 
+                             model_config.patch_size, 
+                             model_config.num_classes, 
+                             model_config.embed_dim, 
+                             model_config.num_layers, 
+                             model_config.num_heads, 
+                             model_config.mlp_dim, 
+                             model_config.dropout_rate,
+                             rngs=rngs,
+                             dtype=jnp.float32)
 ```
 
 ```python
