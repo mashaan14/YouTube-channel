@@ -8,14 +8,14 @@
 
 I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video, I also create a corresponding post featuring code snippets and figures related to the topic. You can find all of these posts in this repository, organized into the following sections:
 
-* [Vision Transformers](#vision-transformers)
+* [Vision Transformers and Their Applications](#vision-transformers-and-their-applications)
 * [Graph Neural Networks](#graph-neural-networks)
 * [Self-Supervised Learning](#self-supervised-learning)
 * [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
 * [JAX Performance Tips](#jax-performance-tips)
 * [Basic Machine Learning](#basic-machine-learning)
 
-# Vision Transformers
+# Vision Transformers and Their Applications
 
 | Video | Code | Title |
 |:---:|:---:|:---|
