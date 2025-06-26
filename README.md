@@ -43,12 +43,10 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 | [<img src="imgs/2025_04_21_SimGCL.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/ENVArKM2A3I) | [code](https://mashaan14.github.io/YouTube-channel/recommender_systems/2025_04_21_SimGCL_MovieLens) | Graph Contrastive Learning: Building MovieLens-100k Recommendations |
 | [<img src="imgs/2024_04_29_GNN_mini_batch.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/ZfCtFLS_os0) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_04_29_GNN_mini_batch) | Understanding Mini-Batch Training in PyTorch Geometric |
 | [<img src="imgs/2024_02_05_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/AWkPjrZshug) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_02_05_GAT) | Graph Attention Networks with PyTorch Geometric |
-| [<img src="imgs/2024_05_13_DGL_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/-V-T7koEWig) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_05_13_DGL_GAT) | Graph Attention Networks with DGL |
 | [<img src="imgs/2024_03_18_jraph_GAT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/O1zGWMEgW7A) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_18_jraph_GAT) | Graph Attention Networks with JAX |
 | [<img src="imgs/2024_06_24_neighbor_sampler.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/YQwUlmUkJuI) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_06_24_neighbor_sampler) | Implementing GNN Neighbor Sampler in JAX: A Practical Guide |
 | [<img src="imgs/2024_07_15_Cluster_GCN_sampler.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/8mknbxIIf94) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_07_15_ClusterGCN_jax) | Building a Cluster-GCN Model with JAX: A Step-by-Step Guide |
 | [<img src="imgs/2024_02_20_jraph.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/W-JDqd5AFio) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2024_03_21_jraph_GCN) | Training GCNs with PyG and Jraph: A Side-by-Side Comparison |
-| [<img src="imgs/2023_12_13_GCN_and_SGC.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/PQT2QblNegY) | [code](https://mashaan14.github.io/YouTube-channel/graph_neural_networks/2023_12_13_GCN_and_SGC) | PyTorch code for GCN and SGC |
 
 ---
 
