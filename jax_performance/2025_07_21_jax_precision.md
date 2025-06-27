@@ -1,32 +1,51 @@
 ```python
-dtype=jnp.float32,          # Data type
-param_dtype=jnp.float32,    # Parameter data type
+print(nnx.tabulate(model, jnp.ones((1, 32, 32, 3))))
 ```
+
+![param_dtype_size](https://github.com/user-attachments/assets/d45e6f84-3c5b-444e-94a0-850ecf29bf53)
+
+Here is an example ouutput of `nnx.tabulate`:
 
 ```console
-Total Parameters: 10,670,604 (42.7 MB)
-```
-
----
-
-```python
-dtype=jnp.bfloat16,          # Data type
-param_dtype=jnp.bfloat16,    # Parameter data type
-```
-
-```console
-Total Parameters: 10,670,604 (21.4 MB)
-```
-
----
-
-```python
-dtype=jnp.float16,          # Data type
-param_dtype=jnp.float16,    # Parameter data type
-```
-
-```console
-Total Parameters: 10,670,604 (21.4 MB)
+VisionTransformer Summary                                             
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ path               ┃ type               ┃ inputs            ┃ outputs            ┃ Param             ┃ RngState ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━┩
+│                    │ VisionTransformer  │ float32[1,32,32,… │ bfloat16[1,10]     │ cls_token:        │ 2 (12 B) │
+│                    │                    │                   │                    │   dtype: type     │          │
+│                    │                    │                   │                    │   value:          │          │
+│                    │                    │                   │                    │ float32[1,1,384]  │          │
+│                    │                    │                   │                    │ pos_embed:        │          │
+│                    │                    │                   │                    │   dtype: type     │          │
+│                    │                    │                   │                    │   value:          │          │
+│                    │                    │                   │                    │ float32[1,65,384] │          │
+│                    │                    │                   │                    │                   │          │
+│                    │                    │                   │                    │ 10,695,562 (42.8  │          │
+│                    │                    │                   │                    │ MB)               │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
+│ patch_embed        │ PatchEmbedding     │ bfloat16[1,32,32… │ bfloat16[1,64,384] │ 18,816 (75.3 KB)  │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
+│ patch_embed/conv_… │ Conv               │ bfloat16[1,32,32… │ bfloat16[1,8,8,38… │ bias:             │          │
+│                    │                    │                   │                    │ float32[384]      │          │
+│                    │                    │                   │                    │ kernel:           │          │
+│                    │                    │                   │                    │ float32[4,4,3,38… │          │
+│                    │                    │                   │                    │                   │          │
+│                    │                    │                   │                    │ 18,816 (75.3 KB)  │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
+│ encoder_blocks/0   │ EncoderBlock       │ float32[1,65,384] │ float32[1,65,384]  │ 1,774,464 (7.1    │ 2 (12 B) │
+│                    │                    │                   │                    │ MB)               │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
+│ encoder_blocks/0/… │ LayerNorm          │ float32[1,65,384] │ bfloat16[1,65,384] │ bias:             │          │
+│                    │                    │                   │                    │ float32[384]      │          │
+│                    │                    │                   │                    │ scale:            │          │
+│                    │                    │                   │                    │ float32[384]      │          │
+│                    │                    │                   │                    │                   │          │
+│                    │                    │                   │                    │ 768 (3.1 KB)      │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
+│ encoder_blocks/0/… │ MultiHeadAttention │ -                 │ bfloat16[1,65,384] │ 591,360 (2.4 MB)  │          │
+│                    │                    │ bfloat16[1,65,38… │                    │                   │          │
+│                    │                    │ decode: false     │                    │                   │          │
+├────────────────────┼────────────────────┼───────────────────┼────────────────────┼───────────────────┼──────────┤
 ```
 
 ---
