@@ -317,7 +317,7 @@ Now let's change our config dict to run `VisionTransformer` class for each of th
 * choice #1
 ```python
 model_config = ConfigDict(dict(
-    ...,
+    ...
     param_dtype=jnp.float32,
     ...
 ))
@@ -326,7 +326,7 @@ model_config = ConfigDict(dict(
 * choice #2
 ```python
 model_config = ConfigDict(dict(
-    ...,
+    ...
     param_dtype=jnp.float16,
     ...
 ))
@@ -335,7 +335,7 @@ model_config = ConfigDict(dict(
 * choice #3
 ```python
 model_config = ConfigDict(dict(
-    ...,
+    ...
     param_dtype=jnp.bfloat16,
     ...
 ))
