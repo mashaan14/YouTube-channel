@@ -17,7 +17,7 @@
 * [Preparing CIFAR-10](#preparing-cifar-10)
 * [Create a device mesh](#create-a-device-mesh)
 * [`VisionTransformer` class](#visiontransformer-class)
-* [Testing different values for `param_dtype`](Testing-different-values-for-param_dtype)
+* [Testing different values for `param_dtype`](#testing-different-values-for-param_dtype)
 
 
 ## Acknowledgment
