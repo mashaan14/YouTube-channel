@@ -20,7 +20,7 @@
 * [Testing different values for `param_dtype`](#testing-different-values-for-param_dtype)
 * [Testing different values for `dtype`](#testing-different-values-for-dtype)
 * [`jax.lax.Precision`](#jaxlaxprecision)
-* [`jax.default_matmul_precision`](#jaxdefaultmatmul_precision)
+* [`jax.default_matmul_precision`](#jaxdefault_matmul_precision)
 
 
 ## Acknowledgment
