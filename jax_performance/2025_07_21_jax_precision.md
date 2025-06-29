@@ -18,6 +18,7 @@
 * [Create a device mesh](#create-a-device-mesh)
 * [`VisionTransformer` class](#visiontransformer-class)
 * [Testing different values for `param_dtype`](#testing-different-values-for-param_dtype)
+* [Testing different values for `dtype`](#testing-different-values-for-dtype)
 
 
 ## Acknowledgment
@@ -314,32 +315,12 @@ class VisionTransformer(nnx.Module):
 
 Now let's change our config dict to run `VisionTransformer` class for each of the following choices:
 
-* choice #1
-```python
-model_config = ConfigDict(dict(
-    ...
-    param_dtype=jnp.float32,
-    ...
-))
-```
+| `param_dtype`       |
+|----------------|
+| `jnp.float32`   |
+| `jnp.float16`   |
+| `jnp.bfloat16`   |
 
-* choice #2
-```python
-model_config = ConfigDict(dict(
-    ...
-    param_dtype=jnp.float16,
-    ...
-))
-```
-
-* choice #3
-```python
-model_config = ConfigDict(dict(
-    ...
-    param_dtype=jnp.bfloat16,
-    ...
-))
-```
 
 Now let's run `nnx.tabulate` to check the parameters size. Here is an example ouutput of `nnx.tabulate`:
 
@@ -387,7 +368,7 @@ VisionTransformer Summary
 
 This is a comparison of parameters size based on `param_dtype`:
 
-![param_dtype_size](https://github.com/user-attachments/assets/d45e6f84-3c5b-444e-94a0-850ecf29bf53)
+![drawings-01 001](https://github.com/user-attachments/assets/fd126a43-06c0-4b63-8e70-e4037d469802)
 
 According to this plot, it is an easy decision to go with `param_dtype=jnp.bfloat16`. But if we go with this choice we will run into this error:
 
@@ -395,7 +376,29 @@ According to this plot, it is an easy decision to go with `param_dtype=jnp.bfloa
 XlaRuntimeError: UNIMPLEMENTED: Dot algorithm ALG_DOT_F16_F16_F32 is not supported.
 ```
 
+## Testing different values for `dtype`
 
+Since we're restricted to use `param_dtype=jnp.float32`, let's play with `dtype` and test four different choices:
+
+| `batch_size`       | `dtype`       |
+|----------------|----------------|
+| `128`   | `jnp.float32`   |
+| `128`   | `jnp.bfloat16`   |
+| `4096`   | `jnp.float32`   |
+| `4096`   | `jnp.bfloat16`   |
+
+
+![peak_memory_allocation](https://github.com/user-attachments/assets/0c601ebe-c311-4f8c-b658-9840960485a4)
+
+I was expecting the difference with larger batch size, but they were so close with `batch_size=128`. After digging into (HLO Op stats) in TensorBoard and serching for this text `16,32,32,3`, which represents the input size divided into 8 devices `128/8=16`, I found a copy operation that converts the input tensor to `bfloat16`: 
+
+![Screenshot 2025-06-29 at 3 49 12 PM](https://github.com/user-attachments/assets/245b6570-ddd5-40b6-bf6d-5ec141be896c)
+
+But that copy operation was not performed with `batch_size=4096`:
+
+![Screenshot 2025-06-29 at 3 50 54 PM](https://github.com/user-attachments/assets/b86d9691-7912-454a-bc37-44db2467683c)
+
+Honestly, I don't know what causes this copy operation, but it is the reason why these two precisions perform the same with `batch_size=128`.
 
 ---
 
