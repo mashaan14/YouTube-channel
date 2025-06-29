@@ -1,4 +1,4 @@
-# Parallel Vision Transformer using JAX Device Mesh
+# Training with Different JAX Precisions 
 
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
