@@ -19,6 +19,8 @@
 * [`VisionTransformer` class](#visiontransformer-class)
 * [Testing different values for `param_dtype`](#testing-different-values-for-param_dtype)
 * [Testing different values for `dtype`](#testing-different-values-for-dtype)
+* [`jax.lax.Precision`](#jaxlaxprecision)
+* [`jax.default_matmul_precision`](#jaxdefaultmatmul_precision)
 
 
 ## Acknowledgment
@@ -400,57 +402,31 @@ But that copy operation was not performed with `batch_size=4096`:
 
 Honestly, I don't know what causes this copy operation, but it is the reason why these two precisions perform the same with `batch_size=128`.
 
----
+## `jax.lax.Precision`
+
+[`jax.lax.Precision`](https://docs.jax.dev/en/latest/jax.lax.html#jax.lax.Precision) has three options that control the precision: `DEFAULT`, `HIGH`, and `HIGHEST`. Here is an example on how to use it with a linear layer:
 
 ```python
-dtype=jnp.float32,          # Data type
+self.head = nnx.Linear(in_features=embed_dim,
+                        out_features=num_classes,
+                        kernel_init=nnx.with_partitioning(nnx.initializers.xavier_uniform(), NamedSharding(mesh, P(None, 'model'))),
+                        bias_init=nnx.with_partitioning(nnx.initializers.zeros_init(), NamedSharding(mesh, P('model'))),
+                        dtype=dtype,
+                        # param_dtype=param_dtype,
+                        precision=jax.lax.Precision.HIGHEST,
+                        rngs=rngs)
 ```
 
-```console
-Total Parameters: 10,695,564 (42.8 MB) 
-```
+In my experiments all three options have the same impact. This might indicate that XLA was using a certain precision and `jax.lax.Precision` could not override it.
 
----
+![precision_time](https://github.com/user-attachments/assets/30f6e14b-c884-4b19-97e0-24b822afeac5)
 
-```python
-dtype=jnp.bfloat16,          # Data type
-```
+![precision_memory](https://github.com/user-attachments/assets/f111399c-902d-4b0c-98f2-2bbd789238cc)
 
-```console
-Total Parameters: 10,695,564 (42.8 MB) 
-```
+## `jax.default_matmul_precision`
 
----
+I warpped the training loop in a `with jax.default_matmul_precision('float32')`. But testing two choices 'float32' and 'bfloat16', the performance was the same:
 
-```python
-dtype=jnp.float16,          # Data type
-```
+![drawings-01 002](https://github.com/user-attachments/assets/5f983f82-5ef7-4573-818d-7423cdc98df3)
 
-```console
-Total Parameters: 10,695,564 (42.8 MB)
-```
-
-## bfloat16
-
-```console
-Step 20, Loss: 3.958667516708374, Elapsed Time: 0.11 seconds
-Step 40, Loss: 2.3608651161193848, Elapsed Time: 0.08 seconds
-Step 60, Loss: 2.1720101833343506, Elapsed Time: 0.10 seconds
-Step 80, Loss: 2.0653440952301025, Elapsed Time: 0.05 seconds
-Step 100, Loss: 1.9823248386383057, Elapsed Time: 0.07 seconds
-Step 120, Loss: 1.9301824569702148, Elapsed Time: 0.05 seconds
-Step 140, Loss: 1.9318405389785767, Elapsed Time: 0.09 seconds
-Step 160, Loss: 1.8989524841308594, Elapsed Time: 0.09 seconds
-Step 180, Loss: 1.9052046537399292, Elapsed Time: 0.09 seconds
-Step 200, Loss: 1.8983386754989624, Elapsed Time: 0.08 seconds
-Step 220, Loss: 1.8348573446273804, Elapsed Time: 0.09 seconds
-Step 240, Loss: 1.8322759866714478, Elapsed Time: 0.07 seconds
-Step 260, Loss: 1.8048137426376343, Elapsed Time: 0.08 seconds
-Step 280, Loss: 1.809252142906189, Elapsed Time: 0.08 seconds
-Step 300, Loss: 1.796458125114441, Elapsed Time: 0.09 seconds
-Step 320, Loss: 1.7766698598861694, Elapsed Time: 0.10 seconds
-Step 340, Loss: 1.745721697807312, Elapsed Time: 0.08 seconds
-Step 360, Loss: 1.7272859811782837, Elapsed Time: 0.07 seconds
-Step 380, Loss: 1.713021159172058, Elapsed Time: 0.10 seconds
-Epoch 1 completed in 157.41 seconds
-```
+![drawings-01 003](https://github.com/user-attachments/assets/5f03594e-305e-4616-b678-6f2a9a89a2b6)
