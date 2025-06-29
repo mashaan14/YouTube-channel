@@ -583,7 +583,9 @@ jax.profiler.stop_trace()
 ![drawings-02 001](https://github.com/user-attachments/assets/d77bca39-e2cf-4f3b-9c5d-96775cd4ec04)
 
 ## Epoch run time
-![epoch_run_time](https://github.com/user-attachments/assets/3f316f0a-bef7-4d9e-83a2-33dae47c7e06)
+![epoch_run_time](https://github.com/user-attachments/assets/e5211ec5-1dc4-4eca-a2dc-ce8ab49551f4)
+
+
 
 ## Peak memory allocation
 ![peak_memory_allocation](https://github.com/user-attachments/assets/d9d881b8-c38c-4878-9897-82d83c914e1d)
