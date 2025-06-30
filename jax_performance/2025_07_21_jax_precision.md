@@ -434,6 +434,6 @@ I warpped the training loop in a `with jax.default_matmul_precision('float32')`.
 
 ## Why I don’t see a memory impact from precision alone?
 
-* I could be doing something wrong (that's always a possibility 😄). I did my best to minimize the chance of making an error. I turned off the parallelism and run on a single device, I also passed the options directly to layers instead of passign them to the model.
+* I could be doing something wrong (that's always a possibility 😄). I did my best to minimize the chance of making an error. I turned off the parallelism and run on a single device, I also passed the options directly to layers instead of passing them to the model.
 * XLA has the final say on precision and it has its own heuristics to control that. As a user you control how many devices you want to run and you also control the batch size.
 
