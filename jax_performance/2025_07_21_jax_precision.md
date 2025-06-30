@@ -21,6 +21,7 @@
 * [Testing different values for `dtype`](#testing-different-values-for-dtype)
 * [`jax.lax.Precision`](#jaxlaxprecision)
 * [`jax.default_matmul_precision`](#jaxdefault_matmul_precision)
+* [Why I don’t see a memory impact from precision alone?](#why-i-dont-see-a-memory-impact-from-precision-alone)
 
 
 ## Acknowledgment
@@ -430,3 +431,9 @@ I warpped the training loop in a `with jax.default_matmul_precision('float32')`.
 ![drawings-01 002](https://github.com/user-attachments/assets/5f983f82-5ef7-4573-818d-7423cdc98df3)
 
 ![drawings-01 003](https://github.com/user-attachments/assets/5f03594e-305e-4616-b678-6f2a9a89a2b6)
+
+## Why I don’t see a memory impact from precision alone?
+
+* I could be doing something wrong (that's always a possibility 😄). I did my best to minimize the chance of making an error. I turned off the parallelism and run on a single device, I also passed the options directly to layers instead of passign them to the model.
+* XLA has the final say on precision and it has its own heuristics to control that. As a user you control how many devices you want to run and you also control the batch size.
+
