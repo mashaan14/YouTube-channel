@@ -23,10 +23,10 @@
 * [Initializing the model](#initializing-the-model)
 * [Visualize parallelism with `shard_map`](#visualize-parallelism-with-create_device_mesh)
 * [Training loop with `jax.profiler`](#training-loop-with-jaxprofiler)
-* [Visualize batches](Visualize-batches)
-* [Epoch run time](Epoch-run-time)
-* [Peak memory allocation](Peak-memory-allocation)
-* [Installing TensorBoard](Installing-TensorBoard)
+* [Visualize batches](#visualize-batches)
+* [Epoch run time](#epoch-run-time)
+* [Peak memory allocation](#peak-memory-allocation)
+* [Installing TensorBoard](#installing-tensorboard)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
