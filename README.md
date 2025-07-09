@@ -56,7 +56,7 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 | :---: | :---: | :--- |
 | [<img src="imgs/2025_05_12_DINOv2.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/j2_42Yx_1_w) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_12_DINOv2) | Inside DINOv2: Architecture Analysis + CIFAR-10 Experiment |
 | [<img src="imgs/2025_05_19_SSL.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/7NE0NH-PfkA) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_05_19_SSL) | Self-Supervised Learning Review: From SimCLR to DINOv2 |
-| [<img src="imgs/2025_06_16_IJEPA.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/Cw8vKl-jD44) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_06_16_ijepa) | I-JEPA Explained with a Single CIFAR-10 Batch |
+| [<img src="imgs/2025_06_16_IJEPA.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/Cw8vKl-jD44) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_06_16_ijepa) | I-JEPA Explained with a Single Batch Run |
 | [<img src="imgs/2025_06_23_collapse.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/aspZpuueU84) | [code](https://mashaan14.github.io/YouTube-channel/self_supervised_learning/2025_06_23_SSL_collapse) | Self-Supervised Learning Collapse: a Quick CIFAR-10 Experiment |
 
 
