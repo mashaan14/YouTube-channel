@@ -510,11 +510,12 @@ torch.Size([1, 24, 9, 9])
 torch.Size([1, 24, 9, 9])
 ```
 
-<img width="1920" height="4018" alt="drawings-02-001" src="https://github.com/user-attachments/assets/fbbb3db0-3053-4370-b1be-179f261293c2" />
+![drawings-02-001](https://github.com/user-attachments/assets/fbbb3db0-3053-4370-b1be-179f261293c2)
 
-<img width="1920" height="2497" alt="drawings-02-002" src="https://github.com/user-attachments/assets/eedeaa9b-3d27-46c6-955c-4ee262cf8fdf" />
+![drawings-02-002](https://github.com/user-attachments/assets/eedeaa9b-3d27-46c6-955c-4ee262cf8fdf)
 
-<img width="1920" height="2279" alt="drawings-02-003" src="https://github.com/user-attachments/assets/86046108-23f4-41e7-8a14-f420d5cd8d0d" />
+![drawings-02-003](https://github.com/user-attachments/assets/86046108-23f4-41e7-8a14-f420d5cd8d0d)
+
 
 ```python
 img_attn = global_attention[0][:,:,:,:].cpu().detach()
@@ -581,9 +582,9 @@ def plot_attention(img_plot, img_attn, plot_title):
     plt.show()
 ```
 
-<img width="1920" height="3620" alt="drawings-02-004" src="https://github.com/user-attachments/assets/83ae11ab-63e4-4749-a3cb-084d6c5a6a86" />
+![drawings-02-004](https://github.com/user-attachments/assets/83ae11ab-63e4-4749-a3cb-084d6c5a6a86)
 
-<img width="1920" height="2793" alt="drawings-02-005" src="https://github.com/user-attachments/assets/8cb124cb-db73-4cff-9ddc-ed0ae25be982" />
+![drawings-02-005](https://github.com/user-attachments/assets/8cb124cb-db73-4cff-9ddc-ed0ae25be982)
 
 ```python
 plt.imshow(img_plot)
