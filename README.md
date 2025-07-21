@@ -78,8 +78,9 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 | Video | Code | Title |
 | :---: | :---: | :--- |
 | [<img src="imgs/2024_11_11_tpu_test.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/PwYHoiB4Fag) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_11_11_tpu_test) | Free TPU Access & JAX/PyTorch Setup with TPU Research Cloud |
-| [<img src="imgs/2024_04_14_jax_speed_test.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/1SQFVYVSuyE) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test) | JAX JIT Compilation Explained: From Python to JAXPR |
 | [<img src="imgs/2025_07_14_jax_device_mesh.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/6WK7R1HBPOc) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2025_07_14_jax_device_mesh) | Parallel Vision Transformer using JAX Device Mesh |
+| [<img src="imgs/2025_07_21_jax_precision.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/znxzsPzNK6c) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2025_07_21_jax_precision) | Experimenting with Different JAX Precisions: a Vision Transformer Code |
+| [<img src="imgs/2024_04_14_jax_speed_test.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/1SQFVYVSuyE) | [code](https://mashaan14.github.io/YouTube-channel/jax_performance/2024_04_14_jax_speed_test) | JAX JIT Compilation Explained: From Python to JAXPR |
 | [<img src="imgs/2024_03_07_jax_conv.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/rn-RsD7IpIg) | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_03_07_jax_conv) | JAX Conv Layer Explained |
 
 ---
