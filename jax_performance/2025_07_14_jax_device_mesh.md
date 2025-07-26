@@ -583,12 +583,10 @@ jax.profiler.stop_trace()
 ![drawings-02 001](https://github.com/user-attachments/assets/d77bca39-e2cf-4f3b-9c5d-96775cd4ec04)
 
 ## Epoch run time
-![epoch_run_time](https://github.com/user-attachments/assets/e5211ec5-1dc4-4eca-a2dc-ce8ab49551f4)
-
-
+![peak_memory_allocation](https://github.com/user-attachments/assets/8bb41cf7-869c-4887-a142-13956ff286c3)
 
 ## Peak memory allocation
-![peak_memory_allocation](https://github.com/user-attachments/assets/d9d881b8-c38c-4878-9897-82d83c914e1d)
+![epoch_run_time](https://github.com/user-attachments/assets/8a0b5e02-e4d3-4226-be73-9d06b6dd22da)
 
 ## Installing TensorBoard
 
