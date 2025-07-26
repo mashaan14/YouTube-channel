@@ -371,7 +371,7 @@ VisionTransformer Summary
 
 This is a comparison of parameters size based on `param_dtype`:
 
-![drawings-01 001](https://github.com/user-attachments/assets/fd126a43-06c0-4b63-8e70-e4037d469802)
+![param_dtype_size](https://github.com/user-attachments/assets/d640e484-7316-4161-8143-b7ffac1d35d1)
 
 According to this plot, it is an easy decision to go with `param_dtype=jnp.bfloat16`. But if we go with this choice we will run into this error:
 
@@ -391,7 +391,7 @@ Since we're restricted to use `param_dtype=jnp.float32`, let's play with `dtype`
 | `4096`   | `jnp.bfloat16`   |
 
 
-![peak_memory_allocation](https://github.com/user-attachments/assets/0c601ebe-c311-4f8c-b658-9840960485a4)
+![peak_memory_allocation](https://github.com/user-attachments/assets/4a500f6c-5149-4015-8015-884ca68258bd)
 
 I was expecting the difference with larger batch size, but they were so close with `batch_size=128`. After digging into (HLO Op stats) in TensorBoard and serching for this text `16,32,32,3`, which represents the input size divided into 8 devices `128/8=16`, I found a copy operation that converts the input tensor to `bfloat16`: 
 
@@ -420,17 +420,18 @@ self.head = nnx.Linear(in_features=embed_dim,
 
 In my experiments all three options have the same impact. This might indicate that XLA was using a certain precision and `jax.lax.Precision` could not override it.
 
-![precision_time](https://github.com/user-attachments/assets/30f6e14b-c884-4b19-97e0-24b822afeac5)
+![precision_time](https://github.com/user-attachments/assets/de4ee2ef-04bf-4ee1-bd49-ea31d52fd39a)
 
-![precision_memory](https://github.com/user-attachments/assets/f111399c-902d-4b0c-98f2-2bbd789238cc)
+![precision_memory](https://github.com/user-attachments/assets/5bd8ea28-2161-451a-85b5-285195ffd17f)
 
 ## `jax.default_matmul_precision`
 
 I warpped the training loop in a `with jax.default_matmul_precision('float32')`. But testing two choices 'float32' and 'bfloat16', the performance was the same:
 
-![drawings-01 002](https://github.com/user-attachments/assets/5f983f82-5ef7-4573-818d-7423cdc98df3)
+![matmul_dtype_time](https://github.com/user-attachments/assets/7b2ff1ec-1b48-44b0-a47a-6f251f5320fc)
 
-![drawings-01 003](https://github.com/user-attachments/assets/5f03594e-305e-4616-b678-6f2a9a89a2b6)
+![matmul_dtype_memory](https://github.com/user-attachments/assets/d378cb13-169b-497b-a144-a6f7f0fb1133)
+
 
 ## Why I don’t see a memory impact from precision alone?
 
