@@ -33,6 +33,9 @@ With batch_size=128, 7.1% of the time was spent performing (%all-reduce.104) HLO
 
 Now, let's have a look at the positions of these two operations in the Trace Viewer:
 
-![Trace Viewer batch_size 128](https://github.com/user-attachments/assets/79d9f654-033c-4f94-95a9-a0259164ef1a)
+![Trace Viewer batch_size 128](https://github.com/user-attachments/assets/69db106b-b85d-46b1-aa6b-a49896546e8b)
 
-![Trace Viewer batch_size 4096](https://github.com/user-attachments/assets/b42bbf21-fe72-4407-ba1b-768160184f58)
+---
+
+![Trace Viewer batch_size 4096](https://github.com/user-attachments/assets/648d011a-6e2c-45e9-b623-f33e6241c060)
+
