@@ -27,7 +27,7 @@ Here's a plot of Average Step Time (i.e., runtime time) of a parallel vision tra
 
 If we go to (HLO Op Stats) in TensorBoard we can see a breakdown of which HLO Ops taking time:
 
-![HLO Op Stats pie chart](https://github.com/user-attachments/assets/8044aa2d-46c6-4f2b-8256-b5d2b443b4e5)
+![HLO Op Stats pie chart](https://github.com/user-attachments/assets/ca23d31b-66c6-485e-9194-601cffe999c0)
 
 With batch_size=128, 7.1% of the time was spent performing (%all-reduce.104) HLO op. But with batch_size=4096, 3.1% of the time was spent performing (%fusion.253) HLO op.
 
