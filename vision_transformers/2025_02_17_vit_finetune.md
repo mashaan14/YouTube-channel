@@ -12,7 +12,7 @@
 
 
 ## Acknowledgement
-Most of the instruction in this tutorial were taken from [Vision Transformer and MLP-Mixer Architectures](https://github.com/google-research/vision_transformer/tree/main). Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/about/) for making cloud TPUs available for my use.
+Thanks to Google's [TPU Research Cloud (TRC)](https://sites.research.google/trc/about/) for making cloud TPUs available for my use. The pretrained model can be found in [Vision Transformer and MLP-Mixer Architectures](https://github.com/google-research/vision_transformer/tree/main).
 
 ## References
 
