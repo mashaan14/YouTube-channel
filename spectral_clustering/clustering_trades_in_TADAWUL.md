@@ -1,4 +1,4 @@
-# Clustering Trades in Saudi Stock Exchange (Tadawul)
+# Clustering Trades in Saudi Stock Exchange (TADAWUL)
 
 Similarity graphs are superiour tools when it comes to data analysis. They become very useful when clusters are arranged in non convex shapes or containing outliers. I used a tiny dataset of 80 transactions in Saudi stock market (Tadawul) to demonestrate how similarity graphs could outperform conventinal clustering methods. Clustering stocks based on some indicators could be helpful in deversifiying a portifolio.
 
