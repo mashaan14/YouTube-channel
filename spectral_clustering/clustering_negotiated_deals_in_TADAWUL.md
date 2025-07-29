@@ -46,7 +46,9 @@ If we treat each subgraph as a cluster, we would have almost 15 clusters. Some c
 
 ![Cluster4](https://github.com/user-attachments/assets/ebff764e-1ea4-4d4c-86f9-2b539e90e09b)
 
-To conclude, trades in cluster 1 have lower price difference but they appear in January and February before larger price differences occur. Cluster 2 and 4 contain trades with larger price differences and they mainly appear in March and April
+To conclude, trades in cluster 1 have lower price difference but they appear in January and February before larger price differences occur. Cluster 2 and 4 contain trades with larger price differences and they mainly appear in March and April.
+
+Thanks for reading.
 
 ## References
 [1] Zelnik-Manor, Lihi, and Pietro Perona. "Self-tuning spectral clustering." Advances in neural information processing systems. 2005.
