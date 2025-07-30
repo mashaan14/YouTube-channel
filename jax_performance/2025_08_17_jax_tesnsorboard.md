@@ -10,6 +10,7 @@
 * [What XLA is actually doing](#what-xla-is-actually-doing)
 * [Which HLO Ops taking time?](#which-hlo-ops-taking-time)
 * [Finding Time Consuming HLO Ops in Trace Viewer](#finding-time-consuming-hlo-ops-in-trace-viewer)
+* [Understanding the AllReduce HLO Operation](#understanding-the-allreduce-hlo-operation)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -34,7 +35,7 @@ If we go to (HLO Op Stats) in TensorBoard we can see a breakdown of which HLO Op
 
 ![HLO Op Stats pie chart](https://github.com/user-attachments/assets/ca23d31b-66c6-485e-9194-601cffe999c0)
 
-With batch_size=128, 7.1% of the time was spent performing (%all-reduce.104) HLO op. But with batch_size=4096, 3.1% of the time was spent performing (%fusion.253) HLO op.
+With `batch_size=128`, 7.1% of the time was spent performing `%all-reduce.104` HLO op. But with `batch_size=4096`, 3.1% of the time was spent performing `%fusion.253` HLO op.
 
 ## Finding Time Consuming HLO Ops in Trace Viewer
 
@@ -44,5 +45,10 @@ Now, let's have a look at the positions of these two operations in the Trace Vie
 
 ---
 
-![Trace Viewer batch_size 4096](https://github.com/user-attachments/assets/648d011a-6e2c-45e9-b623-f33e6241c060)
+![Trace Viewer batch_size 4096](https://github.com/user-attachments/assets/e48ac935-f0f8-4988-a979-eafc8a17706a)
 
+## Understanding the AllReduce HLO Operation
+
+`%all-reduce.104` operation took 7.1% of the time with `batch_size=128`. In fact AllReduce operation was the same for both batch sizes 128 and 4096. But when the batch size was small we spent most of the time synchronizing parameters because this is what AllReduce is doing.
+
+Here's the syntax of AllReduce linked with what I found in my profiling.
