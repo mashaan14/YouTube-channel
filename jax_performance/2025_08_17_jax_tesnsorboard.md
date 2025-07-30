@@ -11,6 +11,8 @@
 * [Which HLO Ops taking time?](#which-hlo-ops-taking-time)
 * [Finding Time Consuming HLO Ops in Trace Viewer](#finding-time-consuming-hlo-ops-in-trace-viewer)
 * [Understanding the AllReduce HLO Operation](#understanding-the-allreduce-hlo-operation)
+* [`%fusion.253` HLO Operation](#fusion253-hlo-operation)
+
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -55,3 +57,20 @@ Here's the syntax of AllReduce linked with what I found in my profiling:
 
 ![breaking down allreduce](https://github.com/user-attachments/assets/a7403ee8-d7fc-4eb9-befc-92fe85e09489)
 
+We can confirm this syntax from Graph Viewer:
+
+![allreduce graph viewer](https://github.com/user-attachments/assets/bf071fef-72d2-4bd1-8b96-61757ba2f82f)
+
+## `%fusion.253` HLO Operation
+
+`%fusion.253` operation took 3.1% of the time with `batch_size=4096`. It is a big fusion operation as shown in Graph Viewer:
+
+![fusion 253 zoom 1](https://github.com/user-attachments/assets/f24ceb1f-be27-4464-98d7-564238d7e9fa)
+
+Here's a zoomed view for the same operation:
+
+![fusion 253 zoom 2](https://github.com/user-attachments/assets/14fcfd66-419b-466a-89b4-344003cb19d3)
+
+Inside `%fusion.253` the batch dimension was 256. I was expecting 512 because this was the batch size per TPU device `4096/8=512`. But eventually the batch dimension on the output tensor was 512, suggesting that XLA has done splitting along the way. Also the output tensor has 1536 on the channel dimension suggesting that this operation occur inside the mlp block in the vision transformer. 
+
+![fusion 253 zoom 3](https://github.com/user-attachments/assets/c52def0d-474c-43b9-97d3-afeba8a1da43)
