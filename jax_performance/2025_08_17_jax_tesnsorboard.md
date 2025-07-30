@@ -7,6 +7,9 @@
 ## Contents
 
 * [Acknowledgment](#acknowledgment)
+* [What XLA is actually doing](#what-xla-is-actually-doing)
+* [Which HLO Ops taking time?](#which-hlo-ops-taking-time)
+* [Finding Time Consuming HLO Ops in Trace Viewer](#finding-time-consuming-hlo-ops-in-trace-viewer)
 
 ## Acknowledgment
 These resources were helpful in preparing this post:
@@ -14,12 +17,14 @@ These resources were helpful in preparing this post:
   - [EQuARX: Efficient Quantized All Reduce in XLA for Distributed Machine Learning Acceleration](https://arxiv.org/abs/2506.17615)
 
 
-## What the machine is actually doing?
+## What XLA is actually doing?
 
 In a [previous post](https://mashaan14.github.io/YouTube-channel/jax_performance/2025_07_14_jax_device_mesh) I wrote about running a vision transformer (ViT) using JAX device mesh. I tested different mesh setups and batch sizes. I was only looking at the runtime and memory consumption. But in this post I want to dive deeper into the time consumed by certain HLO Ops and see whether the machine is spending time in doing computations or communicating between devices. This figure XLA compilation workflow and optimization steps: 
 
 ![XLA-compilation](https://github.com/user-attachments/assets/08239147-e5e5-427c-9356-728c9341ac16)
 > source: [Intel® Extension for TensorFlow](https://intel.github.io/intel-extension-for-tensorflow/latest/docs/guide/OpenXLA.html)
+
+## Which HLO Ops taking time?
 
 Here's a plot of Average Step Time (i.e., runtime time) of a parallel vision transformer using an 8 by 1 device mesh on JAX:
 
@@ -30,6 +35,8 @@ If we go to (HLO Op Stats) in TensorBoard we can see a breakdown of which HLO Op
 ![HLO Op Stats pie chart](https://github.com/user-attachments/assets/ca23d31b-66c6-485e-9194-601cffe999c0)
 
 With batch_size=128, 7.1% of the time was spent performing (%all-reduce.104) HLO op. But with batch_size=4096, 3.1% of the time was spent performing (%fusion.253) HLO op.
+
+## Finding Time Consuming HLO Ops in Trace Viewer
 
 Now, let's have a look at the positions of these two operations in the Trace Viewer:
 
