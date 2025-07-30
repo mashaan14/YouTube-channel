@@ -51,4 +51,7 @@ Now, let's have a look at the positions of these two operations in the Trace Vie
 
 `%all-reduce.104` operation took 7.1% of the time with `batch_size=128`. In fact AllReduce operation was the same for both batch sizes 128 and 4096. But when the batch size was small we spent most of the time synchronizing parameters because this is what AllReduce is doing.
 
-Here's the syntax of AllReduce linked with what I found in my profiling.
+Here's the syntax of AllReduce linked with what I found in my profiling:
+
+![breaking down allreduce](https://github.com/user-attachments/assets/a7403ee8-d7fc-4eb9-befc-92fe85e09489)
+
