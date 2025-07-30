@@ -18,6 +18,7 @@
 These resources were helpful in preparing this post:
   - [How to Profile TPU Programs](https://jax-ml.github.io/scaling-book/profiling/)
   - [EQuARX: Efficient Quantized All Reduce in XLA for Distributed Machine Learning Acceleration](https://arxiv.org/abs/2506.17615)
+  - [Compiling machine learning programs via high-level tracing](https://research.google/pubs/compiling-machine-learning-programs-via-high-level-tracing/)
 
 
 ## What XLA is actually doing?
@@ -26,6 +27,13 @@ In a [previous post](https://mashaan14.github.io/YouTube-channel/jax_performance
 
 ![XLA-compilation](https://github.com/user-attachments/assets/08239147-e5e5-427c-9356-728c9341ac16)
 > source: [Intel® Extension for TensorFlow](https://intel.github.io/intel-extension-for-tensorflow/latest/docs/guide/OpenXLA.html)
+
+![XLA-HLO-fusion](https://github.com/user-attachments/assets/9b2480e8-a2dd-428d-86d5-3889346b3d21)
+> source: Frostig et al. (2018)
+
+
+
+
 
 ## Which HLO Ops taking time?
 
