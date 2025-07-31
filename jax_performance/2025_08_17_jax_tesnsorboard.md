@@ -41,6 +41,12 @@ Here's a plot of Average Step Time (i.e., runtime time) of a parallel vision tra
 
 ![runtime](https://github.com/user-attachments/assets/2e99d157-28d6-4ff2-b6fb-555eb785e0ef)
 
+
+> **📌 NOTE:**  
+> I used TensorBoard for profiling.  
+> I already covered how to run TensorBoard profiler locally [here](https://mashaan14.github.io/YouTube-channel/jax_performance/2025_07_14_jax_device_mesh#installing-tensorboard).
+
+
 If we go to (HLO Op Stats) in TensorBoard we can see a breakdown of which HLO Ops taking time:
 
 ![HLO Op Stats pie chart](https://github.com/user-attachments/assets/ca23d31b-66c6-485e-9194-601cffe999c0)
