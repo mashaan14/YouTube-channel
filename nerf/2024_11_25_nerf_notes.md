@@ -50,17 +50,18 @@ year    = {2020},
 
 ## NeRF input
 
-NeRF Inputm is a set of 2D images along with their corresponding camera poses. NeRF can also use the sparse points produced by Structure-from-Motion.
+NeRF Input is a set of 2D images along with their corresponding camera poses. NeRF can also use the sparse points produced by Structure-from-Motion.
 
 ![drawings-01 002](https://github.com/user-attachments/assets/f4168f35-a216-4a30-b632-42265e253daa)
 
-* **Ground Truth:** Pixels in training images.
-* **Training Samples:** 3D points along the ray.
-* **Loss Function:** how close are we to reconstruct the color from the ground truth pixel? All 3D points along the ray contribute to the final color of the pixel.
-* **Objective:** Overfit the network as much as we can to match the colors in training images. Test images can be used to test how our network performs on angles that are not present in the training set.
 
-![image](https://github.com/user-attachments/assets/0edcb671-038a-4221-8bde-9b9f7542cf12)
 
+| **Concept**              | **Description**                                                                 |
+|--------------------------|---------------------------------------------------------------------------------|
+| **Ground Truth**         | Pixels in training images.                                                      |
+| **Training Samples**     | 3D points along the ray.                                                        |
+| **Loss Function**        | How close are we to reconstruct the color from the ground truth pixel? All 3D points along the ray contribute to the final color of the pixel. |
+| **Objective**            | Overfit the network as much as we can to match the colors in training images. Test images can be used to test how our network performs on angles that are not present in the training set. |
 
 ## Volumetric formulation for NeRF
 
