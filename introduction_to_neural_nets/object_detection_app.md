@@ -70,3 +70,9 @@ You'll get a JSON response with detections.
   ]
 }
 ```
+
+[https://docs.docker.com/desktop/setup/install/mac-install/](Install Docker Desktop on Mac)
+
+```bash
+docker build -t detr-api .
+```
