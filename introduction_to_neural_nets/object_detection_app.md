@@ -4,6 +4,26 @@ conda activate docker
 pip install transformers torch torchvision fastapi uvicorn pillow timm python-multipart
 ```
 
+```bash
+uvicorn app:app --reload
+```
+
+```console
+INFO:     Will watch for changes in these directories: ['/Users/mashaanalshammari/Downloads/app']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10182] using StatReload
+```
+
+Go to:
+
+[http://localhost:8000/docs](http://localhost:8000/docs)
+
+You'll see /predict with a "Try it out" button.
+
+Click "Try it out", upload an image, and click "Execute".
+
+You'll get a JSON response with detections.
+
 ```json
 {
   "detections": [
