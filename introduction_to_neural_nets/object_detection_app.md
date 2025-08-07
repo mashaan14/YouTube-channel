@@ -76,3 +76,7 @@ You'll get a JSON response with detections.
 ```bash
 docker build -t detr-api .
 ```
+
+```bash
+docker run -p 8000:8000 detr-api
+```
