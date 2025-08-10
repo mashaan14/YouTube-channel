@@ -1,7 +1,16 @@
 # Deploying An Object Detection App to HuggingFace Spaces
 
+## Contents
+
+* [Building the app locally](#building-the-app-locally)
+* [Adding a simple HTML interface](#adding-a-simple-html-interface)
+* [Preparing Dockerfile](#preparing-dockerfile)
+* [Deploying to HuggingFace Spaces](#deploying-to-huggingface-spaces)
+
 In this post I'll walk you through deploying an object detection app. We're going to test the app locally to make sure everything works well. Then, we'll wrap the Dockerfile and upload it with `App.py` to HuggingFace Spaces.
 First, let's play it safe and create a conda environment specifically for this project. We’re going to name this environment `docker`:
+
+## Building the app locally
 
 ```bash
 conda create -n docker
@@ -175,6 +184,8 @@ Also, you'll get a JSON response with detections. These numbers represent the mo
 }
 ```
 
+## Adding a simple HTML interface
+
 Let's add a simple HTML interface to our app. We can do it by modifying `App.py`
 
 ```python
@@ -284,6 +295,8 @@ async def homepage():
     """
 ```
 
+## Preparing Dockerfile
+
 Install Docker for personal use. I downloaded Docker from this link [Install Docker Desktop on Mac](https://docs.docker.com/desktop/setup/install/mac-install/).
 
 Once you get Docker up and running, put these commands into the Dockerfile and build it from the terminal.
@@ -335,6 +348,8 @@ docker build -t detr-api .
 ```
 
 ![Screenshot 2025-08-07 at 12 47 31 AM](https://github.com/user-attachments/assets/0ca63a4b-9377-47ef-9c13-d9147a319b2d)
+
+## Deploying to HuggingFace Spaces
 
 Go to Hugging Face spaces and select building a space from Dockerfile and upload the Dockerfile and `App.py`.
 
