@@ -9,10 +9,14 @@ conda activate docker
 pip install transformers torch torchvision fastapi uvicorn pillow timm python-multipart
 ```
 
+Our folder structure would look like this:
+
+```
 my_folder/
         ├── App.py
         ├── Dockerfile
         └── requirements.txt
+```
 
 In the python code we’re going to use DETR model for object detection. We’re also going to use FastAPI to serve the model:
 
@@ -171,12 +175,172 @@ Also, you'll get a JSON response with detections. These numbers represent the mo
 }
 ```
 
-[https://docs.docker.com/desktop/setup/install/mac-install/](Install Docker Desktop on Mac)
+Let's add a simple HTML interface to our app. We can do it by modifying `App.py`
+
+```python
+import os
+os.environ["HF_HOME"] = "/tmp/huggingface"
+
+from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import StreamingResponse, HTMLResponse
+from PIL import Image, ImageDraw, ImageFont
+import torch
+from transformers import DetrImageProcessor, DetrForObjectDetection
+import io
+
+app = FastAPI()
+
+# Load model + processor
+processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
+model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
+model.eval()
+
+@app.post("/predict")
+async def predict(file: UploadFile = File(...)):
+    image_bytes = await file.read()
+    image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    width, height = image.size
+
+    # Get model predictions
+    inputs = processor(images=image, return_tensors="pt")
+    outputs = model(**inputs)
+    target_sizes = torch.tensor([image.size[::-1]])
+    results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
+
+    # Draw settings based on image size
+    scale = max(width, height) / 512  # scale factor relative to 512x512
+    box_thickness = int(3 * scale)  # Slightly thicker boxes for visibility
+    font_size = max(12, int(15 * scale))  # Increase base font size for better readability
+
+    # Try to load a Truetype font (with fallback to a more reliable font)
+    try:
+        font = ImageFont.truetype("arial.ttf", font_size)  # Ensure arial.ttf is available in your environment
+    except:
+        try:
+            font = ImageFont.truetype("DejaVuSans.ttf", font_size)  # Fallback to another common font
+        except:
+            font = ImageFont.load_default(size=font_size)  # Use default with explicit size if possible
+
+    # Draw boxes and labels
+    draw = ImageDraw.Draw(image)
+    for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
+        box = [round(i, 2) for i in box.tolist()]
+        label_text = f"{model.config.id2label[label.item()]} {score:.2f}"
+
+        # Draw rectangle
+        draw.rectangle(box, outline="red", width=box_thickness)
+
+        # Draw label background
+        bbox = font.getbbox(label_text)
+        text_width = bbox[2] - bbox[0]
+        text_height = bbox[3] - bbox[1]
+        text_bg = [box[0], box[1] - text_height - 2, box[0] + text_width + 4, box[1]]  # Add padding
+        draw.rectangle(text_bg, fill="red")
+
+        # Draw label text with slight offset for clarity
+        draw.text((box[0] + 2, box[1] - text_height - 2), label_text, fill="white", font=font)
+
+    # Return image as PNG
+    img_byte_arr = io.BytesIO()
+    image.save(img_byte_arr, format='PNG')
+    img_byte_arr.seek(0)
+    return StreamingResponse(img_byte_arr, media_type="image/png")
+
+@app.get("/", response_class=HTMLResponse)
+async def homepage():
+    return """
+    <html>
+        <head>
+            <title>DETR Drag and Drop</title>
+        </head>
+        <body>
+            <h2>Upload an Image for Object Detection</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" name="file" id="fileInput" />
+                <br><br>
+                <button type="submit">Upload</button>
+            </form>
+            <br>
+            <img id="outputImage" style="max-width: 100%;" />
+            <script>
+                const form = document.getElementById("upload-form");
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const fileInput = document.getElementById("fileInput");
+                    const formData = new FormData();
+                    formData.append("file", fileInput.files[0]);
+
+                    const response = await fetch("/predict", {
+                        method: "POST",
+                        body: formData
+                    });
+                    const blob = await response.blob();
+                    const imageUrl = URL.createObjectURL(blob);
+                    document.getElementById("outputImage").src = imageUrl;
+                });
+            </script>
+        </body>
+    </html>
+    """
+```
+
+Install Docker for personal use. I downloaded Docker from this link [Install Docker Desktop on Mac](https://docs.docker.com/desktop/setup/install/mac-install/).
+
+Once you get Docker up and running, put these commands into the Dockerfile and build it from the terminal.
+
+```docker
+# Use a slim Python base image
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies required for compiling packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        gcc \
+        g++ \
+        libffi-dev \
+        libssl-dev \
+        && apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
+
+# Copy only requirements first to leverage Docker caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Create a non-root user for security (required for Hugging Face Spaces)
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH
+
+# Expose port
+EXPOSE 7860
+
+# Run the FastAPI app with uvicorn
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+```
+
+Now, build it from the terminal:
 
 ```bash
 docker build -t detr-api .
 ```
 
-```bash
-docker run -p 8000:8000 detr-api
-```
+![Screenshot 2025-08-07 at 12 47 31 AM](https://github.com/user-attachments/assets/0ca63a4b-9377-47ef-9c13-d9147a319b2d)
+
+Go to Hugging Face spaces and select building a space from Dockerfile and upload the Dockerfile and `App.py`.
+
+![Screenshot 2025-08-10 at 3 16 55 PM](https://github.com/user-attachments/assets/919f7a3b-5c5b-442e-84cd-bbb92a90f14a)
+
+
+Upon successful build on Hugging Face you’ll get an app the can detect objects inside an image:
+
+![Screenshot 2025-08-10 at 3 16 40 PM](https://github.com/user-attachments/assets/7be19d8b-dc19-48c9-a441-7981fbd5771a)
