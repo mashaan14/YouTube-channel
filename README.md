@@ -27,9 +27,7 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
 | [<img src="imgs/2025_02_17_vit_finetune.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/RjG6_FP_DgU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_02_17_vit_finetune) | Fine-tuning Vision Transformers on TPU (ImageNet/CIFAR-10) |
 | [<img src="imgs/2025_03_03_TAPIR.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/U7jH_BiwVOU) | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2025_03_03_TAPIR) | Hands-On with TAPIR: Point Tracking Experiment & Code Walkthrough |
 | [<img src="imgs/2024_01_29_Conv2d.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/j19Wdlu7Rtg) | [code](https://mashaan14.github.io/YouTube-channel/convolutional_neural_nets/2024_01_29_Conv2d) | PyTorch Conv2d Explained |
-| [<img src="imgs/2025_03_25_MLP_mixer_pytorch.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/AvORgJ2wVhU) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2025_03_24_MlpMixer_pytorch) | MLP-Mixer in PyTorch: Google Gemini's Code Generation |
 | [<img src="imgs/2024_01_08_CNN_and_ViT.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/uggBVJebdcY) | [code](https://mashaan14.github.io/YouTube-channel/vision_transformers/2024_01_08_CNN_and_ViT) | ViT vs CNN: A Comparative Experiment |
-| [<img src="imgs/2024_01_22_DETR.avif" style="width: 100%; object-fit: contain;" />](https://youtu.be/Z3fXiV4Cmz4) | [code](https://mashaan14.github.io/YouTube-channel/detection_and_tracking/2024_01_22_DETR_demo) | Experimenting Object Detection with DETR |
 
 ---
 
