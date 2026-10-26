@@ -7,10 +7,10 @@
 }
 
 .video-card {
-  display: flex;
+  display: grid;
   align-self: stretch;
+  grid-template-rows: auto minmax(0, 1fr);
   min-width: 0;
-  flex-direction: column;
   overflow: hidden;
   border: 1px solid #d8dee4;
   border-radius: 0.75rem;
@@ -62,14 +62,15 @@
 }
 
 .video-card__body {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
+  display: grid;
+  align-self: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
   padding: 1rem;
 }
 
 .video-card__title {
-  margin: auto 0 0;
+  align-self: end;
+  margin: 0;
   font-size: 1rem;
   line-height: 1.45;
 }
@@ -77,6 +78,7 @@
 .video-card__links {
   display: flex;
   flex-wrap: wrap;
+  align-self: end;
   gap: 0.5rem;
   margin-top: 1rem;
 }
