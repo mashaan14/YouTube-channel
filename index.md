@@ -3,22 +3,21 @@ layout: default
 title: Mashaan blog
 ---
 
-[![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@mashaan14)
-[![website](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://mashaan14.github.io/mashaan/)
-[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mashaan)
-[![X](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://x.com/mashaan_14)
+<header class="intro">
+  <p class="intro__eyebrow">Machine learning tutorials</p>
+  <h2 class="intro__title">Practical machine learning, explained through code.</h2>
+  <p class="intro__copy">I’m Mashaan (مشعان). I make hands-on tutorials about vision transformers, graph neural networks, self-supervised learning, 3D reconstruction, and JAX. Each tutorial comes with notes, code, and figures.</p>
+  <a class="intro__cta" href="https://youtube.com/@mashaan14">Watch on YouTube <span aria-hidden="true">↗</span></a>
+</header>
 
-## Hi there 👋
-### I'm Mashaan (مشعان)
-
-I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video, I also create a corresponding post featuring code snippets and figures related to the topic. You can find all of these posts in this repository, organized into the following sections:
-
-* [Vision Transformers and Their Applications](#vision-transformers-and-their-applications)
-* [Graph Neural Networks](#graph-neural-networks)
-* [Self-Supervised Learning](#self-supervised-learning)
-* [Neural Radiance Fields (NeRF)](#neural-radiance-fields-nerf)
-* [JAX Performance Tips](#jax-performance-tips)
-* [Basic Machine Learning](#basic-machine-learning)
+<nav class="topic-nav" aria-label="Tutorial topics">
+  <a href="#vision-transformers-and-their-applications">Vision Transformers</a>
+  <a href="#graph-neural-networks">Graph Neural Networks</a>
+  <a href="#self-supervised-learning">Self-Supervised Learning</a>
+  <a href="#neural-radiance-fields-nerf">NeRF</a>
+  <a href="#jax-performance-tips">JAX Performance</a>
+  <a href="#basic-machine-learning">Basic ML</a>
+</nav>
 
 ## Vision Transformers and Their Applications
 
@@ -565,3 +564,11 @@ I create [YouTube](https://youtube.com/@mashaan14) tutorials, and for each video
     </div>
   </article>
 </div>
+
+<footer class="site-footer">
+  <p>Elsewhere:
+    <a href="https://mashaan14.github.io/mashaan/">Website</a><span aria-hidden="true">·</span>
+    <a href="https://linkedin.com/in/mashaan">LinkedIn</a><span aria-hidden="true">·</span>
+    <a href="https://x.com/mashaan_14">X</a>
+  </p>
+</footer>
