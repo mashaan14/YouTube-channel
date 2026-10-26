@@ -1,12 +1,15 @@
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 1.25rem;
   margin: 1.25rem 0 2rem;
 }
 
 .video-card {
   display: flex;
+  height: 100%;
   min-width: 0;
   flex-direction: column;
   overflow: hidden;
@@ -60,9 +63,9 @@
 }
 
 .video-card__body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-rows: 1fr auto;
   padding: 1rem;
 }
 
@@ -76,8 +79,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 1rem;
+  align-self: end;
+  margin-top: 1rem;
 }
 
 .video-card__link {
