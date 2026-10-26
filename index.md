@@ -4,7 +4,6 @@ title: Mashaan blog
 ---
 
 <header class="intro">
-  <p class="intro__eyebrow">Machine learning tutorials</p>
   <h2 class="intro__title">Practical machine learning, explained through code.</h2>
   <p class="intro__copy">I’m Mashaan (مشعان). I make hands-on tutorials about vision transformers, graph neural networks, self-supervised learning, 3D reconstruction, and JAX. Each tutorial comes with notes, code, and figures.</p>
   <a class="intro__cta" href="https://youtube.com/@mashaan14">Watch on YouTube <span aria-hidden="true">↗</span></a>
@@ -566,9 +565,15 @@ title: Mashaan blog
 </div>
 
 <footer class="site-footer">
-  <p>Elsewhere:
-    <a href="https://mashaan14.github.io/mashaan/">Website</a><span aria-hidden="true">·</span>
-    <a href="https://linkedin.com/in/mashaan">LinkedIn</a><span aria-hidden="true">·</span>
-    <a href="https://x.com/mashaan_14">X</a>
-  </p>
+  <nav class="social-links" aria-label="Social profiles">
+    <a class="social-link social-link--website" href="https://mashaan14.github.io/mashaan/" aria-label="Personal website">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>
+    </a>
+    <a class="social-link" href="https://linkedin.com/in/mashaan" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+    </a>
+    <a class="social-link" href="https://x.com/mashaan_14" aria-label="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68L14.54 10.858 24 22.846h-7.406l-5.8-7.584-6.637 7.584H.474l8.6-9.831L0 1.153h7.594l5.243 6.932zm-1.292 19.585h2.039L6.486 3.15H4.298z"></path></svg>
+    </a>
+  </nav>
 </footer>
